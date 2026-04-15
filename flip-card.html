@@ -8,9 +8,10 @@
         body{
             display: flex;
             justify-content: center;
+            align-items: center;
         }
 
-.card{
+.card1{
 display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,10 +26,9 @@ display: flex;
   transition: transform 0.2s, box-shadow 0.2s;
   padding-left: 2px;
   margin-bottom: 20px;
-  margin-top: 10px;
+  margin-top: 10px;}
 
-}
-.card:checked{
+.card2{
 display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,7 +36,26 @@ display: flex;
   min-height: 400px;
   padding: 20px;
   border-radius: 24px;
-  background: rgb(0, 0, 0);
+  background: rgb(255, 255, 255);
+  text-decoration: none;
+  color: black;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  transition: transform 0.2s, box-shadow 0.2s;
+  padding-left: 2px;
+  margin-bottom: 20px;
+  margin-top: 10px; 
+ margin-left:50px ;
+}
+
+.card3{
+display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  min-height: 400px;
+  padding: 20px;
+  border-radius: 24px;
+  background: rgb(197, 4, 4);
   text-decoration: none;
   color: black;
   box-shadow: 0 8px 24px rgba(0,0,0,0.12);
@@ -44,12 +63,11 @@ display: flex;
   padding-left: 2px;
   margin-bottom: 20px;
   margin-top: 10px;
-
-
-
+ margin-left:50px ;
 
 }
 
+        .button{ padding: 20px; }
 
 
     </style>
@@ -58,7 +76,7 @@ display: flex;
 
     <div> 
         
-     <div class="card"> 
+     <div class="card1" onclick="seila()"> 
 
 
 <input type="button">
@@ -68,8 +86,79 @@ display: flex;
   
 </div>
 
+    <div> 
+        
+     <div class="card2" onclick="KKKKK()"> 
 
 
+<input type="button">
+
+
+      </div>
+  
+</div>
+
+    <div> 
+        
+     <div class="card3" onclick="trhagg()"> 
+
+
+<input type="button" style=" padding-bottom: 50px;">
+
+
+      </div>
+  
+
+    <div> 
+
+<input type="button" style=" padding-bottom: 10px;" onclick="soma()">
+
+
+      </div>
+
+
+</div>
+  
+<p id="demo">vc tem aura?</p>
+<button type="button"   onclick="mudar()" class="button">clique para descobirir</button>
     
 </body>
+<script> 
+function seila(){
+
+alert ( "faz um pix ae 60duro de4")
+
+
+
+}
+function KKKKK(){
+
+alert ( "socrates DE invencivel morreu pelo trhagg")
+
+
+
+}
+function trhagg(){
+
+alert ( "trhagg fez o mark e o nolan de pu#")
+
+
+
+}
+function mudar(){ 
+
+document.getElementById("demo").innerHTML = " nao tem nada seu beta.";
+}
+
+    function soma(){ 
+
+x = 100
+y = 200
+Z 
+ alert(x-y)
+
+    }
+
+
+</script>
 </html>
