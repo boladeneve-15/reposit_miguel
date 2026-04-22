@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      button{
+    background: linear-gradient(270deg, #314a57, #57c785, #a8a114);
+    background-size: 600% 600%;
+    animation: gradientMove 5s ease infinite;
+    transition: transform 0.3s;
+    border: 0;
+    margin: 40px;
+    width: 150px;
+    height: 75px;
+    border-radius: 30px;
+}
+
+button:hover{
+    transform: scale(1.05);
+}
+
+@keyframes gradientMove {
+    0%{ background-position: 0% 50%; }
+    50%{ background-position: 100% 50%; }
+    100%{ background-position: 0% 50%; }
+}
+    
+  body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    background: linear-gradient(270deg, #2A7B9B, #57C785, #EDDD53);
+    background-size: 600% 600%;
+
+    animation: fundoAnimado 8s ease infinite; 
+}
+@keyframes fundoAnimado {
+    0%{ background-position: 0% 50%; }
+    50%{ background-position: 100% 50%; }
+    100%{ background-position: 0% 50%; } }
+ </style>
+</head>
+<body>
+    <button onclick="soma()">butao de soma fo#</button>
+    <button onclick="subitraimento()">butao de negativimento fo#</button>
+    <button onclick="vezes()">butao de vezesmento fo#</button>
+    <button onclick="divizao()">butao de dividimento fo#</button>
+</body>
+<script>
+
+    function soma(){
+      a =  prompt( "um numero legal")
+      a = parseInt(a)
+    b = prompt( "outro numero legal")
+     b = parseInt (b)
+      alert(a+b)
+    }
+    function subitraimento(){
+      c =  prompt( "um numero legal")
+      c = parseInt(c)
+      d= prompt( "outro numero legal")
+     d = parseInt (d)
+      alert(c-d)
+    }
+    function vezes(){
+      e =  prompt( "um numero legal")
+      e = parseInt(e)
+    f = prompt( "outro numero legal")
+     f = parseInt (f)
+      alert (e*f)
+    }
+    function divizao(){
+      g =  prompt( "um numero legal")
+      g = parseInt(g)
+    h = prompt( "outro numero legal")
+     h = parseInt (h)
+      alert(g/h)
+    }
+</script>
+</html>
