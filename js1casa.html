@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    button{
+        width: 100px;
+        height: 50px; 
+        margin: 10px;
+        border-radius: 15px;
+        border: 0px solid black;
+        color: rgb(255, 255, 255);
+        background-color: rgb(228, 41, 41);
+        transition: transform 0.2s,
+    }
+    button:hover{
+        width: 100px;
+        height: 50px; 
+        margin: 10px;
+        border-radius: 15px;
+        border: 0px solid black;
+        color: rgb(226, 226, 226);
+        background-color: rgb(216, 24, 24);
+         transform: translateY(-2px);
+    }
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        height: 100vh;
+        background-color: rgb(255, 255, 255);
+    }
+   </style>
+</head>
+<body>
+    <button onclick="a1()">1</button>
+    <button onclick="a2()">2</button>
+    <button onclick="a3()">3</button>
+    <button onclick="a4()">4</button>
+    <button onclick="al1()">alerta1</button>
+    <button onclick="al2()">alerta2</button>
+    <button onclick="al3()">alerta3</button>
+   
+</body>
+ <script> 
+  x = 5;
+  y = 6;
+ 
+ function a1() {
+    alert("Hello World!"); }
+   
+    function a2() {
+    alert(y);}
+
+function a3() {
+    alert(x+y); }
+function a4()
+ {
+    alert(x*y); }
+
+function al1() {
+    alert("Olá, seja bem-vindo!"); }
+
+function al2() {
+    alert("Hoje é um ótimo dia para aprender JavaScript!"); }
+
+function al3() { alert("Daniel é muito feio!"); }       
+
+    </script>
+</html>
