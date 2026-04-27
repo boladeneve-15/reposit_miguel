@@ -98,7 +98,7 @@ body{
     </style>
 </head>
 <body>
-   <img src="004.png" width="150px" id="foto1">
+   <img src="004.png" alt="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/004.png" width="150px" id="foto1">
 
    <button class="a" onclick="C()"> LV1</button>
 
@@ -116,32 +116,31 @@ class="bloqueado" onclick="X()">
 </body>
 <script>
    function A(){
-    document.getElementById('foto1').src = '005.png';
-
+    document.getElementById('foto1').src = 'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/005.png'
     document.getElementById('megaY').classList.add('bloqueado');
     document.getElementById('megaX').classList.add('bloqueado');
 }
 
    function B(){
-    document.getElementById('foto1').src = '006.png';
+    document.getElementById('foto1').src = 'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/006.png';
 
     document.getElementById('megaY').classList.remove('bloqueado');
     document.getElementById('megaX').classList.remove('bloqueado');
 }
    function C(){
-    document.getElementById('foto1').src = '004.png';
+    document.getElementById('foto1').src = 'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/004.png';
 
     document.getElementById('megaY').classList.add('bloqueado');
     document.getElementById('megaX').classList.add('bloqueado');
 }
    function Y(){
    
-        document.getElementById('foto1').src= '006_Y.png'
+        document.getElementById('foto1').src= 'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/006_f3.png'
    
     }
    
 function X (){
-    document.getElementById('foto1').src= '006_X.png'
+    document.getElementById('foto1').src= 'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/006_f2.png'
    }
 
 
