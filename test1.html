@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+   *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background: linear-gradient(135deg, #ff8a8a, #ff5c5c);
+    font-family: Arial, sans-serif;
+    gap:20px;
+    padding:20px;
+}
+
+#foto1{
+    width: min(80vw, 260px);
+    transition: transform .3s;
+}
+
+#foto1:hover{
+    transform: scale(1.05);
+}
+
+.a{
+    width: min(90vw, 320px);
+    height: 60px;
+    border:none;
+    border-radius:20px;
+    background:#c55252;
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
+    box-shadow: 0 6px 15px rgba(0,0,0,.2);
+}
+
+.a:hover{
+    background:#9b4141;
+    transform: translateY(-3px);
+}
+
+.a:active{
+    transform: scale(.97);
+}
+
+.megas{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.megas img{
+    width:70px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.megas img:hover{
+    transform: translateY(-5px) scale(1.05);
+}
+
+.bloqueado{
+    opacity:.4;
+    pointer-events:none;
+    filter: grayscale(100%);
+}
+
+@media (min-width:768px){
+    #foto1{
+        width:320px;
+    }
+
+    .a{
+        width:400px;
+        height:70px;
+        font-size:24px;
+    }
+
+    .megas img{
+        width:90px;
+    }
+}
+
+    </style>
+</head>
+<body>
+   <img src="004.png" width="150px" id="foto1">
+
+   <button class="a" onclick="C()"> LV1</button>
+
+   <button class="a" onclick="A()"> LV16</button>
+
+   <button class="a" onclick="B()"> LV 36</button>
+   <img src="mega pedra Y.png" width="70px" id="megaY"
+class="bloqueado" onclick="Y()">
+
+<img src="mega pedra X.png" width="70px" id="megaX"
+class="bloqueado" onclick="X()">
+
+
+   
+</body>
+<script>
+   function A(){
+    document.getElementById('foto1').src = '005.png';
+
+    document.getElementById('megaY').classList.add('bloqueado');
+    document.getElementById('megaX').classList.add('bloqueado');
+}
+
+   function B(){
+    document.getElementById('foto1').src = '006.png';
+
+    document.getElementById('megaY').classList.remove('bloqueado');
+    document.getElementById('megaX').classList.remove('bloqueado');
+}
+   function C(){
+    document.getElementById('foto1').src = '004.png';
+
+    document.getElementById('megaY').classList.add('bloqueado');
+    document.getElementById('megaX').classList.add('bloqueado');
+}
+   function Y(){
+   
+        document.getElementById('foto1').src= '006_Y.png'
+   
+    }
+   
+function X (){
+    document.getElementById('foto1').src= '006_X.png'
+   }
+
+
+</script>
+</html>
