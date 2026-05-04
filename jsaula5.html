@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body {
+body {
     min-height:100vh;
     display:flex;
     justify-content:center;
@@ -38,11 +38,10 @@ gap: 15px;
 
 }
 button:hover{ 
-   transform:translateY(-2px);
+   transform: scale(1.05);
 background-color: rgb(217, 236, 236);
 box-shadow: 3px 4px;
 }
-button:active{ transform: scale(0.95);}
 .linha {
     display: flex;
     gap: 50px;
@@ -62,18 +61,82 @@ h3 {
 
     margin-right: 10px;
 }
+
     </style>
 </head>
-<body>
+<body> 
+    <h3>formulas</h3>
+   <div class="linha">
+    <details>
+    <input type="text" id="Ba2">
+    <input type="text" id="AD">
+    <input type="text" id="C">
+    <BUtton onclick="delta()">resultado</BUtton>
+    <summary>delta</summary>
+</details>
 
-   <input id="V1">
-   <button onclick="A()"></button>
+<details>
+
+<input type="text" id="PI">
+<input type="text" id="AI">
+    <button onclick="imc()">IMC</button>
+    <summary>IMC</summary>
+</details>
+
+<details>
+    <summary> triangulo</summary>
+    <button onclick="tirangulo()">triangulo</button>
+</details>
+</div>
+<h3>conversor de temperatura</h3>
+<div class="linha">
+    
+    <button onclick="GrausPf()">graus para fahrenheit</button>
+    <button onclick="fahrenheit()">fahrenheit para kelvin</button>
+    <button onclick="KelvinPg()">kelvin para graus</button>
+</div>
+
 </body>
 <script>
-    function A(){
-    VAL = V1.value
-    R = VAL.VAL
-    alert(R)
-    }
+function delta(){  
+ b = Ba2.value
+ aD = AD.value
+ c = C.value
+    DELTA =(b**2)-(4*aD*c);
+    alert(DELTA);
+ }
+ function imc(){ 
+ p = PI.value
+ a = AI.value
+    IMC = (p)/(a**2);
+    alert(IMC);
+ }
+ function tirangulo(){
+    b = prompt ( "base do tirangulo")
+    b = parseFloat (b)
+    h = prompt(" altura do triângulo")
+    h = parseFloat (h) 
+    TRIANGULO =(b*h)/2
+    alert(TRIANGULO)
+
+}
+function GrausPf(){
+    g = prompt ( "graus")
+    GRAUS=(g*9/5)+32
+    alert(GRAUS)
+}
+function fahrenheit(){
+    f = prompt ("fahrenheit")
+
+    FA = (f-32)*5/9 +  273,15
+    alert(FA)
+}
+function KelvinPg
+(){
+    k = prompt( "kelvin")
+    KELVIN =  70- 273,15
+    alert( KELVIN)
+}
+ 
 </script>
 </html>
