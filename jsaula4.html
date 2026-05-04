@@ -75,14 +75,14 @@ h3 {
 <div class="linha">
     
     <button onclick="GrausPf()">graus para fahrenheit</button>
-    <button>fahrenheit para kelvin</button>
-    <button>kelvin para graus</button>
+    <button onclick="fahrenheit()">fahrenheit para kelvin</button>
+    <button onclick="KelvinPg()">kelvin para graus</button>
 </div>
 
 </body>
 <script>
-function delta(){ 
-   b = prompt( "numero b²")
+function delta(){  
+  b = prompt( "numero b²")
    b = parseInt(b)
    a = prompt( "numero a")
      a = parseInt(a)
@@ -113,7 +113,18 @@ function GrausPf(){
     GRAUS=(g*9/5)+32
     alert(GRAUS)
 }
+function fahrenheit(){
+    f = prompt ("fahrenheit")
 
+    FA = (f-32)*5/9 +  273,15
+    alert(FA)
+}
+function KelvinPg
+(){
+    k = prompt( "kelvin")
+    KELVIN =  70- 273,15
+    alert( KELVIN)
+}
  
 </script>
 </html>
