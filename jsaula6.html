@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            gap: 20px;
+            padding: 20px;
+
+            background: linear-gradient(-45deg, #3f1a1a, #2c2c2c, #1a3f3f, #000000);
+            background-size: 400% 400%;
+            animation: fundoAnimado 8s ease infinite;
+        }
+
+        @keyframes fundoAnimado {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        button {
+            width: 150px;
+            height: 40px;
+            border-radius: 15px;
+            border: 0px;
+            background-color: #f0ffff;
+            box-shadow: 5px;
+            box-shadow: 2px 3px;
+ margin: 20px;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background-color: rgb(217, 236, 236);
+            box-shadow: 3px 4px;
+        }
+
+        .linha {
+            display: flex;
+            gap: 10px;
+        }
+
+        details{
+            color: #ffffff;
+            font-size: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+        }
+        h1{ color: black;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+    </style>
+</head>
+
+<body>
+    NOTAS EM 
+    <div class="linha">
+    <details>
+        <summary>calcular semestre</summary>
+        <h2>S1</h2>
+    <input type="text" id="S1">
+    <h2>S2</h2>
+    <input type="text" id="S2">
+    <button onclick="calcularS()"></button>
+    <h1 id="resultadoS"></h1>
+    </details>
+
+<details>
+        <summary>calcular trimestre</summary>
+        <h2>T1</h2>
+    <input type="text" id="T1">
+    <h2>T2</h2>
+    <input type="text" id="T2">
+<h2>T3</h2>
+    <input type="text" id="T3">
+    <button onclick="calcularT()"></button>
+    <h1 id="resultadoT"></h1>
+   </details>
+<details>
+        <summary>calcular bimestre</summary>
+        <h2>B1</h2>
+    <input type="text" id="B1">
+    <h2>B2</h2>
+    <input type="text" id="B2">
+<h2>B3</h2>
+    <input type="text" id="B3">
+    <h2>B4</h2>
+    <input type="text" id="B4">
+    <button onclick="calcularB()"></button>
+    <h1 id="resultadoB"></h1>
+   </details>
+</div>
+
+
+
+
+
+<div class="linha">
+<details> 
+    <summary>KM para M</summary>
+    <h2>KM</h2>
+    <input type="text" id="KM">
+    <h2>M</h2>
+    <h1 id="resultadoKMpM"></h1>
+    <buTton onclick="KMpM()">resultado</buTton>
+</details>    
+<details> 
+    <summary>M para kM</summary>
+    <h2>M</h2>
+    <input type="text" id="M">
+    <h2>kM</h2>
+    <h1 id="resultadoMpkM"></h1>
+    <button onclick="MpKM()">resultado</button>
+</details>    
+</div>
+
+
+</body>
+<script> 
+ function calcularS(){
+        d = parseInt(S1.value)
+        e = parseInt(S2.value)
+       
+ somaS = (d+e)/2
+ resultadoS.innerHTML = somaS
+}
+
+    function calcularT(){
+        a = parseInt(T1.value)
+        b = parseInt(T2.value)
+        c = parseInt(T3.value)
+ somaT = (a+b+c)/3
+ resultadoT.innerHTML = somaT
+    }
+    function calcularB(){
+        b1 = parseInt(B1.value)
+        b2 = parseInt(B2.value)
+        b3 = parseInt(B3.value)
+        b4 = parseInt(B4.value)
+ somaB = (b1+b2+b3+b4)/4
+ resultadoB.innerHTML = somaB}
+
+    function KMpM(){
+        k = parseInt(KM.value)
+        reK = k*1000
+        resultadoKMpM.innerHTML = reK
+    }
+     function MpKM(){
+        m = parseInt(M.value)
+        reM = m/1000
+        resultadoMpkM.innerHTML = reM
+    }
+</script>
+</html>
