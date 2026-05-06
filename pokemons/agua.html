@@ -138,10 +138,31 @@ color: rgb(255, 255, 255);
 border: none;
 border-radius: 15px;
 }
-
+.canto{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+ height: 25px;
+ width: 175px;
+ border-radius: 20px;
+ border: none;
+}
+.canto:hover{
+ background-color: rgb(184, 182, 182);
+ transform: translateY(-2px);
+ transform: scale(1.05);
+}
+.canto:active{
+ background-color: rgb(184, 182, 182);
+ transform: translateY(-2px);
+ transform: scale(0.97);
+}
     </style>
 </head>
 <body>
+    <a href="http://127.0.0.1:5500/pokemons/EscolherRegiao.html">
+    <button class="canto">TROCAR REGIAO</button>
+</a>
     <h1>Pokemon de agua</h1>
    <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/007.png" id="foto1">
 

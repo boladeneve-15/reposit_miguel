@@ -68,16 +68,20 @@ h3 {
     <h3>formulas</h3>
    <div class="linha">
     <details>
+        <h2>B²</h2>
     <input type="text" id="Ba2">
+    <h2>A</h2>
     <input type="text" id="AD">
+   <h2> C</h2>
     <input type="text" id="C">
     <BUtton onclick="delta()">resultado</BUtton>
     <summary>delta</summary>
 </details>
 
 <details>
-
+<h2>peso</h2>
 <input type="text" id="PI">
+<h2>altura</h2>
 <input type="text" id="AI">
     <button onclick="imc()">IMC</button>
     <summary>IMC</summary>
@@ -85,6 +89,10 @@ h3 {
 
 <details>
     <summary> triangulo</summary>
+    <h2>base</h2>
+    <input type="text" id="BL">
+    <h2>altura</h2>
+    <input type="text" id="AL">
     <button onclick="tirangulo()">triangulo</button>
 </details>
 </div>
@@ -112,10 +120,8 @@ function delta(){
     alert(IMC);
  }
  function tirangulo(){
-    b = prompt ( "base do tirangulo")
-    b = parseFloat (b)
-    h = prompt(" altura do triângulo")
-    h = parseFloat (h) 
+b = BL.value
+h = AL.value
     TRIANGULO =(b*h)/2
     alert(TRIANGULO)
 
