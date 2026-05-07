@@ -7,7 +7,7 @@
             font-family: Arial, sans-serif;
             gap: 20px;
             padding: 20px;
-
+color: white;
             background: linear-gradient(-45deg, #3f1a1a, #2c2c2c, #1a3f3f, #000000);
             background-size: 400% 400%;
             animation: fundoAnimado 8s ease infinite;

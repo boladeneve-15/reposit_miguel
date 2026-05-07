@@ -18,4 +18,5 @@ function GrausPf(){
  function fahrenheitPg(){
   Fg = FpG.value
   FARG = (Fg-32)*5/9
+  FHpG.innerHTML= FARG
  }
