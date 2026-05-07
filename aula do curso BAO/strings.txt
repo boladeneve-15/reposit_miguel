@@ -1,0 +1,36 @@
+a = "aiudiwuDDD"
+'aiudiwuDDD'
+a.toLowerCase()
+'aiudiwuddd'
+a = a.toLowerCase()
+'aiudiwuddd'
+a
+'aiudiwuddd'
+a.toUpperCase()
+'AIUDIWUDDD'
+a
+'aiudiwuddd'
+a = 'miguelgoat'
+'miguelgoat'
+a.slice(6,8)
+'go'
+a.substring(6,8)
+'go'
+a.substring(6,8).toUpperCase().slice(1)[0]
+'O'
+a
+'miguelgoat'
+a.replace("goat", "viado")
+'miguelviado'
+a.replace("i", "a")
+'maguelgoat'
+a = a.replace("goat", "viado")
+'miguelviado'
+a.replace("i", "a")
+'maguelviado'
+a.replaceAll("i", "a")
+'maguelvaado'
+a = '    djoaiwjdoiawdj awoidjaowidjoaidj   '
+'    djoaiwjdoiawdj awoidjaowidjoaidj   '
+a.trim()
+'djoaiwjdoiawdj awoidjaowidjoaidj'

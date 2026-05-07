@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <details>
+        <summary>primeiro trem</summary>
+    <input type="text" id="testeUM">
+    <button onclick="teste1()"></button>
+    <h1 id="resul1">aa</h1>
+</details>
+ 
+    <details>
+       
+        <summary>segundo trem</summary>
+    <input type="text" id="testeDOIS">
+    <button onclick="teste2()"></button>
+    <h1 id="resul2">aa</h1>
+</details>
+</body>
+<script> 
+    function teste1(){
+        T1 = testeUM.value
+        A = T1.length;
+       resul1.innerText = A;
+}
+    function teste2(){
+       T2 = testeDOIS.value.toLowerCase();
+       
+     
+       resul2.innerText = T2;
+}
+    
+</script>
+</html>
