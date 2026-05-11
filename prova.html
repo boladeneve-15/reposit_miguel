@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <details>
+        <summary>QUESTÃO 11(conversor de graus para radianos)</summary>
+        <h4>qual a temperatura em GRAUS?</h4>
+        <input type="text" id="GRA">
+        
+ <button onclick="GpR()">Resultado</button>
+ <h1 id="Agpr"></h1>
+    </details>
+    <details>
+        <summary>QUESTÃO 6 ( média ponderada de 3 ELEMENTOS(voce escolhe o peso dos numeros))</summary>
+        <h4> média ponderada de 3 ELEMENTOS </h4>
+<button onclick="Q6()"></button>
+    </details>
+</body>
+<script>
+    function GpR(){
+        G = parseFloat(GRA.value)
+        SomaG = (G*3.14)/180
+        Agpr.innerHTML = SomaG
+    }
+    function Q6(){
+
+     N1 = parseFloat(prompt("valor DO pRIMEIRO NUMERO"))
+     P1 = parseFloat(prompt ("Valor do peso do primeiro numero"))
+ 
+
+    
+     N2 = parseFloat(prompt("valor DO SEGUNDO NUMERO"))
+     P2 = parseFloat(prompt ("Valor do peso do Segundo numero"))
+
+     
+     N3 = parseFloat(prompt("valor DO TERCEIRO NUMERO"))
+     P3 = parseFloat(prompt ("Valor do peso do terceiro numero"))
+
+       
+
+         Produto = (N1 * P1) + (N2 * P2) + (N3 * P3);
+         peso = (P1 + P2 + P3);
+    
+      
+      PONTERADO = Produto/ peso;
+      alert(PONTERADO)
+    }
+</script>
+</html>
