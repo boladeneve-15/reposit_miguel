@@ -28,11 +28,17 @@
     <Button onclick="MAIUCUSLO()">Resultado </Button>
     <h1 id="mm"></h1>
 
-<h2>slice meio pequenho meio grande</h2>
+<h2>digite um texto falando que o davi e hetero</h2>
     <input type="text" id="PG">
     
     <Button onclick="replaceA()">Resultado</Button>
     <h1 id="pg"></h1>
+
+<h2>letras + numero = letras final, sem numero</h2>
+<input type="text" id="nome" placeholder="nome">
+<input type="text" id="numero" placeholder="nuemro de letras cortada">
+<button onclick="cut()"></button>
+<h1 id="RE"></h1>
 
 </body>
 <script>
@@ -52,6 +58,23 @@ rr = A.length;
         ss = s.replace( "hetero" , "gay")
             pg.innerHTML = ss
         
+    }
+    function cortar(){
+NOME = nome.value
+NUMERO = numero.value
+N = (NOME.slice(-NUMERO))
+RE.innerHTML = N
+    }
+
+    function cut(){
+        n = nome.value
+        nu = numero.value
+
+        posicaoCorte = n.length - nu
+
+        sub = n.slice(0, nu)
+
+        RE.innerHTML = sub
     }
 
 </script>

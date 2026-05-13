@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS fudido de bom.css">
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .card{ 
+            width: 300px;
+            height: 350px;
+         background: rgba(10, 10, 10, 0.9);
+            border: 2px solid #0ff;
+            border-radius: 8px;
+            width: 380px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2), inset 0 0 10px rgba(0, 255, 255, 0.1);
+            transition: all 0.3s ease-in-out;
+            overflow: hidden; 
+        display: flex;
+    flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 15px;}
+.alinha{
+    display: flex;
+    gap: 45px;
+}
+
+           
+    </style>
+</head>
+<body>
+    <div class="card">
+       <img src="https://conteudo.imguol.com.br/6a/2020/01/24/ovo-frito-1579891845647_v2_750x1000.jpg" width="50px">
+ <h2>preço:R$1,99</h2>
+ <div class="alinha">
+ <button onclick="mais()">+1</button>
+ <h2 id="mudar">1</h2>
+ <button onclick="menos()">-1</button>
+ </div>
+ 
+ <h1 id="total"></h1>
+
+    </div>
+</body>
+<script>
+    function mais(){
+  adicionar = mudar.innerHTML 
+soma = parseInt (adicionar) +1
+ mudar.innerHTML = soma
+ quantidade = parseInt(mudar.innerHTML)
+    preço = 1.99
+    tudo = quantidade * preço
+     total.innerHTML = tudo
+
+ 
+    }
+    function menos(){
+  diminuir = mudar.innerHTML 
+  subitrair = parseInt(diminuir) -1
+  mudar.innerHTML = subitrair
+  quantidade = parseInt(mudar.innerHTML)
+    preço = 1.99
+    tudo = quantidade * preço
+     total.innerHTML = tudo
+    }
+    
+</script>
+</html>
