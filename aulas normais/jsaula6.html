@@ -5,78 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            font-family: Arial, sans-serif;
-            gap: 20px;
-            padding: 20px;
-
-            background: linear-gradient(-45deg, #3f1a1a, #2c2c2c, #1a3f3f, #000000);
-            background-size: 400% 400%;
-            animation: fundoAnimado 8s ease infinite;
-        }
-
-        @keyframes fundoAnimado {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        button {
-            width: 150px;
-            height: 40px;
-            border-radius: 15px;
-            border: 0px;
-            background-color: #f0ffff;
-            box-shadow: 5px;
-            box-shadow: 2px 3px;
- margin: 20px;
-        }
-
-        button:hover {
-            transform: scale(1.05);
-            background-color: rgb(217, 236, 236);
-            box-shadow: 3px 4px;
-        }
-        button:active{
-            transform: scale(0.98);
-        }
-
-        .linha {
-            display: flex;
-            gap: 10px;
-        }
-
-        details{
-            color: #ffffff;
-            font-size: 20px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 8px 15px;
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            margin-right: 10px;
-            display: flex;
-            align-items: center;
-        }
-        h1{ color: black;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
-    </style>
+    <link rel="stylesheet" href="CSS fudido de bom.css">
+    </link>
 </head>
 
 <body>
@@ -88,7 +18,7 @@
     <input type="text" id="S1">
     <h2>S2</h2>
     <input type="text" id="S2">
-    <button onclick="calcularS()"></button>
+    <button onclick="calcularS()">Resultado</button>
     <h1 id="resultadoS"></h1>
     </details>
 
@@ -100,7 +30,7 @@
     <input type="text" id="T2">
 <h2>T3</h2>
     <input type="text" id="T3">
-    <button onclick="calcularT()"></button>
+    <button onclick="calcularT()">Resultado</button>
     <h1 id="resultadoT"></h1>
    </details>
 <details>
@@ -113,7 +43,7 @@
     <input type="text" id="B3">
     <h2>B4</h2>
     <input type="text" id="B4">
-    <button onclick="calcularB()"></button>
+    <button onclick="calcularB()">Resultado</button>
     <h1 id="resultadoB"></h1>
    </details>
 </div>

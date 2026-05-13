@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="aulaNormal.css">
+    <link rel="stylesheet" href="CSS fudido de bom.css  ">
 </head>
+<style>
+    body{ display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;}
+   
+</style>
 <body>
     <h2>tamanho da string</h2>
     <input type="text" id="Digi">
     
-    <Button onclick="R()"></Button>
+    <Button onclick="R()">Resultado</Button>
     <h1 id="RR"></h1>
 
 
@@ -18,13 +25,13 @@
 <h2>tudo pra maiusculo</h2>
     <input type="text" id="MAI">
     
-    <Button onclick="MAIUCUSLO()"></Button>
+    <Button onclick="MAIUCUSLO()">Resultado </Button>
     <h1 id="mm"></h1>
 
 <h2>slice meio pequenho meio grande</h2>
     <input type="text" id="PG">
     
-    <Button onclick="replaceA()"></Button>
+    <Button onclick="replaceA()">Resultado</Button>
     <h1 id="pg"></h1>
 
 </body>
@@ -37,12 +44,12 @@ rr = A.length;
 
     function MAIUCUSLO(){
  B = MAI.value
- ff = B.toUpperCase()
+ ff = B.toLowerCase()
  mm.innerHTML = ff
     }
     function replaceA(){
         s = PG.value
-        ss = s.replace( "legal" , "ruim")
+        ss = s.replace( "hetero" , "gay")
             pg.innerHTML = ss
         
     }
