@@ -39,9 +39,24 @@
 <input type="text" id="numero" placeholder="nuemro de letras cortada">
 <button onclick="cut()"></button>
 <h1 id="RE"></h1>
-
+<br>
+<h2>atividade</h2>
+<input type="text" id="input">
+<button onclick="Frases()"></button>
+<h2 id="atividade2"></h2>
 </body>
 <script>
+function Frases(){
+    A = input.value
+    mai = A.slice(1).toLowerCase()
+    min = A.slice(0,1).toUpperCase()
+
+    atividade2.innerHTML = min + mai
+}
+
+
+
+
     function R(){
         A = Digi.value
 rr = A.length;
