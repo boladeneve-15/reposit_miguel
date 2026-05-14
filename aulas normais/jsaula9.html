@@ -12,13 +12,13 @@
             align-items: center;
             justify-content: center;
         }
-        .card{ 
-            width: 300px;
-            height: 350px;
+        .card{
+
          background: rgba(10, 10, 10, 0.9);
             border: 2px solid #0ff;
+            height: 520px;
             border-radius: 8px;
-            width: 380px;
+            width: 420px;
             box-shadow: 0 0 15px rgba(0, 255, 255, 0.2), inset 0 0 10px rgba(0, 255, 255, 0.1);
             transition: all 0.3s ease-in-out;
             overflow: hidden; 
@@ -31,7 +31,8 @@ gap: 15px;}
     display: flex;
     gap: 45px;
 }
-
+h6{ color: rgb(255, 0, 0);
+    font-size: 12px;}
            
     </style>
 </head>
@@ -40,12 +41,16 @@ gap: 15px;}
        <img src="https://conteudo.imguol.com.br/6a/2020/01/24/ovo-frito-1579891845647_v2_750x1000.jpg" width="50px">
  <h2>preço:R$1,99</h2>
  <div class="alinha">
+    <button onclick="mais10()">+10</button>
  <button onclick="mais()">+1</button>
  <h2 id="mudar">1</h2>
  <button onclick="menos()">-1</button>
- </div>
- 
+ <button onclick="menos10()">-10</button>
+ </div> 
  <h1 id="total"></h1>
+  <button onclick="erro()">Comprar</button>
+  <h6 id="mensagem"></h6>
+
 
     </div>
 </body>
@@ -71,5 +76,37 @@ soma = parseInt (adicionar) +1
      total.innerHTML = tudo
     }
     
+    function mais10(){
+  adicionar = mudar.innerHTML 
+  soma = parseInt(adicionar) + 10
+  mudar.innerHTML = soma
+  quantidade = parseInt(mudar.innerHTML)
+    preço = 1.99
+    tudo = quantidade * preço
+     total.innerHTML = tudo
+    }
+    
+    function menos10(){
+  diminuir = mudar.innerHTML 
+  subitrair = parseInt(diminuir) - 10
+  mudar.innerHTML = subitrair
+  quantidade = parseInt(mudar.innerHTML)
+    preço = 1.99
+    tudo = quantidade * preço
+     total.innerHTML = tudo
+    
+  adicionar = mudar.innerHTML}
+    function erro(){
+        if (mudar.innerHTML == 0){
+            mensagem.innerHTML = "você não pode comprar 0 ovos"
+        } else if (mudar.innerHTML < 0){
+            mensagem.innerHTML = "você não pode comprar um número negativo de ovos"
+        } else {
+            mensagem.innerHTML = "compra realizada com sucesso!"
+        }
+        if (mudar.innerHTML == 10){
+            mensagem.innerHTML = "VOCE E POBRE"
+        }
+    }
 </script>
 </html>
