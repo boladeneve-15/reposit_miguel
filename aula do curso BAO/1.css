@@ -1,0 +1,30 @@
+button {
+  /* Tamanho e Espaçamento */
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  
+  /* Cores e Bordas */
+  background-color: #6200ee; /* Roxo moderno */
+  color: #ffffff; /* Letra branca */
+  border: none; /* Remove a borda padrão feia */
+  border-radius: 8px; /* Cantos arredondados */
+  
+  /* Interação e Animação */
+  cursor: pointer; /* Transforma a seta em mãozinha */
+  transition: all 0.3s ease; /* Suaviza a mudança de cor */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+/* Efeito ao passar o mouse */
+button:hover {
+  background-color: #3700b3; /* Roxo mais escuro */
+  transform: translateY(-2px); /* Move o botão levemente para cima */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Aumenta a sombra */
+}
+
+/* Efeito ao clicar */
+button:active {
+  transform: translateY(0); /* Volta para a posição original */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
