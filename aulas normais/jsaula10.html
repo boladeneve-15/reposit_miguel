@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS fudido de bom.css">
+    <style>
+        div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+        }
+
+         body{ display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;}
+    </style>
+    <title>Document</title>
+</head>
+<body>
+<div>
+    <h2>escolha o horario</h2>
+    <input type="date" id="date">
+    <button onclick=" ATIVI1()">Resultado</button>
+    <h2 id="apare"></h2>
+</div>
+<div>
+    <h2>atividade2</h2>
+    <!-- atividade 2 e pra fazer um 1.9,8,1,.,., virar um 1,981 -->
+</div>
+</body>
+<script>
+    //   console.log(a.slice(0, 4))
+
+    // fMaiusculo = a[0].toUpperCase()
+//  2026/05/18 para 18/05/2026
+// ano = 2026
+// Mes = /05
+// dia = 18
+    function ATIVI1(){
+
+data = date.value
+data = data.replaceAll("-", "/")
+ano = data.slice(0, 4)
+Mes = data.slice( 4 , 7)
+dia = data.slice(8,10)
+apare.innerHTML =  dia + Mes + "/" + ano
+    }
+</script>
+</html>

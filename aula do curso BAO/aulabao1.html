@@ -8,32 +8,95 @@
 </head>
 <body>
     <details>
-        <summary>primeiro trem</summary>
-    <input type="text" id="testeUM">
-    <button onclick="teste1()"></button>
-    <h1 id="resul1">aa</h1>
-</details>
- 
-    <details>
-       
-        <summary>segundo trem</summary>
-    <input type="text" id="testeDOIS">
-    <button onclick="teste2()"></button>
-    <h1 id="resul2">aa</h1>
-</details>
-</body>
-<script> 
-    function teste1(){
-        T1 = testeUM.value
-        A = T1.length;
-       resul1.innerText = A;
-}
-    function teste2(){
-       T2 = testeDOIS.value.toLowerCase();
-       
-     
-       resul2.innerText = T2;
-}
+        <summary>tamanho da string</summary>
+     <h2>tamanho da string</h2>
+    <input type="text" id="Digi">
     
+    <Button onclick="R()">Resultado</Button>
+    <h1 id="RR"></h1>
+</details>
+
+<details>
+    <summary>tudo pra maiusculo</summary>
+<h2>tudo pra maiusculo</h2>
+    <input type="text" id="MAI">
+    
+    <Button onclick="MAIUCUSLO()">Resultado </Button>
+    <h1 id="mm"></h1>
+</details>
+<details>
+     <summary>davi e hetero</summary>
+<h2>digite um texto falando que o davi e hetero</h2>
+    <input type="text" id="PG">
+    <Button onclick="replaceA()">Resultado</Button>
+    <h1 id="pg"></h1>
+</details>
+
+<details>
+   <summary> sem numero</summary>
+<h2>letras + numero = letras final, sem numero</h2>
+<input type="text" id="nome" placeholder="nome">
+<input type="text" id="numero" placeholder="nuemro de letras cortada">
+<button onclick="cut()"></button>
+<h1 id="RE"></h1>
+</details>
+
+<br>
+<details>
+    <summary>atividade do carai</summary>
+<h2>atividade</h2>
+<input type="text" id="input">
+<button onclick="Frases()"></button>
+<h2 id="atividade2"></h2>
+</details>
+
+</body>
+<script>
+function Frases(){
+    A = input.value
+    mai = A.slice(1).toLowerCase()
+    min = A.slice(0,1).toUpperCase()
+
+    atividade2.innerHTML = min + mai
+}
+
+
+
+
+    function R(){
+        A = Digi.value
+rr = A.length;
+ RR.innerHTML = rr
+    }
+
+    function MAIUCUSLO(){
+ B = MAI.value
+ ff = B.toLowerCase()
+ mm.innerHTML = ff
+    }
+    function replaceA(){
+        s = PG.value
+        ss = s.replace( "hetero" , "gay")
+            pg.innerHTML = ss
+        
+    }
+    function cortar(){
+NOME = nome.value
+NUMERO = numero.value
+N = (NOME.slice(-NUMERO))
+RE.innerHTML = N
+    }
+
+    function cut(){
+        n = nome.value
+        nu = numero.value
+
+        posicaoCorte = n.length - nu
+
+        sub = n.slice(posicaoCorte, nu)
+
+        RE.innerHTML = sub
+    }
+
 </script>
 </html>
