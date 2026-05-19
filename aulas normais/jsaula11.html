@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS fudido de bom.css">
+    <style>
+         div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+        }
+
+         body{ display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;}
+    </style>
+</head>
+<body>
+    <div>
+    <h2>atividade</h2>
+    <input type="text" id="letras" placeholder="letras">
+    <input type="text" id="numero1" placeholder="nuemros pls">
+    <input type="text" id="numero2" placeholder="numeros pls">
+    <button  onclick=" ativi1()"></button>
+    <h2 id="apare"></h2>
+    </div> 
+    <div>
+    <h2>atividade2</h2>
+    <input type="text" id="letras2" placeholder="letras2">
+    <input type="text" id="oque" placeholder="nuemros pls">
+    <input type="text" id="mudar" placeholder="numeros pls">
+    <button  onclick=" ATIVI2()"></button>
+    <h2 id="apare2"></h2>
+  
+    </div>
+    <div>
+          <h2>atividade3</h2>
+   <input type="time" id="tempo"></input>
+    <button  onclick=" ATIV3()"></button>
+    <h2 id="apare3"></h2>
+</div>
+</body>
+<script>
+    function ATIV3(){
+        T = tempo.value
+        h = T.slice(0,2).replace(0, "")
+        m = T.slice(3,5)
+        apare3.innerHTML = "são  "+ h +"  horas, é " + m + "  minutos"
+    }
+    function ativi1(){
+        L = letras.value
+       N1 = numero1.value
+       N2 = numero2.value
+       
+   
+        apare.innerHTML = L.slice(N1, N2)
+    }
+    function ATIVI2(){
+        A = letras2.value
+       B1 = oque.value
+       B2 = mudar.value
+       
+   
+        apare2.innerHTML = A.replace(B1, B2)
+    }
+</script>
+</html>

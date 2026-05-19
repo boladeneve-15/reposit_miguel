@@ -28,19 +28,37 @@
 </div>
 <div>
     <h2>atividade2</h2>
+    <input type="text" id="ativi2">
+    <button onclick="ATIVI3()">Resultado</button>
+    <h2 id="apare2"></h2>
     <!-- atividade 2 e pra fazer um 1.9,8,1,.,., virar um 1,981 -->
 </div>
 </body>
 <script>
-    //   console.log(a.slice(0, 4))
+   function ATIVI2(){
+    vir = ativi2.value
+    vir = vir.replaceAll(".", ",").replace(",",".").replaceAll(",","").replace(".",",")
+    apare2.innerHTML = vir
+
+   }
+   function ATIVI3(){
+    vir = ativi2.value
+    vir = vir.replaceAll(".", ",")
+
+    p = vir.indexOf(',')
+
+    vir = vir.slice(0, p+1) + vir.slice(p+1).replaceAll(',', '') 
+    apare2.innerHTML = vir
+
+   }
+    function ATIVI1(){
+ //   console.log(a.slice(0, 4))
 
     // fMaiusculo = a[0].toUpperCase()
 //  2026/05/18 para 18/05/2026
 // ano = 2026
 // Mes = /05
 // dia = 18
-    function ATIVI1(){
-
 data = date.value
 data = data.replaceAll("-", "/")
 ano = data.slice(0, 4)

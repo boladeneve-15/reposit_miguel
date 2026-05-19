@@ -110,6 +110,22 @@ button:active {
         .open:nth-child(3) { animation-delay: 0.6s; }
         .open:nth-child(4) { animation-delay: 0.8s; }
 
+        .openA {
+            margin-bottom: 12px;
+            transform: translateX(-20px);
+            opacity: 0;
+            animation: slideIn 0.4s forwards ease-out;
+            will-change: transform, opacity;
+            transform-style: preserve-3d;
+        }
+
+       
+
+        .openA:nth-child(1) { animation-delay: 0.6s; }
+        .openA:nth-child(2) { animation-delay: 1.2s; }
+        .openA:nth-child(3) { animation-delay: 1.8s; }
+        .openA:nth-child(4) { animation-delay: 0.8s; }
+
         .opcões {
             display: flex;
             flex-direction: row;
