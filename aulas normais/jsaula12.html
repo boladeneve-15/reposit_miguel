@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS fudido de bom.css">
+    <style>
+         div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+        }
+
+         body{ display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;}
+    </style>
+</head>
+<body>
+    <div>
+        <h1>atividade do carai</h1>
+            <input type="text" id="nome" placeholder="Some">
+            <input type="text" id="srobrenome" placeholder="Srobrenome">
+            <input type="date" id="ano">
+            <button onclick="atividocarai()">Resultado</button>
+            <br>
+            <h2 id="re1" style="color: red;"></h2>
+            <br>
+            <h2 id="re2" style="color: blue;"></h2>
+            <br>
+            <h2 id="re3" style="color:  green;"></h2>
+    </div>
+<div>
+    <h1>atividade 1</h1>
+    <input type="text" id="ai1">
+    <button onclick="ATI1()"></button>
+    <h2 id="apare1"></h2>
+</div>
+<div>
+    <h1>atividade 2</h1>
+    <input type="number" id="ai2">
+    <button onclick="ATI2()"></button>
+    <h2 id="apare2"></h2>
+</div>
+<div>
+    <h1>atividade 3</h1>
+    <input type="text" id="ai3">
+    <button onclick="ATI3()"></button>
+    <h2 id="apare3"></h2>
+</div>
+
+</body>
+<script>
+    function ATI3(){
+        A = ai3.value
+       mai = A.slice(1).toLowerCase()
+       min = A.slice(0,1).toUpperCase()
+
+        apare3.innerHTML = min + mai
+    }
+    
+
+function ATI1(){
+    A = ai1.value
+    B = A.toLowerCase().replaceAll(" ", "_") 
+    apare1.innerHTML = "@"+B
+}
+
+
+function ATI2(){
+        N = ai2.value
+    os3 = N.slice(0,3)
+    os6 = N.slice(3,6)
+    os9 = N.slice(6,9)
+    osU = N.slice (9,11)
+    apare2.innerHTML = os3+"."+ os6+"."+os9+"-"+osU
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function atividocarai(){
+N = (nome.value)
+S = (srobrenome.value)
+D = (ano.value)
+A = D.slice(0, 4)
+
+
+    QUEST1 =  N+"."+S+A
+     min = QUEST1.toLowerCase()
+     semE = min.replaceAll(" ", ".")
+
+
+     NQ = nome.value.slice(0,3).toUpperCase()
+     P = -3
+     sub = S.length - P
+     RE =  S.slice (P, sub).toLowerCase()
+     calcu = 2026 - A
+     
+     QUEST3 = NQ +RE+"#"+calcu
+re1.innerHTML = semE
+re2.innerHTML = semE +"@gmail.com"
+re3.innerHTML =  QUEST3
+    }
+</script>
+</html>

@@ -32,14 +32,7 @@
     <h1 id="pg"></h1>
 </details>
 
-<details>
-   <summary> sem numero</summary>
-<h2 class="openA">letras + numero = letras final, sem numero</h2>
-<input type="text" id="nome" placeholder="nome" class="openA">
-<input type="text" id="numero" placeholder="nuemro de letras cortada" class="openA">
-<button onclick="cut()" class="openA"></button>
-<h1 id="RE"></h1>
-</details>
+
 
 <br>
 <details>
@@ -50,8 +43,26 @@
 <h2 id="atividade2"></h2>
 </details>
 
+<details>
+   <summary> sem numero</summary>
+<h2 class="openA">letras + numero = letras final, sem numero</h2>
+<input type="text" id="nome" placeholder="nome" class="openA">
+<input type="text" id="numero" placeholder="nuemro de letras cortada" class="openA">
+<button onclick="cut()" class="openA"></button>
+<h1 id="RE"></h1>
+</details>
 </body>
 <script>
+     function cut(){
+        n = nome.value
+        nu = -3
+
+        posicaoCorte = n.length - nu
+
+        sub = n.slice (nu, posicaoCorte )
+
+        RE.innerHTML = sub
+    }
 function Frases(){
     A = input.value
     mai = A.slice(1).toLowerCase()
@@ -87,16 +98,7 @@ N = (NOME.slice(-NUMERO))
 RE.innerHTML = N
     }
 
-    function cut(){
-        n = nome.value
-        nu = numero.value
-
-        posicaoCorte = n.length - nu
-
-        sub = n.slice(posicaoCorte, nu)
-
-        RE.innerHTML = sub
-    }
+   
 
 </script>
 </html>
