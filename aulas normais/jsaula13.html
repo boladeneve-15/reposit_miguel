@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS fudido de bom.css">
+    <style>
+     div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+        }
+
+         body{ display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;}
+    </style>
+</head>
+<body>
+    <div>
+    <input type="text" id="nome">
+    <button onclick="fazer()"></button>
+    <h2 id="resul"></h2>
+</div>
+</body>
+<script>
+    
+  function fazer(){
+    
+        A = nome.value.toUpperCase()
+        P1 = A.slice(0, 1)
+        espaco1 = A.indexOf(" ")
+        P2 = A.slice(espaco1 + 1, espaco1 + 2)
+        espaco2 = A.indexOf(" ", espaco1 + 1)
+        P3 = A.slice(espaco2 + 1, espaco2 + 2)
+        resul.innerHTML = P1 + "." + P2 + "." + P3 
+
+    }
+</script>
+</html>

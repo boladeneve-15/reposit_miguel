@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="outras coias.css">
+</head>
+<body>
+    <div>
+    <details>
+      
+        <summary>juntar string</summary>
+<li>
+    <ul>
+        <input type="text" id="nome1" placeholder="nome"> 
+        <input type="text" id="nome2" placeholder="sobrenome">
+            <button onclick="juntar()"> juntar string</button>
+            <h2 id="juntaR"></h2>
+            <h6>oque eu fiz foi juntar as stirng e adicionar um espaço</h6>
+      </ul>
+       </li>
+    </details>
+    <details>
+        <summary>convete maiusculo/ converte minusculo</summary>
+        <input type="text" id="maiusculo" placeholder="maiusculo">
+        <input type="text" id="minusculo" placeholder="minusculo">
+       <button onclick="maimin()">Resultado</button>
+      <h2 id="maiR" style="color: red;">a</h2>
+      <h2 id="minR" style="color: blue;">a</h2>
+    </details>
+</div>
+</body>
+<script>
+    // juntando strings
+    function juntar(){
+     a = nome1.value
+    
+    b = nome2.value
+    juntaR.innerHTML = a+" "+b
+    }
+function maimin(){
+    mai = maiusculo.value
+    min = minusculo.value
+    MAIM = mai.toUpperCase()
+    MINM = min.toLowerCase()
+ maiR.innerHTML = MAIM
+ minR.innerHTML = MINM
+}
+   
+  
+</script>
+</html>
