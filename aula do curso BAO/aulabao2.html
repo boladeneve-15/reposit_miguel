@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="MeninosBAO.css">
+</head>
+
+<body>
+    <details>
+        <summary>aprendendo com IF</summary>
+        <input type="text" id="i">
+        <button onclick="fazer()"></button>
+        <h2 id="resul"></h2>
+    </details>
+
+    <details>
+        <summary>atividade minha sobre IF</summary>
+        <input type="text" id="A" placeholder="sua idade?">
+        <button onclick="chamar()"> </button>
+        <h2 id="apare1"></h2>
+    </details>
+
+    <details>
+        <summary>atividade minha sobre IF 2</summary>
+        <input type="text" id="B" placeholder="nota do trimeste">
+        <button onclick="chamar2()"> </button>
+        <h2 id="apare2"></h2>
+    </details>
+</body>
+<script>
+    function chamar2() {
+        b = B.value
+        if (b >= 18 && b < 22) {
+            apare2.innerHTML = " passou mais por um fio, estude mais"
+        }
+         if (b <= 17 && b >= 0) { apare2.innerHTML = "reprovou, estude mais " }
+         if ((b >= 22 && b < 30) || b > 30 ) { apare2.innerHTML = "otima nota esta quase nivel goat " }
+         if (b == 30) { apare2.innerHTML = "GOAT☠️☠️☠️ " }
+         if (b < 0) { apare2.innerHTML = "zero" }
+        else { apare2.innerHTML = "brutal, sobrou nada" }
+    }
+    function chamar() {
+        a = A.value
+        if (a <= 17) {
+            apare1.innerHTML = "VOCE NÃO PODE DIRIGIR PORRA, VAI ESTUDAR CARAMBA"
+        }
+        else if (a > 18) { apare1.innerHTML = "voce pode dirigir meu" }
+        else { apare1.innerHTML = " por favor digite numero" }
+
+    }
+
+
+    function fazer() {
+        a = i.value
+        if (a > 11 || a == "miguel almeida e gay e ama dar a bundinha para os negos do morro de 4") { resul.innerHTML = "miguel almeida e gay" }
+        else if (a < 1) { resul.innerHTML = "3" }
+        else if (a == 2) { resul.innerHTML = "4" }
+        else { resul.innerHTML = "11" }
+    }
+
+
+</script>
+
+</html>
+<!-- atividade -->
+<!-- Gostei de ver! Vamos elevar o nível então.
+
+Desta vez, vamos simular o sistema de controle de uma smart home (casa inteligente). O seu código precisará tomar uma decisão baseada em três variáveis diferentes ao mesmo tempo (temperatura, presença de pessoas e luminosidade).
+
+O objetivo é decidir o que o sistema deve fazer com o Ar-Condicionado e com as Lâmpadas.
+
+As regras são:
+
+Ninguém em casa: Se não houver ninguém no cômodo, tudo deve ser desligado imediatamente, não importa a temperatura ou a luz.
+
+Alguém em casa:
+
+O Ar-Condicionado só liga se a temperatura for maior que 25°C.
+
+As Lâmpadas só ligam se a luminosidade for menor que 30%.
+
+O Desafio
+Você precisará definir os valores de duas variáveis: statusAr e statusLampada (pode usar os textos "Ligado" ou "Desligado"). Você terá que usar if encadeados (um dentro do outro) ou operadores lógicos como && e ||. -->
