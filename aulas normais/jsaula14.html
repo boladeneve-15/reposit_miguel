@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        body {
+            background-color: #050505;
+            color: #fff;
+            display: flex;
+                       flex-direction: column; 
+            /* align-items: center;  */
+            gap: 50px;           
+            padding: 20px;       
+            background-image: radial-gradient(circle at center, #1a1a2e 0%, #050505 100%);
+        }
+
+        details {
+            background: rgba(10, 10, 10, 0.9);
+            border: 2px solid #0ff;
+            border-radius: 8px;
+            width: 380px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2), inset 0 0 10px rgba(0, 255, 255, 0.1);
+            transition: all 0.3s ease-in-out;
+            overflow: hidden;
+        }
+
+        details[open] {
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.6), inset 0 0 15px rgba(0, 255, 255, 0.3);
+            border-color: #f0f;
+        }
+
+        summary {
+            padding: 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            list-style: none;
+            color: #0ff;
+            text-shadow: 0 0 8px #0ff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(90deg, rgba(0,255,255,0.1) 0%, transparent 100%);
+        }
+
+        summary::after {
+            content: '▼';
+            color: #f0f;
+            text-shadow: 0 0 8px #f0f;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        details[open] summary::after {
+            transform: rotate(180deg);
+            color: #0ff;
+            text-shadow: 0 0 8px #0ff;
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid rgba(255, 0, 255, 0.3);
+            margin-bottom: 10px;
+            color: #f0f;
+            text-shadow: 0 0 8px #f0f;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0 20px 20px 20px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            transform: translateX(-20px);
+            opacity: 0;
+            animation: slideIn 0.4s forwards ease-out;
+        }
+
+        li:nth-child(1) { animation-delay: 0.1s; }
+        li:nth-child(2) { animation-delay: 0.2s; }
+        li:nth-child(3) { animation-delay: 0.3s; }
+        li:nth-child(4) { animation-delay: 0.4s; }
+        li:nth-child(5) { animation-delay: 0.5s; }
+        li:nth-child(6) { animation-delay: 0.6s; }
+        li:nth-child(7) { animation-delay: 0.7s; }
+        @keyframes slideIn {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        a {
+             margin-top: 10px;
+             padding: 10px 20px;
+             background-color: #0ff;
+             border: none;
+             border-radius: 4px;
+             color: #000;
+             font-weight: bold;
+             cursor: pointer;
+             transition: background-color 0.3s ease;
+            display: block;
+            padding: 12px 15px;
+            color: #d1d1d1;
+            text-decoration: none;
+            font-weight: bold;
+            border-left: 4px solid #f0f;
+            background: rgba(255, 0, 255, 0.05);
+            border-radius: 0 6px 6px 0;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        a:hover {
+            background: rgba(0, 255, 255, 0.15);
+            color: #fff;
+            border-left: 8px solid #0ff;
+            box-shadow: 5px 0 15px rgba(0, 255, 255, 0.2);
+            transform: scale(1.03);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        /* --- h6 no canto--- */
+        h6 {
+            position: fixed;   /* Fixa na tela */
+            bottom: 20px;      /* Distância do fundo */
+            right: 20px;       /* Distância da direita */
+            color: rgba(255, 255, 255, 0.4); /* Branco com transparência */
+            font-weight: normal;
+            letter-spacing: 1px;
+            text-transform: italic;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+        }
+         button {
+             margin-top: 10px;
+             padding: 10px 20px;
+             background-color: #0ff;
+             border: none;
+             border-radius: 4px;
+             color: #000;
+             font-weight: bold;
+             cursor: pointer;
+             transition: background-color 0.3s ease;
+            display: block;
+            padding: 12px 15px;
+            color: #d1d1d1;
+            text-decoration: none;
+            font-weight: bold;
+            border-left: 4px solid #f0f;
+            background: rgba(255, 0, 255, 0.05);
+            border-radius: 0 6px 6px 0;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        button:hover {
+            background: rgba(0, 255, 255, 0.15);
+            color: #fff;
+            border-left: 8px solid #0ff;
+            box-shadow: 5px 0 15px rgba(0, 255, 255, 0.2);
+            transform: scale(1.03);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        .input-wrapper {
+            padding: 0 20px 15px 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #f0f;
+            padding: 10px 15px;
+            color: #0ff;
+            outline: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            /* text-transform: uppercase; */
+            letter-spacing: 1px;
+            width: 250px;
+            margin: 5px;
+        }
+
+        input[type="text"]:focus {
+            background: rgba(0, 255, 255, 0.05);
+            border-color: #0ff;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+        }
+
+        input[type="text"]::placeholder {
+            color: rgba(255, 0, 255, 0.5);
+            font-size: 0.8rem;}
+       
+        
+            input[type="date"] {
+                width: 100%;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid #f0f;
+                padding: 10px 15px;
+                color: #0ff;
+                outline: none;
+                border-radius: 4px;
+                font-size: 0.9rem;
+                transition: all 0.3s;
+                /* text-transform: uppercase; */
+                letter-spacing: 1px;
+                width: 250px;
+                margin: 5px;
+            }
+    
+            input[type="date"]:focus {
+                background: rgba(0, 255, 255, 0.05);
+                border-color: #0ff;
+                box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+            }
+    
+            input[type="date"]::placeholder {
+                color: rgba(255, 0, 255, 0.5);
+                font-size: 0.8rem;}
+            input[type="time"] {
+                width: 100%;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid #f0f;
+                padding: 10px 15px;
+                color: #0ff;
+                outline: none;
+                border-radius: 4px;
+                font-size: 0.9rem;
+                transition: all 0.3s;
+                /* text-transform: uppercase; */
+                letter-spacing: 1px;
+                width: 250px;
+                margin: 5px;
+            }
+    
+            input[type="time"]:focus {
+                background: rgba(0, 255, 255, 0.05);
+                border-color: #0ff;
+                box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+            }
+    
+            input[type="time"]::placeholder {
+                color: rgba(255, 0, 255, 0.5);
+                font-size: 0.8rem;}
+            input[type="number"] {
+                width: 100%;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid #f0f;
+                padding: 10px 15px;
+                color: #0ff;
+                outline: none;
+                border-radius: 4px;
+                font-size: 0.9rem;
+                transition: all 0.3s;
+                /* text-transform: uppercase; */
+                letter-spacing: 1px;
+                width: 250px;
+                margin: 5px;
+            }
+    
+            input[type="number"]:focus {
+                background: rgba(0, 255, 255, 0.05);
+                border-color: #0ff;
+                box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+            }
+    
+            input[type="number"]::placeholder {
+                color: rgba(255, 0, 255, 0.5);
+                font-size: 0.8rem;}
+
+                 input[type="radio"] {
+                color: rgba(255, 0, 255, 0.5);
+                font-size: 0.8rem;}input[type="number"] {
+                width: 100%;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid #f0f;
+                padding: 10px 15px;
+                color: #0ff;
+                outline: none;
+                border-radius: 4px;
+                font-size: 0.9rem;
+                transition: all 0.3s;
+                /* text-transform: uppercase; */
+                letter-spacing: 1px;
+                width: 250px;
+                margin: 5px;
+            }
+    
+            input[type="radio"]:focus {
+                background: rgba(0, 255, 255, 0.05);
+                border-color: #0ff;
+                box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+            }
+            .options-list {
+    list-style: none;
+    padding: 0 20px 20px 20px;
+}
+
+.option-item {
+ margin-top: 25px;
+    align-items: center;
+    gap: 10px;
+   
+    cursor: pointer;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+/* Esconde o radio original */
+.option-item input[type="radio"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #f0f;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+}
+
+/* Efeito quando marcado */
+.option-item input[type="radio"]:checked {
+    border-color: #0ff;
+    background: #0ff;
+    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+}
+
+.option-item input[type="radio"]:hover {
+    box-shadow: 0 0 8px #f0f;
+}
+#v{
+    color: green;
+}
+
+#e{
+    color: red;
+}
+            
+    </style>
+<body>
+    <div>
+        <details>
+            <summary>atividade de mudar a cor</summary>
+     <h1 id="mudar" onclick="curso()"> abc</h1>
+</details>
+</div>
+
+<div class="option-item">
+     <details>
+            <summary>questão 1</summary>
+            <h1>QUAL A CAPITAL DO BRASIL?</h1>
+<input type="radio" name="q1" value="errado"> Rio de Janeiro <br>
+<input type="radio" name="q1" id="q1b" value="certo" > Brasília <br>
+<input type="radio" name="q1" value="errado"> São Paulo <br>
+<input type="radio" name="q1" value="errado"> Salvador <br>
+<button onclick="resultado1()" id="btn1">Verificar responta</button>
+<h2 id="aparecer1"></h2>
+</details>
+</div>
+<div class="option-item">
+     <details>
+            <summary>questão 2</summary>
+            <h1>DANILO E UM?</h1>
+<input type="radio" name="q2" value="errado"> trabalhador <br>
+<input type="radio" name="q2" value="errado"> vagabundo <br>
+<input type="radio" name="q2" value="errado" > gente fina <br>
+<input type="radio" name="q2" id="q2b" value="certo"> professor do curso do miguel<br>
+<button onclick="resultado2()" id="btn2">Verificar responta</button>
+<h2 id="aparecer2"></h2>
+</details>
+</div>
+
+    <div class="option-item">
+        <details>
+       <summary>questão 3</summary>
+       <h1>Qual estrutura é usada para repetir um bloco de código várias vezes?</h1>
+       <input type="radio" name="q3" id="q3b" value="certo">for<br>
+<input type="radio" name="q3" value="errado">if  <br>
+<input type="radio" name="q3" value="errado"> switch <br>
+<input type="radio" name="q3" value="errado" >pyton  <br>
+<button onclick="resultado3()" id="btn3">Verificar responta</button>
+<h2 id="aparecer3"></h2>
+</details>
+</div>
+
+    <div class="option-item">
+        <details>
+       <summary>questão 4</summary>
+       <h1>como ussa o hello world</h1>
+<input type="radio" name="q4" value="errado">hello world! ("print")  <br>
+<input type="radio" name="q4" value="errado">public class Main {
+    public static void main(String[] args) {
+       Hello, World! ("System.out.println");
+    }
+}  <br>
+<input type="radio" name="q4" value="errado" >Hello, World!("console.log");  <br>
+<input type="radio" name="q4" id="q4b" value="certo">using System;
+
+class Program {
+    static void Main() {
+        Console.WriteLine("Hello, World!");
+    }
+}  <br>
+<button onclick="resultado4()" id="btn4">Verificar responta</button>
+<h2 id="aparecer4"></h2>
+</details>
+</div>
+    <div class="option-item">
+        <details>
+       <summary>questão 5</summary>
+       <h1> qual e a teg para ter acesso ao CSS dentro da estrutura HTML</h1>
+<input type="radio" name="q5" value="errado"> h1 <br>
+<input type="radio" name="q5" value="errado"> h6 <br>
+<input type="radio" name="q5" id="q5b" value="certo"> style <br>
+<input type="radio" name="q5" value="errado" > script <br>
+<button onclick="resultado5()" id="btn5">Verificar responta</button>
+<h2 id="aparecer5"></h2>
+</details>
+</div>
+
+    <div class="option-item">
+        <details>
+       <summary>questão 6</summary>
+       <h1>Qual comando abre uma mensagem no console do editor de codigo</h1>
+<input type="radio" name="q6" value="errado"> prompt() <br>
+<input type="radio" name="q6" id="q6b" value="certo"> console.log() <br>
+<input type="radio" name="q6" value="errado"> alert() <br>
+<input type="radio" name="q6" value="errado" > message() <br>
+<button onclick="resultado6()" id="btn6">Verificar responta</button>
+<h2 id="aparecer6"></h2>
+</details>
+</div>
+    <div class="option-item">
+        <details>
+       <summary>questão 7</summary>
+       <h1>Como se chama o ato de guardar um valor na memória para usar depois?</h1>
+<input type="radio" name="q7" value="errado"> Linkar <br>
+<input type="radio" name="q7" value="errado"> Importar <br>
+<input type="radio" name="q7" id="q7b" value="certo"> Declarar variável <br>
+<input type="radio" name="q7" value="errado" >  Debugar<br>
+<button onclick="resultado7()" id="btn7">Verificar responta</button>
+<h2 id="aparecer7"></h2>
+</details>
+</div>
+    <div class="option-item">
+        <details>
+       <summary>questão 8</summary>
+       <h1>Qual propriedade cria um espaço dentro da borda de um elemento?</h1>
+<input type="radio" name="q8" value="errado"> margin  <br>
+<input type="radio" name="q8" id="q8b" value="certo">  padding<br>
+<input type="radio" name="q8" value="errado"> spacing <br>
+<input type="radio" name="q8" value="errado" >border-inside  <br>
+<button onclick="resultado8()" id="btn8">Verificar responta</button>
+<h2 id="aparecer8"></h2>
+</details>
+</div>
+    <div class="option-item">
+        <details>
+       <summary>questão 9</summary>
+       <h1>Qual atributo da tag (img) define o caminho da imagem?</h1>
+<input type="radio" name="q9" value="errado">  link<br>
+<input type="radio" name="q9" value="errado"> href <br>
+<input type="radio" name="q9" value="errado" > url <br>
+<input type="radio" name="q9" id="q9b" value="certo">  src<br>
+<button onclick="resultado9()" id="btn9">Verificar responta</button>
+<h2 id="aparecer9"></h2>
+</details>
+</div>
+    <div class="option-item">
+        <details>
+       <summary>questão 10</summary>
+       <h1>qual liguagem e melhor para cada area do mecardo</h1>
+<input type="radio" name="q10" value="errado">  js/ts para criação de IA<br>
+<input type="radio" name="q10" value="errado"> JAVA para criação de jogos <br>
+<input type="radio" name="q10" value="errado" >  pyton para aplicativos mobile<br>
+<input type="radio" name="q10" id="q10b" value="certo"> C++ para sistemas operacionas  <br>
+<button onclick="resultado10()" id="btn10">Verificar responta</button>
+<h2 id="aparecer10"></h2>
+</details>
+</div>
+<button onclick="calcular()">Calcular seus pontos</button>
+<h1 id="total"></h1>
+</body>
+<script>
+
+    pontos = 0
+    function calcular(){
+       total.innerHTML = pontos
+
+    } 
+
+function resultado1(){
+if(q1b.checked){
+    aparecer1.innerHTML =  "<h3 id= 'v'>CORRETO</h3>"
+    pontos ++
+}
+else{ 
+     aparecer1.innerHTML =  "<h3 id= 'e'>ERRADO</h3>"
+}
+btn1.disabled = true;
+btn1.style.opacity = "0.5";
+btn1.style.cursor = "not-allowed";
+}
+
+function resultado2(){
+if(q2b.checked){
+    aparecer2.innerHTML =  "<h3 id= 'v'>CORRETO</h3>"
+      pontos ++
+}
+else{ 
+     aparecer2.innerHTML =  "<h3 id= 'e'>ERRADO</h3>"
+      
+}
+btn2.disabled = true;
+btn2.style.opacity = "0.5";
+btn2.style.cursor = "not-allowed";
+}
+function resultado3(){
+if(q3b.checked){
+    aparecer3.innerHTML =  "<h3 id= 'v'>CORRETO</h3>"
+      pontos ++
+}
+else{ 
+     aparecer3.innerHTML =  "<h3 id= 'e'>ERRADO</h3>"
+}
+btn3.disabled = true;
+btn3.style.opacity = "0.5";
+btn3.style.cursor = "not-allowed";
+}
+function resultado4(){
+if(q4b.checked){
+    aparecer4.innerHTML =  "<h3 id= 'v'>CORRETO</h3>"
+      pontos ++
+}
+else{ 
+     aparecer4.innerHTML =  "<h3 id= 'e'>ERRADO</h3>"
+}
+btn4.disabled = true;
+btn4.style.opacity = "0.5";
+btn4.style.cursor = "not-allowed";
+}
+function resultado5(){
+if(q5b.checked){
+    aparecer5.innerHTML =  "<h3 id= 'v'>CORRETO</h3>"
+      pontos ++
+}
+else{ 
+     aparecer5.innerHTML =  "<h3 id= 'e'>ERRADO</h3>"
+}
+btn5.disabled = true;
+btn5.style.opacity = "0.5";
+btn5.style.cursor = "not-allowed";
+}
+function resultado6(){
+if(q6b.checked){
+    aparecer6.innerHTML =  "<h3 id= 'v'>CORRETO</h3>"
+      pontos ++
+}
+else{ 
+     aparecer6.innerHTML =  "<h3 id= 'e'>ERRADO</h3>"
+}
+btn6.disabled = true;
+btn6.style.opacity = "0.5";
+btn6.style.cursor = "not-allowed";
+}
+
+
+
+function resultado7(){
+if(q7b.checked){
+    aparecer7.innerHTML =  "<h3 id= 'v'>CORRETO</h3>"
+      pontos ++
+}
+else{ 
+     aparecer7.innerHTML =  "<h3 id= 'e'>ERRADO</h3>"
+}
+btn7.disabled = true;
+btn7.style.opacity = "0.5";
+btn7.style.cursor = "not-allowed";
+}
+function resultado8(){
+if(q8b.checked){
+    aparecer8.innerHTML =  "<h3 id= 'v'>CORRETO</h3>"
+      pontos ++
+}
+else{ 
+     aparecer8.innerHTML =  "<h3 id= 'e'>ERRADO</h3>"
+}
+btn8.disabled = true;
+btn8.style.opacity = "0.5";
+btn8.style.cursor = "not-allowed";
+}
+function resultado9(){
+if(q9b.checked){
+    aparecer9.innerHTML =  "<h3 id= 'v'>CORRETO</h3>"
+      pontos ++
+}
+else{ 
+     aparecer9.innerHTML =  "<h3 id= 'e'>ERRADO</h3>"
+}
+btn9.disabled = true;
+btn9.style.opacity = "0.5";
+btn9.style.cursor = "not-allowed";
+}
+function resultado10(){
+if(q10b.checked){
+    aparecer10.innerHTML =  "<h3 id= 'v'>CORRETO</h3>"
+      pontos ++
+}
+else{ 
+     aparecer10.innerHTML =  "<h3 id= 'e'>ERRADO</h3>"
+}
+btn10.disabled = true;
+btn10.style.opacity = "0.5";
+btn10.style.cursor = "not-allowed";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function curso(){
+ 
+   mudar.style.color = "red"
+    }
+</script>
+</html>
