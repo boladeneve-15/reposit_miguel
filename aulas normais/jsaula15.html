@@ -338,35 +338,38 @@
  <details>
     <summary>login</summary>
     <input type="email" placeholder="seu Email" id="emal">
-    <button onclick="ATI()">login</button>
+    <button onclick="resultado()">login</button>
     <h2 id="h"></h2>
  </details>
 </body>
 <script>
 
 
-function ATI(){
-     EMAIL = emal.value
-     VerificarOarroba = EMAIL.includes("@")
-     if(VerificarOarroba){
- h.innerHTML = "tem @"
-     }
-     //  h.innerHTML = VerificarOarroba
-     //  1 esta vazio ou não
-     
-     else if(EMAIL == ""){
-         h.innerHTML = "por favor digite alguma coisa"
-        }
-        
+function resultado(){
+     EMAIL = emal.value.trim();
+     VerificarOarroba = EMAIL.indexOf("@")
+     mostrar =  EMAIL.length-1
+   
+     h.innerHTML = VerificarOarroba
+    //  1 esta vazio ou não
+    if(EMAIL == ""){
+        h.innerHTML = "por favor digite alguma coisa"
+    }
+    // 2 se o @ esta no lugar certo
+   else if (VerificarOarroba > 0 || VerificarOarroba < mostrar ) {
+        h.innerHTML = "teste (E-mail válido!)"
+    }
+    // 3 se o @ esta no lugar errado
+      else if(VerificarOarroba >= 0){
+     h.innerHTML = "O @ não pode ficar no início ou no fim."
+      }
+        //  4 se deu tudo errado
         else{
             h.innerHTML = 'n tem @'
         }
-}
 
 
-
-
-
+    }
 
 
 
