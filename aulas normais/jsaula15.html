@@ -1,4 +1,11 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    
         * {
             margin: 0;
             padding: 0;
@@ -141,37 +148,7 @@
             text-transform: italic;
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
         }
-         button {
-             margin-top: 10px;
-             padding: 10px 20px;
-             background-color: #0ff;
-             border: none;
-             border-radius: 4px;
-             color: #000;
-             font-weight: bold;
-             cursor: pointer;
-             transition: background-color 0.3s ease;
-            display: block;
-            padding: 12px 15px;
-            color: #d1d1d1;
-            text-decoration: none;
-            font-weight: bold;
-            border-left: 4px solid #f0f;
-            background: rgba(255, 0, 255, 0.05);
-            border-radius: 0 6px 6px 0;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        button:hover {
-            background: rgba(0, 255, 255, 0.15);
-            color: #fff;
-            border-left: 8px solid #0ff;
-            box-shadow: 5px 0 15px rgba(0, 255, 255, 0.2);
-            transform: scale(1.03);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-        }
+        
         .input-wrapper {
             padding: 0 20px 15px 20px;
         }
@@ -302,4 +279,122 @@
     
             input[type="email"]::placeholder {
                 color: rgba(255, 0, 255, 0.5);
-                font-size: 0.8rem;}
+                font-size: 0.8rem;
+            }
+                
+                 button {
+             margin-top: 10px;
+             padding: 10px 20px;
+             background-color: #0ff;
+             border: none;
+             border-radius: 4px;
+             color: #000;
+             font-weight: bold;
+             cursor: pointer;
+             transition: background-color 0.3s ease;
+            display: block;
+            padding: 12px 15px;
+            color: #d1d1d1;
+            text-decoration: none;
+            font-weight: bold;
+            border-left: 4px solid #f0f;
+            background: rgba(255, 0, 255, 0.05);
+            border-radius: 0 6px 6px 0;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        button:hover {
+            background: rgba(0, 255, 255, 0.15);
+            color: #fff;
+            border-left: 8px solid #0ff;
+            box-shadow: 5px 0 15px rgba(0, 255, 255, 0.2);
+            transform: scale(1.03);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        button:active{
+             transform:  scale(0.85);
+        }
+        .C-1{
+            background: rgba(255, 0, 0, 0.329);
+               border-left: 4px solid #f0f;
+        
+        }
+        .C1{
+            background: rgb(0, 0, 0);
+            border-left: 4px solid rgb(83, 83, 83);
+        }
+       
+                
+</style>
+</head>
+<details>
+
+    <summary>atividade ruim</summary>
+    <button onclick="mudar()" class="C1" id="t">like</button>
+
+</details>
+ <details>
+    <summary>login</summary>
+    <input type="email" placeholder="seu Email" id="emal">
+    <button onclick="ATI()">login</button>
+    <h2 id="h"></h2>
+ </details>
+</body>
+<script>
+
+
+function ATI(){
+     EMAIL = emal.value
+     VerificarOarroba = EMAIL.includes("@")
+     if(VerificarOarroba){
+ h.innerHTML = "tem @"
+     }
+     //  h.innerHTML = VerificarOarroba
+     //  1 esta vazio ou não
+     
+     else if(EMAIL == ""){
+         h.innerHTML = "por favor digite alguma coisa"
+        }
+        
+        else{
+            h.innerHTML = 'n tem @'
+        }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    a = 1
+    function mudar(){
+ a= a* -1
+ t.className = "C" + a
+    }
+</script>
+</html>
