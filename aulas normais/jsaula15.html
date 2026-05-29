@@ -347,23 +347,30 @@
 
 function resultado(){
      EMAIL = emal.value.trim();
-     VerificarOarroba = EMAIL.indexOf("@")
-     mostrar =  EMAIL.length-1
+     posicaoArroba = EMAIL.indexOf("@")
+     temArroba = EMAIL.includes("@")
+     temSimbolos = EMAIL.includes("#") || EMAIL.includes("!")
+     posicaofinal =  EMAIL.length-1
    
-     h.innerHTML = VerificarOarroba
-    //  1 esta vazio ou não
+    //  h.innerHTML = posicaoArroba
+    //   esta vazio ou não
     if(EMAIL == ""){
         h.innerHTML = "por favor digite alguma coisa"
     }
-    // 2 se o @ esta no lugar certo
-   else if (VerificarOarroba > 0 || VerificarOarroba < mostrar ) {
-        h.innerHTML = "teste (E-mail válido!)"
+    
+    else if (temSimbolos){
+        h.innerHTML = "não pode simbulos estranhos"
     }
-    // 3 se o @ esta no lugar errado
-      else if(VerificarOarroba >= 0){
-     h.innerHTML = "O @ não pode ficar no início ou no fim."
-      }
-        //  4 se deu tudo errado
+    //  se o @ esta no lugar errado
+    else if(posicaoArroba == 0 || posicaoArroba == posicaofinal){
+   h.innerHTML = "@ esta no lugar errado."
+    }
+    
+    //  se o @ esta no lugar certo
+   else if (temArroba) {
+         h.innerHTML = " tem @"
+    }
+        //   se deu tudo errado
         else{
             h.innerHTML = 'n tem @'
         }

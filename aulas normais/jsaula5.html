@@ -17,6 +17,7 @@
    <h2> C</h2>
     <input type="text" id="C">
     <BUtton onclick="delta()">resultado</BUtton>
+    <h2 id="resultado1"></h2>
     <summary>delta</summary>
 </details>
 
@@ -26,6 +27,7 @@
 <h2>altura</h2>
 <input type="text" id="AI">
     <button onclick="imc()">IMC</button>
+    <h2 id="resultado2"></h2>
     <summary>IMC</summary>
 </details>
 
@@ -36,6 +38,7 @@
     <h2>altura</h2>
     <input type="text" id="AL">
     <button onclick="tirangulo()">triangulo</button>
+    <h2 id="resultado3"></h2>
 </details>
 </div>
 <h3>conversor de temperatura</h3>
@@ -53,7 +56,8 @@ function delta(){
  aD = AD.value
  c = C.value
     DELTA =(b**2)-(4*aD*c);
-    alert(DELTA);
+    BASCARAI = b
+    resultado1.innerHTML =  DELTA
  }
  function imc(){ 
  p = PI.value
