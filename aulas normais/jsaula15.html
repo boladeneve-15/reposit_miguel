@@ -346,31 +346,39 @@
 
 
 function resultado(){
-     EMAIL = emal.value.trim();
-     posicaoArroba = EMAIL.indexOf("@")
+     EMAIL = emal.value.trim().toLowerCase()
+     PosicaoArroba = EMAIL.indexOf("@")
      temArroba = EMAIL.includes("@")
      temSimbolos = EMAIL.includes("#") || EMAIL.includes("!")
-     posicaofinal =  EMAIL.length-1
-   
-    //  h.innerHTML = posicaoArroba
+     PosiCaofinal =  EMAIL.length-1
+     TemCOM= EMAIL.includes(".com")
+     PossiCaoDoCOM = EMAIL.indexOf(".com")
+     
+     h.innerHTML = PossiCaoDoCOM
     //   esta vazio ou não
     if(EMAIL == ""){
         h.innerHTML = "por favor digite alguma coisa"
     }
     
-    else if (temSimbolos){
-        h.innerHTML = "não pode simbulos estranhos"
-    }
     //  se o @ esta no lugar errado
-    else if(posicaoArroba == 0 || posicaoArroba == posicaofinal){
+    else if(PosicaoArroba == 0 || PosicaoArroba == PosiCaofinal){
    h.innerHTML = "@ esta no lugar errado."
     }
+    //  se tem o .com
+
     
     //  se o @ esta no lugar certo
    else if (temArroba) {
          h.innerHTML = " tem @"
-    }
-        //   se deu tudo errado
+         DentroDoarrobaedoCOM = EMAIL.slice(PosicaoArroba+1, PossiCaoDoCOM)
+         VerSeTemPonto = DentroDoarrobaedoCOM.includes(".com")
+         if(temArroba) {}
+        else if(TemCOM == true ) {
+     h.innerHTML = "  tem .com "
+}
+}
+        
+    //   se deu tudo errado
         else{
             h.innerHTML = 'n tem @'
         }
