@@ -4,14 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+<style>
+    .c{
+        border-radius: 50%;
+        gap: 15px;
+        border: 1px chocolate solid;
+    }
+</style>
 </head>
 <body>
+    <div>
     <h2 id="H">
-ahgdbv
     </h2>
     <button onclick="a()"></button>
+</div>
+
+<button onclick="Foto()">mostrar sua foto</button>
+<input type="text" placeholder="insira uma foto" id="oto">
+<input type="text" pla
+.>
+<div id="criar">
+</div>
 </body>
 <script>
+    function Foto(){
+ F = oto.value
+re = 
+ re =  "<img src='" + F + "' width='100px' class='c'>"
+ criar.innerHTML += re
+
+    }
     function a(){
 H.innerHTML += "<button>oi</button>"
     }

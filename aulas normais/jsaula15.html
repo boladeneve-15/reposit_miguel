@@ -351,7 +351,6 @@ function resultado(){
      temArroba = EMAIL.includes("@")
      temSimbolos = EMAIL.includes("#") || EMAIL.includes("!")
      PosiCaofinal =  EMAIL.length-1
-     TemCOM= EMAIL.includes(".com")
      PossiCaoDoCOM = EMAIL.indexOf(".com")
      
      h.innerHTML = PossiCaoDoCOM
@@ -369,13 +368,22 @@ function resultado(){
     
     //  se o @ esta no lugar certo
    else if (temArroba) {
-         h.innerHTML = " tem @"
-         DentroDoarrobaedoCOM = EMAIL.slice(PosicaoArroba+1, PossiCaoDoCOM)
-         VerSeTemPonto = DentroDoarrobaedoCOM.includes(".com")
-         if(temArroba) {}
-        else if(TemCOM == true ) {
-     h.innerHTML = "  tem .com "
-}
+       h.innerHTML = "o email esta correto"
+       
+       DentroDoArooba = EMAIL.slice(PosicaoArroba+1)
+       PossicaoDoPonto = DentroDoArooba.indexOf(".")
+       VerSeTemPonto = DentroDoArooba.includes(".")
+      possicaofinal = DentroDoArooba.length-1
+        if(PossicaoDoPonto<0) {
+            h.innerHTML = "este email precisa de um ponto "
+        }
+        else if(PossicaoDoPonto == 0 || PossicaoDoPonto == possicaofinal){
+            h.innerHTML = "o . esta no lugar errado."
+        }
+        else {
+            h.innerHTML = "email valido"
+        }
+
 }
         
     //   se deu tudo errado
