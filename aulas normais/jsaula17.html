@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS fudido de bom.css">
+</head>
+<body>
+    <details>
+        <summary>TREM BOM</summary>
+    <input type="number" id="numero">
+    <button onclick="porcent()">calcular</button>
+    <h1 id="resul"></h1>
+    </details>
+    <button onclick="F()">FOR</button>
+ 
+<script>
+function F(){
+    for(i = 0; i < 5000; i++){
+        alert("danilo viado")
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function porcent(){
+        N= parseInt(numero.value)
+        calcu = N%2
+      
+        if(calcu == 0 || calcu == -0){
+            resul.innerHTML = "SEU NUMERO E PAR"
+        }
+        else if(calcu == 1 || calcu == -1){
+            resul.innerHTML = "seu numero e impar"
+        }
+    }
+
+</script>
+</html>

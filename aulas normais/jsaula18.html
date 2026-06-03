@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div{
+            border-radius: 10px;
+            border: 2px rgb(0, 0, 0) solid;
+            width: 400px;
+            display: flex;
+            transition: all 0.3s ease;
+            color: rgb(167, 167, 167);
+           text-shadow: #030303 0px 1px 3px;
+           font-family: 'Courier New', Courier, monospace;
+           box-shadow: #6d6d6d 2px 1px;
+        }
+        .div:hover{
+        color:black ;
+         text-shadow: #300000 0px 1px 3px;
+        border-color: rgb(31, 0, 0);
+        box-shadow: #363636 3px 2px;
+        }
+     .foto{
+border-radius:50%;
+width: 150px;
+height: 150px;
+     }
+
+    </style>
+</head>
+
+<body>
+
+    
+         <input type="text" id="foto" placeholder="uma foto ">
+         <input type="text" id="nome" placeholder="seu nome">
+         <button onclick="fazer()"></button>
+       
+  
+    <div id="four"></div>
+</body>
+
+<script>
+    function fazer(){
+    F = foto.value
+    N = nome.value
+    V = N.toLowerCase()
+    D = V.includes("danil")
+
+    if(D){
+        F = "https://images.emojiterra.com/google/noto-emoji/unicode-17.0/color/1024px/1f595.png"
+        N = "VAGABUNDO DA SILVA"
+    }
+
+  a = ` <div class="div">
+    <img class="foto" src="${F}">
+    <h1>${N}</h1>
+    </div>`
+ four.innerHTML = a
+}
+
+</script>
+</html>
