@@ -14,11 +14,15 @@
     <h1 id="resul"></h1>
     </details>
     <button onclick="F()">FOR</button>
- 
+    <div id="clase">
+
+    </div>
 <script>
-function F(){
-    for(i = 0; i < 5000; i++){
-        alert("danilo viado")
+    function F(){
+        for(i = 10; i < 21; i++){
+            const carva = `<h2>danilo viado ${i}</h2>`
+            karl = `<h2>miguel almeida viado ${i}</h2>`
+            clase.innerHTML += carva + karl
     }
 }
 
