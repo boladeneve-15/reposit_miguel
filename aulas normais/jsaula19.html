@@ -25,10 +25,13 @@ function fazer(){
     calcu = vari%2
       
         if(calcu == 0 || calcu == -0){
-            resul.innerHTML += `SEU NUMERO E PAR"  ${i}"`
+            resul.style.color = 'red'
+            resul.innerHTML += P + `<br>`
+     
         }
         else if(calcu == 1 || calcu == -1){
-            resul.innerHTML += "seu numero e impar"
+            resul.style.color = 'blue'
+            resul.innerHTML += P + `<br>`
         }
     }
 
