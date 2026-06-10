@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS fudido de bom.css">
+</head>
+<body>
+    <input type="text" id="altura" placeholder="sua altura">
+    <input type="text" id="peso"   placeholder="seu peso">
+    <button onclick="fazer()"></button>
+    <h2 id="resultado"></h2>
+</body>
+<script>
+    function fazer(){
+ p = parseFloat(peso.value)
+
+ a = parseFloat (altura.value)
+    IMC = (p)/(a**2);
+    if(IMC <= 18.5){
+        resultado.innerHTML = "esta muito magro"
+}
+   else if(IMC <= 24.9){
+        resultado.innerHTML = "Normal"
+}
+   else if(IMC <= 29.9){
+        resultado.innerHTML = "esta Sobrepeso(obesidade grau I)"
+}
+   else if(IMC <= 39.9){
+        resultado.innerHTML = "esta em Obeso (Obesidade Grau II)"
+}
+   else if(IMC > 40){
+        resultado.innerHTML = "Obesidade Grave (Obesidade grau III)"
+}
+
+
+ }
+    
+</script>
+</html>

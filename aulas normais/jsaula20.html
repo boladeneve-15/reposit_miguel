@@ -24,14 +24,23 @@
 </body>
 <script>
     function fazer5(){
-        P = numero.value
-        Q = quantidade.value
+         inicio = numero.value
+        fim = quantidade.value
 
-        for(i=P; i<=Q ; i++){
-
-            console.log(i)
-
+        
+        
+        
+        
+        if(inicio >= fim ){ 
+            let ValorReserva = inicio
+            inicio = fim
+            fim =  ValorReserva
         }
+        
+        for(i = inicio; i <= fim ; i++){
+        console.log(i)
+        }
+        
         
     }
 
