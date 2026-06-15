@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS fudido de bom.css">
+</head>
+<body>
+    <input type="number" id="numeros">
+    <button onclick="fazer()">atividade buxa1</button>
+    <h2 id="mostrar"></h2>
+
+    <input type="number" id="numeros1">
+    <button onclick="fazer2()"> atividade buxa 2</button>
+    <h2 id="mostrar1"></h2>
+</body>
+<script>
+    
+    function fazer(){
+     nu = numeros1.value
+  
+     if(nu < 0 ){ 
+        
+         mostrar.innerHTML = "numero negativo"
+
+     }
+     else if(nu => 1){
+        mostrar.innerHTML = "numero positivo"
+
+        
+     }
+      
+    }
+function  faze3(){
+  nu = numeros1.value
+   VerSeTemPonto = nu.includes(".")
+ if(VerSeTemPonto){
+    mostrar.innerHTML = "nao e numero inteiro"
+ }
+ else if(VerSeTemPonto == false){
+    mostrar.innerHTML = "e numero inteiro"
+ }
+}
+function  fazer2(){
+  nu = numeros1.value
+   nu1 = parseInt(nu)
+ if(nu1 == nu){
+    mostrar.innerHTML = "nao e numero inteiro"
+ }
+ else if(VerSeTemPonto == false){
+    mostrar.innerHTML = "e numero inteiro"
+ }
+}
+</script>
+</html>
