@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo da Memória</title>
+    <style>
+        body { background: #222; color: white; text-align: center; font-family: sans-serif; }
+        .grid { display: grid; grid-template-columns: repeat(2, 130px); gap: 15px; justify-content: center; margin-top: 30px; }
+        .quadrado { width: 130px; height: 130px; border-radius: 10px; cursor: pointer; opacity: 0.6; transition: 0.1s; }
+        .quadrado:active { opacity: 1; }
+        #v { background: #ff4444; } #v.piscar { opacity: 1; }
+        #a { background: #33b5e5; } #a.piscar { opacity: 1; }
+        #vd { background: #00c851; } #vd.piscar { opacity: 1; }
+        #am { background: #ffbb33; } #am.piscar { opacity: 1; }
+        button { background: #0e639c; color: white; border: none; padding: 10px 20px; font-size: 16px; margin-top: 20px; cursor: pointer; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>🧠 Genius VS Code</h1>
+    <p id="status">Clique em Iniciar para Jogar!</p>
+    <button onclick="iniciarJogo()">Iniciar Jogo</button>
+    
+    <div class="grid">
+        <div id="v" class="quadrado" onclick="cliqueJogador('v')"></div>
+        <div id="a" class="quadrado" onclick="cliqueJogador('a')"></div>
+        <div id="vd" class="quadrado" onclick="cliqueJogador('vd')"></div>
+        <div id="am" class="quadrado" onclick="cliqueJogador('am')"></div>
+    </div>
+
+    <script>
+        const cores = ['v', 'a', 'vd', 'am'];
+        let sequencia = [];
+        let sequenciaJogador = [];
+        let rodada = 0;
+
+        function iniciarJogo() {
+            sequencia = [];
+            proximaRodada();
+        }
+
+        function proximaRodada() {
+            sequenciaJogador = [];
+            rodada++;
+            document.getElementById("status").innerText = "Rodada " + rodada;
+            sequencia.push(cores[Math.floor(Math.random() * 4)]);
+            tocarSequencia();
+        }
+
+        function piscarBotao(cor) {
+            const botao = document.getElementById(cor);
+            botao.classList.add('piscar');
+            setTimeout(() => botao.classList.remove('piscar'), 300);
+        }
+
+        function tocarSequencia() {
+            let i = 0;
+            const intervalo = setInterval(() => {
+                piscarBotao(sequencia[i]);
+                i++;
+                if (i >= sequencia.length) clearInterval(intervalo);
+            }, 600);
+        }
+
+        function cliqueJogador(cor) {
+            piscarBotao(cor);
+            sequenciaJogador.push(cor);
+            const index = sequenciaJogador.length - 1;
+
+            if (sequenciaJogador[index] !== sequencia[index]) {
+                document.getElementById("status").innerText = "❌ Você errou! Fim de jogo na rodada " + rodada;
+                sequencia = [];
+                return;
+            }
+
+            if (sequenciaJogador.length === sequencia.length) {
+                setTimeout(proximaRodada, 1000);
+            }
+        }
+    </script>
+</body>
+</html>

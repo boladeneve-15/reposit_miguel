@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Breakout</title>
+    <style>
+        body { background: #1a1a1a; color: white; text-align: center; font-family: sans-serif; }
+        canvas { background: #111; border: 3px solid #444; display: block; margin: 20px auto; }
+    </style>
+</head>
+<body>
+    <h1>🧱 Breakout Brick Breaker</h1>
+    <p>Use as setas Esquerda e Direita para mover a barra.</p>
+    <canvas id="breakout" width="480" height="320"></canvas>
+
+    <script>
+        const canvas = document.getElementById("breakout");
+        const ctx = canvas.getContext("2d");
+
+        let x = canvas.width/2, y = canvas.height-30;
+        let dx = 2, dy = -2;
+        let bolaRaio = 10;
+        let barraAltura = 10, barraLargura = 75, barraX = (canvas.width-barraLargura)/2;
+        let setaDireita = false, setaEsquerda = false;
+
+        // Configuração dos tijolos
+        let linhasTijolo = 3, colunasTijolo = 5, tLargura = 75, tAltura = 20, tEspacamento = 10, tTopo = 30, tEsquerda = 30;
+        let tijolos = [];
+        for(let c=0; c<colunasTijolo; c++) {
+            tijolos[c] = [];
+            for(let r=0; r<linhasTijolo; r++) tijolos[c][r] = { x: 0, y: 0, status: 1 };
+        }
+
+        document.addEventListener("keydown", (e) => {
+            if(e.key === "Right" || e.key === "ArrowRight") setaDireita = true;
+            else if(e.key === "Left" || e.key === "ArrowLeft") setaEsquerda = true;
+        });
+        document.addEventListener("keyup", (e) => {
+            if(e.key === "Right" || e.key === "ArrowRight") setaDireita = false;
+            else if(e.key === "Left" || e.key === "ArrowLeft") setaEsquerda = false;
+        });
+
+        function detectarColisao() {
+            for(let c=0; c<colunasTijolo; c++) {
+                for(let r=0; r<linhasTijolo; r++) {
+                    let b = tijolos[c][r];
+                    if(b.status === 1) {
+                        if(x > b.x && x < b.x+tLargura && y > b.y && y < b.y+tAltura) {
+                            dy = -dy; b.status = 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        function desenhar() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Desenhar tijolos
+            for(let c=0; c<colunasTijolo; c++) {
+                for(let r=0; r<linhasTijolo; r++) {
+                    if(tijolos[c][r].status === 1) {
+                        let tX = (c*(tLargura+tEspacamento))+tEsquerda;
+                        let tY = (r*(tAltura+tEspacamento))+tTopo;
+                        tijolos[c][r].x = tX; tijolos[c][r].y = tY;
+                        ctx.fillStyle = "#ff9f43";
+                        ctx.fillRect(tX, tY, tLargura, tAltura);
+                    }
+                }
+            }
+
+            // Desenhar bola e barra
+            ctx.beginPath(); ctx.arc(x, y, bolaRaio, 0, Math.PI*2); ctx.fillStyle = "#00d2d3"; ctx.fill(); ctx.closePath();
+            ctx.fillStyle = "#54a0ff"; ctx.fillRect(barraX, canvas.height-barraAltura, barraLargura, barraAltura);
+
+            detectarColisao();
+
+            if(x + dx > canvas.width-bolaRaio || x + dx < bolaRaio) dx = -dx;
+            if(y + dy < bolaRaio) dy = -dy;
+            else if(y + dy > canvas.height-bolaRaio) {
+                if(x > barraX && x < barraX + barraLargura) dy = -dy;
+                else { alert("Fim de Jogo!"); document.location.reload(); return; }
+            }
+
+            if(setaDireita && barraX < canvas.width-barraLargura) barraX += 5;
+            else if(setaEsquerda && barraX > 0) barraX -= 5;
+
+            x += dx; y += dy;
+            requestAnimationFrame(desenhar);
+        }
+        desenhar();
+    </script>
+</body>
+</html>

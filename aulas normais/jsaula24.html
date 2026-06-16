@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS fudido de bom.css">
+    <style>
+         div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+    gap: 15px;
+}
+
+body{ display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 55px;
+    flex-direction: row;
+}
+    </style>
+</head>
+<body>
+    <div>
+    <details>
+        <summary>buxas</summary>
+    <input type="number" id="numeros">
+    <button onclick="tabu()"> mostrar tabuada</button>
+</details>
+
+    <details>
+        <summary>sabOUOUOUOUOUOUOUr lista</summary>
+    <!-- <input type="number" id="numeros"> -->
+    <button onclick="lasti()"> davi gordo safado baleila separado no console</button>
+</details>
+
+    <details>
+        <summary>sabOUOUOUOUOUOUOUr lista 2</summary>
+
+    <input type="text" id="comeco">
+
+    <button onclick="lastimaismehlor()">oque escreveu soque separado no console</button>
+</details>
+</div>
+    <input type="text" id="vogais">
+    <button onclick="seperar()"></button>
+    <h2 id="contar"></h2>
+
+</body>
+<script>
+function seperar(){
+    transforma= vogais.value
+    contador = 0
+    for(i=0; i<= transforma.length -1; i++){
+        transforma[i]
+        if(transforma[i] == "A"){
+       contar.innerHTML = contador  ++
+    }
+}
+}
+
+    function tabu(){
+        let quantidade = numeros.value
+        for(i= 1; i<=10; i++){
+            calcu =  quantidade * i
+        console.log(quantidade +"x" + i + "=" + calcu)
+    }
+    }
+function lasti(){
+    A = "Davi Gordo Safado baleia"
+    for(i=0; i<= A.length; i++){
+        console.log( A[i])
+       
+    }
+}
+
+function lastimaismehlor(){
+       A = comeco.value
+    for(i=0; i<= A.length -1; i++){
+        console.log( A[i])
+       
+    }
+}
+
+</script>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Space Dodge</title>
+    <style>
+        body { background: #0f0f1a; color: white; text-align: center; font-family: sans-serif; overflow: hidden; }
+        canvas { background: #05050a; border: 2px solid #555; display: block; margin: 20px auto; cursor: none; }
+    </style>
+</head>
+<body>
+    <h1>🌌 Space Dodge</h1>
+    <p>Mova o mouse para os lados para desviar dos asteroides!</p>
+    <h2 id="placar">Pontos: 0</h2>
+    <canvas id="jogo" width="400" height="500"></canvas>
+
+    <script>
+        const canvas = document.getElementById("jogo");
+        const ctx = canvas.getContext("2d");
+        
+        let naveX = 200;
+        let asteroides = [];
+        let pontos = 0;
+        let gameOver = false;
+        let velocidade = 3;
+
+        // Atualiza posição da nave com o mouse
+        canvas.addEventListener("mousemove", (e) => {
+            const rect = canvas.getBoundingClientRect();
+            naveX = e.clientX - rect.left - 20;
+        });
+
+        function criarAsteroide() {
+            if (Math.random() < 0.05) {
+                asteroides.push({ x: Math.random() * 370, y: -30, tam: Math.random() * 20 + 15 });
+            }
+        }
+
+        function loop() {
+            if (gameOver) return;
+            ctx.clearRect(0, 0, 400, 500);
+
+            // Desenhar Nave
+            ctx.fillStyle = "#00ffcc";
+            ctx.fillRect(naveX, 450, 40, 20);
+
+            // Criar e Mover Asteroides
+            criarAsteroide();
+            for (let i = asteroides.length - 1; i >= 0; i--) {
+                let ast = asteroides[i];
+                ast.y += velocidade;
+
+                // Desenhar Asteroide
+                ctx.fillStyle = "#ff4444";
+                ctx.fillRect(ast.x, ast.y, ast.tam, ast.tam);
+
+                // Colisão
+                if (ast.y + ast.tam > 450 && ast.y < 470 && ast.x + ast.tam > naveX && ast.x < naveX + 40) {
+                    gameOver = true;
+                    alert("Game Over! Pontuação final: " + pontos);
+                    document.location.reload();
+                }
+
+                // Remove asteroide que saiu da tela
+                if (ast.y > 500) {
+                    asteroides.splice(i, 1);
+                    pontos++;
+                    document.getElementById("placar").innerText = "Pontos: " + pontos;
+                    if (pontos % 10 === 0) velocidade += 0.5; // Dificuldade aumenta
+                }
+            }
+            requestAnimationFrame(loop);
+        }
+        loop();
+    </script>
+</body>
+</html>

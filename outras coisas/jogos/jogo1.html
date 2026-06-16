@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>VS Code Clicker</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #252526;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            border: 1px solid #3c3c3c;
+        }
+        h1 { color: #4ec9b0; font-size: 28px; }
+        .Placar { font-size: 22px; margin: 20px 0; color: #ce9178; }
+        
+        /* Botão Principal Estilo VS Code */
+        #botao-clique {
+            background-color: #0e639c;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+        }
+        #botao-clique:hover { background-color: #1177bb; }
+        #botao-clique:active { transform: scale(0.98); }
+
+        .loja {
+            margin-top: 30px;
+            text-align: left;
+            border-top: 1px solid #3c3c3c;
+            padding-top: 20px;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #2d2d30;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .btn-comprar {
+            background-color: #333333;
+            color: #ccc;
+            border: 1px solid #555;
+            padding: 5px 15px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        .btn-comprar:hover { background-color: #444; color: #fff; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>💻 VS Code Developer Clicker</h1>
+        <p>Clique no botão para produzir linhas de código!</p>
+        
+        <div class="Placar">
+            <span id="linhas">0</span> Linhas de Código
+            <br>
+            <small style="font-size: 14px; color: #6a9955;" id="auto-txt">0 linhas por segundo</small>
+        </div>
+
+        <button id="botao-clique">💻 Escrever Linha de Código (+1)</button>
+
+        <div class="loja">
+            <h3>🛒 Loja de Upgrades</h3>
+            
+            <div class="item">
+                <div>
+                    <strong>☕ Café Forte</strong><br>
+                    <small>Seus cliques valem +1 linha</small>
+                </div>
+                <button class="btn-comprar" id="buy-cafe">Comprar (Preço: 15)</button>
+            </div>
+
+            <div class="item">
+                <div>
+                    <strong>🤖 Estagiário Robô</strong><br>
+                    <small>Gera 1 linha de código sozinha por segundo</small>
+                </div>
+                <button class="btn-comprar" id="buy-robo">Contratar (Preço: 50)</button>
+            </div>
+        </div>
+        <script>
+        let linhas = 0;
+        let linhasPorClique = 1;
+        let linhasPorSegundo = 0;
+        
+        let precoCafe = 15;
+        let precoRobo = 50;
+
+        // Elementos da tela
+        const txtLinhas = document.getElementById('linhas');
+        const txtAuto = document.getElementById('auto-txt');
+        const btnClique = document.getElementById('botao-clique');
+        const btnCafe = document.getElementById('buy-cafe');
+        const btnRobo = document.getElementById('buy-robo');
+
+        // Mecânica de Clique
+        btnClique.addEventListener('click', () => {
+            linhas += linhasPorClique;
+            atualizarTela();
+        });
+
+        // Comprar Café
+        btnCafe.addEventListener('click', () => {
+            if (linhas >= precoCafe) {
+                linhas -= precoCafe;
+                linhasPorClique += 1;
+                precoCafe = Math.floor(precoCafe * 1.5);
+                btnCafe.innerText = `Comprar (Preço: ${precoCafe})`;
+                atualizarTela();
+            } else {
+                alert("Linhas de código insuficientes!");
+            }
+        });
+
+        // Comprar Robô
+        btnRobo.addEventListener('click', () => {
+            if (linhas >= precoRobo) {
+                linhas -= precoRobo;
+                linhasPorSegundo += 1;
+                precoRobo = Math.floor(precoRobo * 1.7);
+                btnRobo.innerText = `Contratar (Preço: ${precoRobo})`;
+                atualizarTela();
+            } else {
+                alert("Linhas de código insuficientes!");
+            }
+        });
+
+        // Loop de Automação (Gera pontos por segundo)
+        setInterval(() => {
+            if (linhasPorSegundo > 0) {
+                linhas += linhasPorSegundo;
+                atualizarTela();
+            }
+        }, 1000);
+
+        function atualizarTela() {
+            txtLinhas.innerText = linhas;
+            txtAuto.innerText = `${linhasPorSegundo} linhas por segundo`;
+        }
+    </script>
+</body>
+</html>
