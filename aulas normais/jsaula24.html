@@ -52,13 +52,79 @@ body{ display: flex;
 <script>
 function seperar(){
     transforma= vogais.value
+    transforma = transforma.toLowerCase()
     contador = 0
-    for(i=0; i<= transforma.length -1; i++){
-        transforma[i]
-        if(transforma[i] == "A"){
-       contar.innerHTML = contador  ++
+
+    vogais = "aeiou"
+
+    for(i=0; i < transforma.length; i++){
+        letra = transforma[i]
+        console.log(letra)
+
+        if(vogais.indexOf(letra) > -1){
+            contador++
+        }
     }
+    contar.innerHTML = contador
 }
+function seperar3(){
+    transforma= vogais.value
+    transforma = transforma.toLowerCase()
+    contador = 0
+
+    vogais = "aeiou"
+
+    for(i=0; i < transforma.length; i++){
+        letra = transforma[i]
+        console.log(letra)
+
+        if(vogais.includes(letra)){
+            contador++
+        }
+    }
+    contar.innerHTML = contador
+}
+function seperar2(){
+    transforma= vogais.value
+    transforma = transforma.toLowerCase()
+    contador = 0
+    for(i=0; i < transforma.length; i++){
+        console.log(transforma[i])
+        if(transforma[i] == "a" || 
+        transforma[i] == "e" ||
+        transforma[i] == "i" ||
+        transforma[i] == "o" ||
+        transforma[i] == "u"
+    ){
+            contador++
+        }
+    }
+    contar.innerHTML = contador
+}
+
+function seperar1(){
+    transforma= vogais.value
+    transforma = transforma.toLowerCase()
+    contador = 0
+    for(i=0; i < transforma.length; i++){
+        console.log(transforma[i])
+        if(transforma[i] == "a"){
+            contador++
+        }
+        else if(transforma[i] == "e"){
+             contador++
+         }
+        else if(transforma[i] == "i"){
+             contador++
+         }
+        else if(transforma[i] == "o"){
+             contador++
+         }
+        else if(transforma[i] == "u"){
+             contador++
+         }
+    }
+    contar.innerHTML = contador
 }
 
     function tabu(){

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS fudido de bom.css">
+</head>
+<body>
+<input type="time" id="tempo">
+<button onclick="fazer()"></button>    
+<h2 id="aidi"></h2>
+</body>
+<script>
+    function fazer(){
+// Tempo = parseInt(tempo.value)
+ T =tempo.value
+horas = T.slice("0","2")
+horasDaManha = parseInt(horas)
+if(horasDaManha <=  12){
+aidi.innerHTML = "madrugada ou cedo"
+}
+else if(horasDaManha >= 13){
+    aidi.innerHTML = "tarde ou noite"
+}
+
+    }
+</script>
+</html>
