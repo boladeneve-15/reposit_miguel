@@ -15,21 +15,78 @@
     // objetivo:
     // verificar a senha
     // logica:
-    // 0 --> 4 = senha fraca
-    // 4 --> 8 = senha media
-    // 8 --> cima = senha Forte
+    // 0 --> 4 = senha fraca FEITO
+    // 4 --> 8 = senha media FEITO
+    // 8 --> cima = senha Forte FEITO
     // regras:
-    // tem que possuir
-    // LETRA MAIUSCULA(+1)
-    // LETRA MINUSCULA(+1)
-    // SIMBOLOS(+1)
-    // NUMEROS(+1)
+    // tem que possuir 
+    // LETRA MAIUSCULA(+1) FEITO
+    // LETRA MINUSCULA(+1) FEITO
+    // SIMBOLOS(+1) FEITO
+    // NUMEROS(+1) FEITO
     // DICAS:
     // tabela ascii
     // variavel = abcdefg
+    // FOR TERMINADO
 
 function verSenha(){
+    SENHA = senha.value
 
+    tam = SENHA.length
+      if(tam < 4){
+        mostrar.innerHTML = "senha fraca e simples"
+    }
+   else if(tam < 8){
+        mostrar.innerHTML = "senha mediana e simples"
+    }
+   else {
+        mostrar.innerHTML = "senha forte mas simples"
+    }
+    
+   
+    //    MAI = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    //    min = "abcdefghijklmnopqrstuvwxyz"
+    //    numeros = "1234567890"
+    //     sim = "!@#$%&*(){}[]?/:;><,.|"
+    
+        temMaiuscula = false
+        temMinusculas = false
+        temNumeros    = false
+        temSimbolos   = false
+
+for(i=0; i < tam; i++){
+        caractere = SENHA[i]
+        console.log(caractere)
+        //  LETRAS MAIUSCULAS
+
+        charcode = caractere.charCodeAt()
+        if(charcode >= 65 && charcode <= 90){
+            temMaiuscula = true
+        }
+        // letra minusculas 
+       else if(charcode >= 97 && charcode <= 122){
+            temMinusculas = true
+        }
+        // numeros
+        else if(charcode >= 48 && charcode <= 57){
+            temNumeros = true
+        }
+        //  Simbolos
+       else{
+            temSimbolos = true
+        }
+
+        if (
+        temMaiuscula &&
+        temMinusculas &&
+        temNumeros   &&
+        temSimbolos){
+            if (tam > 8){
+                mostrar.innerHTML = "senha valida"
+            }
+            break
+        }
+    }
 }
 </script>
 </html>
