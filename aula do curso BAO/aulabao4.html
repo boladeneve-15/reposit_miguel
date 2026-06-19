@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="MeninosBAO.css">
+    <style>
+        body{
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        justify-content:start;
+        }
+        div{  display: flex;
+        flex-direction: row;
+        align-items:center;
+        justify-content:end;}
+    </style>
+</head>
+<body>
+    <div>
+    <h1>LISTA: miguel,almeida, e,</h1>
+</div>
+        <div>
+    <details>
+        <summary>
+            atividade 1
+        </summary>
+        <input type="text" id="pullNoFim" placeholder="atividade de push">
+        <button onclick="AplicarNoFinal()">aplicar</button>
+        <h2 id="mostrar"></h2>
+    </details>
+    <details>
+        <summary>
+            atividade 2
+        </summary>
+        <button onclick="RetirarNoFinal()">aplicar</button>
+        <h2 id="mostrar2"></h2>
+    </details>
+    <details>
+        <summary>
+            atividade 3
+        </summary>
+
+        <button onclick="TirarNoComeco()">aplicar</button>
+        <h2 id="mostrar3"></h2>
+    </details>
+    <details>
+        <summary>
+            atividade 4
+        </summary>
+        <input type="text" id="colocarNoComeco" placeholder="atividade de Unshift">
+        <button onclick="aplicarNoComeco()">aplicar</button>
+        <h2 id="mostrar4"></h2>
+    </details>
+    <details>
+        <summary>
+            atividade 5
+        </summary>
+        <input type="number" id="FazTudoONDE" placeholder="atividade de SPLICE (local da lista)">
+        <input type="number" id="FazTudoFINAL" placeholder="atividade de SPLICE (onde quer tirar)">
+        <input type="text" id="FazTudoSubistituir" placeholder="atividade de SPLICE (opcional se quiser substituitatividade de subistituir)">
+        <button onclick="FazTudo()">aplicar</button>
+        <h2 id="mostrar5"></h2>
+    </details>
+</div>
+<input type="text" id=" ondeApessoa" >
+</body>
+<script>
+    
+    function AplicarNoFinal(){
+        aplica = pullNoFim.value
+        lista = ["miguel", "almeida", "e?"]
+        lista.push(aplica)
+        mostrar.innerHTML = lista
+    }
+
+    function RetirarNoFinal(){
+        lista = ["miguel", "almeida", "e?"]
+        lista.pop()
+        mostrar2.innerHTML = lista
+    }
+
+    function TirarNoComeco(){
+         lista = ["miguel", "almeida", "e?"]
+        lista.shift()
+        mostrar3.innerHTML = lista
+    }
+
+    function aplicarNoComeco(){
+         aplica = colocarNoComeco.value
+        lista = ["miguel", "almeida", "e?"]
+        lista.unshift(aplica)
+        mostrar4.innerHTML = lista
+    }
+    
+    function FazTudo(){
+        Onde = parseInt(FazTudoONDE.value)
+         deletar = parseInt(FazTudoFINAL.value)
+        trocar = FazTudoSubistituir.value
+        lista =  ["miguel", "almeida", "e?"]
+        lista.splice(Onde, deletar, trocar);
+         mostrar5.innerHTML = lista
+    }
+// 1 onde a pessoa vai mexer na lista 
+// 2 quantos elementos vai remover
+// 3 oque vai ser inserido
+</script>
+</html>
