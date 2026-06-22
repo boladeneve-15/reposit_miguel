@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS fudido de bom.css">
+    <style>
+        body{
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        justify-content:start;
+        }
+        div{  display: flex;
+        flex-direction: row;
+        align-items:center;
+        justify-content:end;}
+    </style>
+</head>
+<body>
+    <div>
+    <h1>LISTA: miguel,almeida, e,</h1>
+</div>
+        <div>
+    <details>
+        <summary>
+            onde voce quer mexer na lista
+        </summary>
+        <input type="text" id="FazTudoONDE" placeholder="escolher o elemento">
+        <input type="text" id="FazTudoSubistituir" placeholder="oque vai subistituir">
+        <button onclick="atividadel()">aplicar</button>
+        <h2 id="mostrar"></h2>
+    </details>
+    <details>
+        <summary>
+            deletar em qualquer possiçao
+        </summary>
+          <input type="text" id="FazTudoONDE1" placeholder="escolher o elemento">
+        <input type="text" id="possicaodedeleta" placeholder="deletar elemento">
+        <button onclick="atividade2()">aplicar</button>
+        <h2 id="mostrar2"></h2>
+    </details>
+    <details>
+        <summary>
+           insirir em qualquer possiçao
+        </summary>
+         <input type="text" id="FazTudoONDE2" placeholder="escolher o elemento">
+        <input type="text" id="possicaodeinsirir" placeholder="onde vai insirir">
+        <button onclick="atividade3()">aplicar</button> 
+        <h2 id="mostrar3"></h2>
+    </details>
+    
+</div>
+</body>
+<script>
+    
+    // 1 onde a pessoa vai mexer na lista 
+    // 2 quantos elementos vai remover
+    // 3 oque vai ser inserido
+    function atividadel(){
+        Onde = parseInt(FazTudoONDE.value)
+        trocar = FazTudoSubistituir.value
+        lista = ["miguel", "almeida", "e?"]
+        lista.splice(Onde, 1, trocar);
+         mostrar.innerHTML = lista
+    }
+
+    function atividade2(){
+        Onde = parseInt(FazTudoONDE1.value)
+        deletar = parseInt(possicaodedeleta) 
+        lista = ["miguel", "almeida", "e?"]
+        lista.splice(Onde, 1);
+         mostrar2.innerHTML = lista
+    }
+  function atividade3(){
+        Onde = parseInt(FazTudoONDE2.value)
+       inserir = possicaodeinsirir.value
+        lista = ["miguel", "almeida", "e?"]
+        lista.splice(Onde, 0, inserir);
+         mostrar3.innerHTML = lista
+    }
+
+</script>
+</html>

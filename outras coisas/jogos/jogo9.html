@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Runner Pro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #0d0e15;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        #game-container {
+            position: relative;
+            width: 800px;
+            height: 400px;
+            background: linear-gradient(180deg, #141622 0%, #0a0b10 100%);
+            border: 4px solid #00f0ff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #00f0ff, inset 0 0 20px rgba(0, 240, 255, 0.2);
+            overflow: hidden;
+        }
+
+        /* Chão Neon */
+        #floor {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 40px;
+            background: #050508;
+            border-top: 3px solid #ff007f;
+            box-shadow: 0 -5px 15px rgba(255, 0, 127, 0.4);
+        }
+
+        /* Jogador */
+        #player {
+            position: absolute;
+            bottom: 40px;
+            left: 80px;
+            width: 40px;
+            height: 60px;
+            background: #00f0ff;
+            border-radius: 6px;
+            box-shadow: 0 0 15px #00f0ff;
+            transition: height 0.1s, bottom 0.1s;
+        }
+
+        #player.jumping {
+            box-shadow: 0 0 25px #00f0ff;
+        }
+
+        #player.ducking {
+            height: 30px;
+        }
+
+        /* Obstáculos */
+        .obstacle {
+            position: absolute;
+            background: #ff007f;
+            border-radius: 4px;
+            box-shadow: 0 0 15px #ff007f;
+        }
+
+        .obs-low {
+            bottom: 40px;
+            width: 30px;
+            height: 40px;
+        }
+
+        .obs-high {
+            bottom: 95px;
+            width: 40px;
+            height: 35px;
+        }
+
+        /* Interface de UI */
+        #ui {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+        }
+
+        #score-panel span {
+            color: #00f0ff;
+        }
+
+        #game-over-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 11, 16, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+            z-index: 10;
+        }
+
+        #game-over-screen h1 {
+            font-size: 48px;
+            color: #ff007f;
+            text-shadow: 0 0 20px #ff007f;
+            margin-bottom: 10px;
+        }
+
+        #game-over-screen p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #8a8fbc;
+        }
+
+        #start-btn {
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #00f0ff;
+            background: transparent;
+            border: 2px solid #00f0ff;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+
+        #start-btn:hover {
+            background: #00f0ff;
+            color: #0d0e15;
+            box-shadow: 0 0 25px #00f0ff;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <div id="ui">
+            <div id="score-panel">SCORE: <span id="score">00000</span></div>
+            <div id="hi-score-panel">HI: <span id="hi-score">00000</span></div>
+        </div>
+
+        <div id="player"></div>
+        <div id="floor"></div>
+
+        <div id="game-over-screen">
+            <h1 id="title">NEON RUNNER</h1>
+            <p id="subtitle">Desvie dos obstáculos usando as setas do teclado</p>
+            <button id="start-btn">JOGAR</button>
+        </div>
+    </div>
+
+    <script>
+        const player = document.getElementById('player');
+        const container = document.getElementById('game-container');
+        const scoreEl = document.getElementById('score');
+        const hiScoreEl = document.getElementById('hi-score');
+        const gameOverScreen = document.getElementById('game-over-screen');
+        const startBtn = document.getElementById('start-btn');
+        const titleEl = document.getElementById('title');
+        const subtitleEl = document.getElementById('subtitle');
+
+        // Configurações do Jogo
+        let isPlaying = false;
+        let score = 0;
+        let hiScore = 0;
+        let gameSpeed = 6;
+        let obstacles = [];
+        let spawnTimer = 0;
+        
+        // Física do Jogador
+        let isJumping = false;
+        let isDucking = false;
+        let jumpVelocity = 0;
+        let playerY = 0;
+        const gravity = 1.1;
+
+        // Controles
+        const keys = {};
+        window.addEventListener('keydown', e => keys[e.code] = true);
+        window.addEventListener('keyup', e => keys[e.code] = false);
+
+        // Inicializar botão
+        startBtn.addEventListener('click', startGame);
+
+        function startGame() {
+            gameOverScreen.classList.add('hidden');
+            isPlaying = true;
+            score = 0;
+            gameSpeed = 6;
+            playerY = 0;
+            isJumping = false;
+            isDucking = false;
+            
+            // Limpar obstáculos antigos
+            obstacles.forEach(obs => obs.el.remove());
+            obstacles = [];
+            
+            animate();
+        }
+
+        function gameOver() {
+            isPlaying = false;
+            gameOverScreen.classList.remove('hidden');
+            titleEl.innerText = "GAME OVER";
+            subtitleEl.innerText = `Você fez ${Math.floor(score)} pontos!`;
+            startBtn.innerText = "RECOMEÇAR";
+            
+            if (score > hiScore) {
+                hiScore = Math.floor(score);
+                hiScoreEl.innerText = String(hiScore).padStart(5, '0');
+            }
+        }
+
+        function handlePlayerBehavior() {
+            // Pular (Seta para cima ou Espaço)
+            if ((keys['ArrowUp'] || keys['Space']) && !isJumping && !isDucking) {
+                isJumping = true;
+                jumpVelocity = 17;
+                player.classList.add('jumping');
+            }
+
+            // Aplicar Gravidade
+            if (isJumping) {
+                playerY += jumpVelocity;
+                jumpVelocity -= gravity;
+
+                if (playerY <= 0) {
+                    playerY = 0;
+                    isJumping = false;
+                    player.classList.remove('jumping');
+                }
+            }
+
+            // Agachar (Seta para baixo) - Só se não estiver pulando
+            if (keys['ArrowDown'] && !isJumping) {
+                isDucking = true;
+                player.classList.add('ducking');
+            } else {
+                isDucking = false;
+                player.classList.remove('ducking');
+            }
+
+            // Atualizar posição visual do player
+            player.style.bottom = (40 + playerY) + 'px';
+        }
+
+        function spawnObstacles() {
+            spawnTimer++;
+            // Spawna um obstáculo aleatório baseado no timer e na velocidade
+            if (spawnTimer > Math.max(40, 120 - gameSpeed * 5)) {
+                if (Math.random() > 0.4) {
+                    const type = Math.random() > 0.4 ? 'low' : 'high';
+                    const el = document.createElement('div');
+                    el.classList.add('obstacle', type === 'low' ? 'obs-low' : 'obs-high');
+                    el.style.right = '-50px';
+                    container.appendChild(el);
+
+                    obstacles.push({
+                        el: el,
+                        type: type,
+                        x: 800
+                    });
+                }
+                spawnTimer = 0;
+            }
+        }
+
+        function moveObstacles() {
+            for (let i = obstacles.length - 1; i >= 0; i--) {
+                let obs = obstacles[i];
+                obs.x -= gameSpeed;
+                obs.el.style.left = obs.x + 'px';
+
+                // Checar Colisão
+                if (checkCollision(obs)) {
+                    gameOver();
+                    return;
+                }
+
+                // Remove obstáculos que saíram da tela
+                if (obs.x < -40) {
+                    obs.el.remove();
+                    obstacles.splice(i, 1);
+                }
+            }
+        }
+
+        function checkCollision(obs) {
+            // Caixa de colisão do Player
+            const pLeft = 80;
+            const pRight = 120;
+            const pBottom = 40 + playerY;
+            const pTop = pBottom + (isDucking ? 30 : 60);
+
+            // Caixa de colisão do Obstáculo
+            const oLeft = obs.x;
+            const oRight = obs.x + (obs.type === 'low' ? 30 : 40);
+            const oBottom = obs.type === 'low' ? 40 : 95;
+            const oTop = oBottom + (obs.type === 'low' ? 40 : 35);
+
+            // Verificar se as caixas se sobrepõem
+            return (
+                pLeft < oRight &&
+                pRight > oLeft &&
+                pBottom < oTop &&
+                pTop > oBottom
+            );
+        }
+
+        function animate() {
+            if (!isPlaying) return;
+
+            handlePlayerBehavior();
+            spawnObstacles();
+            moveObstacles();
+
+            // Aumentar pontuação e velocidade progressivamente
+            score += 0.15;
+            gameSpeed += 0.002;
+            scoreEl.innerText = String(Math.floor(score)).padStart(5, '0');
+
+            requestAnimationFrame(animate);
+        }
+    </script>
+</body>
+</html>
