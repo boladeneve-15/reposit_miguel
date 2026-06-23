@@ -25,19 +25,21 @@
     // 1-8-28-56-70-56-28-8-1
 
     function triangulo(){
-        Quantidade = vezes.value
-        
-        for(i=1; i<=Quantidade; i++){
+        tri.innerHTML = ""
+        Quantidade = parseInt (vezes.value)
+        LinhaDoPascal = 1
+        // criador de colunas
+          for(i=1; i<= Quantidade; i++){
                 const i = 1
-            for(    j=1; j<=i; j++){
-              let  n = Math.factorial(i)
-              let  k = Math.factorial(j)
-              let  l = Math.factorial(i-j)
-                pascal = n/(k*l)
-                tri.innerHTML += pascal+"-"
+                // controlador de colunas
+                for(j=0;j <=i; j++){
+                    
+                }
+                
+                
+                tri.innerHTML += i  + "<br>"        
             }
-        
-    }
+
 }
 </script>
 </html>
