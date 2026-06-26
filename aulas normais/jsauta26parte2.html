@@ -88,11 +88,26 @@
     </details>
     <details>
         <summary>
-           insirir em qualquer possiçao 
+          buscar elemento
         </summary>
-         <input type="text" id="FazTudoONDE2" placeholder="escolher o elemento">
-        <input type="text" id="possicaodeinsirir" placeholder="onde vai insirir">
-        <button onclick="atividade3()">aplicar</button> 
+         <input type="text" id="buscamento" placeholder="buscar o elemento">
+        <button onclick="busca()">aplicar</button> 
+        <h2 id="insirir"></h2>
+    </details>
+
+    <details>
+        <summary>
+           llimpar lista
+        </summary>
+        <button onclick="limar()">aplicar</button> 
+        <h2 id="insirir"></h2>
+    </details>
+
+    <details>
+        <summary>
+           tamanho da lista 
+        </summary>
+        <button onclick="tamanho()">aplicar</button> 
         <h2 id="insirir"></h2>
     </details>
  </div>   
@@ -154,5 +169,19 @@
         
         suaLista.innerHTML ="Lista: " +   lista
     }
+    
+    function busca(){
+        local = parseInt(buscamento.value)
+        onde = lista[local]
+    // lista.splice(local, 0);
+    suaLista.innerHTML = onde
+    }
+    function limar(){
+        lista = []
+        suaLista.innerHTML = lista
+    }
+function tamanho(){
+    suaLista.innerHTML =  lista.length
+}
 </script>
 </html>
