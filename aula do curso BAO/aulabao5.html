@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="MeninosBAO.css">
 </head>
 <body>
-    
+    <div></div>
     <button onclick="somaDaLista()"></button>
     <details>
         <summary>
@@ -19,6 +19,11 @@
     <button onclick="RetirarNoFinal()" id="retirar">retirar  lista</button>
     <button onclick="meia()">sua meidia</button>
     <h2 id="suaLista"></h2>
+    </div>
+    <div>
+    <br><br><br><br>
+    <h2 id="RESULtado">RESULTADO</h2>
+</div>
 </body>
 <script>
     function somaDaLista(){
@@ -42,12 +47,15 @@ function RetirarNoFinal(){
     suaLista.innerHTML ="Lista: " +   lista
 }
 function meia(){
-   calculo = 0
-for (i=0; i<lista.length; i++){
-calculo += lista[i]
+   soma = 0
+   tamanhoDaLista = parseInt(lista.length)
+   
+for (i=0; i<tamanhoDaLista; i++){
+soma += lista[i]
 }
-console.log(calculo)
-}
+divicao = soma/ tamanhoDaLista
 
+RESULtado.innerHTML = divicao
+}
 </script>
 </html>
