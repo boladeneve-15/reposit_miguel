@@ -35,26 +35,26 @@
     }
     
     function maior() {
-        valor = 0;
+        maiorValor = -Number.MAX_SAFE_INTEGER;
         tamanhoDaLista = parseInt(lista.length);
         for (i = 0; i < tamanhoDaLista; i++) {
-            if (valor < lista[i]) {
-                valor = lista[i];
-                valor = valor;
+            if (maiorValor < lista[i]) {
+                maiorValor = lista[i];
+                maiorValor = maiorValor;
             }
         }
-        resultadoMaior.innerHTML = valor;
+        resultadoMaior.innerHTML = maiorValor;
     }
     function menor() {
-        valor = 0;
+        menorValor = Number.MAX_SAFE_INTEGER;
         tamanhoDaLista = parseInt(lista.length);
       for (i = 0; i < tamanhoDaLista; i++) {
-        if (valor > lista[i]) {
-          valor = lista[i];
-          valor = valor;
+        if (menorValor > lista[i]) {
+          menorValor = lista[i];
+          menorValor = menorValor;
         }
       }
-      resultadoMenor.innerHTML = valor;
+      resultadoMenor.innerHTML = menorValor;
     }
   </script>
 </html>
