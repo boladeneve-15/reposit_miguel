@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS fudido de bom.css">
+</head>
+<body>
+    <h2 id="suaLista"></h2>
+    <details>
+       <summary>clirar lista</summary>
+      <input type="number" id="insirir" />
+      <button onclick="AplicarNoFinal()">aplicar lista</button>
+      <button onclick="RetirarNoFinal()" id="retirar">retirar lista</button>
+    </details>
+    <button onclick="dobroDosValores()">dobro dos valores</button>
+    <button onclick="filtrarNUmerosPositivos()">filtrar números positivos</button>
+    <button onclick="contarOcorrencias()">contar ocorrências</button>
+    <button onclick="removerRepetidos()">remover repetidos</button>
+    </body>
+<script>
+     lista = [];
+    function AplicarNoFinal() {
+      aplica = parseInt(insirir.value);
+      lista.push(aplica);
+
+      suaLista.innerHTML = "Lista: " + lista;
+    }
+
+    function RetirarNoFinal() {
+      lista.pop();
+      suaLista.innerHTML = "Lista: " + lista;
+    }
+function dobroDosValores(){
+  tamanhoDaLista = parseInt(lista.length);
+        for (i = 0; i < tamanhoDaLista; i++) {
+            lista[i] = lista[i] * 2
+            
+            
+        
+    }
+
+    console.log(lista)
+
+
+}
+
+ function filtrarNUmerosPositivos(){
+    tamanhoDaLista = parseInt(lista.length);
+    for (i = 0; i < lista.length; i++) {
+     console.log(lista[i])
+     if(lista[i] < 0){
+        lista.splice(i,1)
+        i--
+     }
+
+    }
+
+    console.log(lista)
+ }
+
+ function contarOcorrencias(){
+      tamanhoDaLista = parseInt(lista.length);
+    for (i = 0; i < tamanhoDaLista; i++) {
+     console.log(lista[i]) 
+     for(j=0; j < tamanhoDaLista; j++){
+            if(i==j){
+                console.log("repitiu")
+            }
+     }
+ }
+ }
+ 
+</script>
+</html>
