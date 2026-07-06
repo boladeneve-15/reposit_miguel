@@ -1,28 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="CSS fudido de bom.css">
-</head>
-<body>
+    <link rel="stylesheet" href="CSS fudido de bom.css" />
+  </head>
+  <body>
     <h2 id="suaLista"></h2>
     <details>
-       <summary>clirar lista</summary>
+      <summary>clirar lista</summary>
       <input type="number" id="insirir" />
       <button onclick="AplicarNoFinal()">aplicar lista</button>
       <button onclick="RetirarNoFinal()" id="retirar">retirar lista</button>
     </details>
     <button onclick="dobroDosValores()">dobro dos valores</button>
-    <button onclick="filtrarNUmerosPositivos()">filtrar números positivos</button>
-    <input type="number" id="Valores" placeholder="numero que quer contar">
+    <button onclick="filtrarNUmerosPositivos()">
+      filtrar números positivos
+    </button>
+    <input type="number" id="Valores" placeholder="numero que quer contar" />
     <button onclick="contarOcorrencias()">contar ocorrências</button>
     <button onclick="removerRepetidos()">remover repetidos</button>
-    </body>
-    <h3 id="resposta"></h3>
-<script>
-     lista = [];
+  </body>
+  <h3 id="resposta"></h3>
+  <script>
+    lista = [];
     function AplicarNoFinal() {
       aplica = parseInt(insirir.value);
       lista.push(aplica);
@@ -34,59 +36,67 @@
       lista.pop();
       suaLista.innerHTML = "Lista: " + lista;
     }
-function dobroDosValores(){
-  tamanhoDaLista = parseInt(lista.length);
-        for (i = 0; i < tamanhoDaLista; i++) {
-            lista[i] = lista[i] * 2
-            
-            
-        
-    }
-
-    console.log(lista)
-
-
-}
-
- function filtrarNUmerosPositivos(){
-    tamanhoDaLista = parseInt(lista.length);
-    for (i = 0; i < lista.length; i++) {
-     console.log(lista[i])
-     if(lista[i] < 0){
-        lista.splice(i,1)
-        i--
-     }
-
-    }
-
-    console.log(lista)
- }
-
- function contarOcorrencias(){
+    function dobroDosValores() {
       tamanhoDaLista = parseInt(lista.length);
-      Valor = parseInt(Valores.value)
-      QuantasVezesRepetiu = 0
       for (i = 0; i < tamanhoDaLista; i++) {
-     if(Valor == lista[i] ){
-       QuantasVezesRepetiu++
+        lista[i] = lista[i] * 2;
       }
-    }
-    resposta.innerHTML = ("seu numero repetiu" +" "+ QuantasVezesRepetiu + " " + "vezes")
- }
 
- function removerRepetidos(){
-   tamanhoDaLista = parseInt(lista.length);
-    for (i = 0; i < tamanhoDaLista; i++) {
-       
-          for(j=1; j < tamanhoDaLista; j++){
-               if(lista[j] == lista[i] && i!=j){
-                lista.splice(i,1)
-                 
-               }
+      console.log(lista);
+    }
+
+    function filtrarNUmerosPositivos() {
+      tamanhoDaLista = parseInt(lista.length);
+      for (i = 0; i < lista.length; i++) {
+        console.log(lista[i]);
+        if (lista[i] < 0) {
+          lista.splice(i, 1);
+          i--;
+        }
+      }
+
+      console.log(lista);
+    }
+
+    function contarOcorrencias() {
+      tamanhoDaLista = parseInt(lista.length);
+      Valor = parseInt(Valores.value);
+      QuantasVezesRepetiu = 0;
+      for (i = 0; i < tamanhoDaLista; i++) {
+        if (Valor == lista[i]) {
+          QuantasVezesRepetiu++;
+        }
+      }
+      resposta.innerHTML =
+        "seu numero repetiu" + " " + QuantasVezesRepetiu + " " + "vezes";
+    }
+
+    function removerRepetidos2() {
+      lista = [1, 1, 1, 2, 2, 2, 3, 6, 6, 8, 8];
+      for (i = 0; i < lista.length - 1; i++) {
+        for (j = i + 1; j < lista.length; j++) {
+          if (lista[j] == lista[i] && i != j) {
+            lista.splice(j, 1);
+            j--;
           }
- }
- console.log(lista)
-}
- 
-</script>
+        }
+      }
+      console.log(lista);
+    }
+    function removerRepetidos() {
+      lista = [1, 1, 1, 2, 2, 2, 3, 6, 6, 8, 8];
+      listaFiltrada = [];
+
+      tamanho = lista.length;
+
+      for (i = 0; i < tamanho; i++) {
+        elemento = lista[i];
+
+        if (listaFiltrada.includes(elemento) == false) {
+          listaFiltrada.push(elemento);
+        }
+      }
+      console.log(listaFiltrada);
+    }
+  </script>
 </html>
