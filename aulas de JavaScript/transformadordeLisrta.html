@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS fudido de bom.css">
+</head>
+<body> 
+    <h2 id="suaLista"></h2>
+    <details>
+      <summary>clirar lista</summary>
+      <input type="number" id="insirir" />
+      <button onclick="AplicarNoFinal()">aplicar lista</button>
+      <button onclick="RetirarNoFinal()" id="retirar">retirar lista</button>
+    </details>
+    <button onclick="trocaDeelementos()">TRocar Elementos</button>
+    <button onclick="MenorAteMaior()">Maior Pro menor</button>
+</body>
+<script>
+    Lista = []
+
+    function AplicarNoFinal() {
+      aplica = parseInt(insirir.value);
+      Lista.push(aplica);
+
+      suaLista.innerHTML = "Lista: " + Lista;
+    }
+
+    function RetirarNoFinal() {
+      Lista.pop();
+      suaLista.innerHTML = "Lista: " + Lista;
+    }
+
+function MenorAteMaior(){
+    ValorDaLista = Lista
+    maiorNumero = -Number.MAX_SAFE_INTEGER
+    for(i=0; i<Lista.length; i++ ){
+        // console.log(Lista[i]) 
+     if (maiorNumero < Lista[i]) {
+            maiorNumero = Lista[i];
+            Lista.splice(0,0,Lista[i])
+
+        }
+}
+console.log(Lista)
+}
+
+function trocaDeelementos(){
+
+    if(Lista[0] > Lista[1]){
+   ValorEx = Lista[0]
+   Lista [0] = Lista [1]
+   Lista[1] = ValorEx
+    console.log(Lista)
+    }
+
+else if(Lista[1] > Lista[0]){
+   ValorEx = Lista[1]
+   Lista [1] = Lista [0]
+   Lista[0] = ValorEx
+    console.log(Lista)
+    }
+
+else{
+        console.log(Lista)
+}
+}
+</script>
+</html>
