@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="CSS fudido de bom.css">
-</head>
-<body> 
-    <h2 id="suaLista"></h2>
+    <link rel="stylesheet" href="CSS fudido de bom.css" />
+  </head>
+  <body>
+    <h2 id="sualista"></h2>
     <details>
       <summary>clirar lista</summary>
       <input type="number" id="insirir" />
@@ -16,55 +16,73 @@
     </details>
     <button onclick="trocaDeelementos()">TRocar Elementos</button>
     <button onclick="MenorAteMaior()">Maior Pro menor</button>
-</body>
-<script>
-    Lista = []
+  </body>
+  <script>
+    lista = [];
+    // [0,3,7] = V
+    // [0,7,3] = v
+    // [3,0,7] = v
+    // [3,7,0] = v
+    // [7,3,0] = v
+    //  [7,0,3] = v
 
     function AplicarNoFinal() {
-      aplica = parseInt(insirir.value);
-      Lista.push(aplica);
+      aplica = parseFloat(insirir.value);
 
-      suaLista.innerHTML = "Lista: " + Lista;
+      lista.push(aplica);
+
+      sualista.innerHTML = "lista: " + lista;
     }
 
     function RetirarNoFinal() {
-      Lista.pop();
-      suaLista.innerHTML = "Lista: " + Lista;
+      lista.pop();
+      sualista.innerHTML = "lista: " + lista;
     }
 
-function MenorAteMaior(){
-    ValorDaLista = Lista
-    maiorNumero = -Number.MAX_SAFE_INTEGER
-    for(i=0; i<Lista.length; i++ ){
-        // console.log(Lista[i]) 
-     if (maiorNumero < Lista[i]) {
-            maiorNumero = Lista[i];
-            Lista.splice(0,0,Lista[i])
-
+    function MenorAteMaior() {
+      ValorDalista = lista;
+      maiorNumero = -Number.MAX_SAFE_INTEGER;
+      for (i = 0; i < lista.length; i++) {
+        // console.log(lista[i])
+        if (maiorNumero < lista[i]) {
+          maiorNumero = lista[i];
+          lista.s;
         }
-}
-console.log(Lista)
-}
-
-function trocaDeelementos(){
-
-    if(Lista[0] > Lista[1]){
-   ValorEx = Lista[0]
-   Lista [0] = Lista [1]
-   Lista[1] = ValorEx
-    console.log(Lista)
+        console.log(lista);
+      }
     }
 
-else if(Lista[1] > Lista[0]){
-   ValorEx = Lista[1]
-   Lista [1] = Lista [0]
-   Lista[0] = ValorEx
-    console.log(Lista)
+    function trocaDeelementos() {
+      // LISTA = [7,3,0]
+      tamanhoDalista = lista.length;
+      for (j = 0; j < tamanhoDalista; j++) {
+        for (i = 0; i < tamanhoDalista; i++) {
+          if (lista[i] > lista[i + 1]) {
+            ValorEx = lista[i];
+
+            lista[i] = lista[i + 1];
+            lista[i + 1] = ValorEx;
+          }
+        }
+      }
+      console.log(lista);
     }
 
-else{
-        console.log(Lista)
-}
-}
-</script>
+    //   ValorExtra = lista[0];
+    //   lista[0] = lista[2];
+    //   lista[2] = ValorExtra;
+    //   console.log(l
+    //
+    // ista);
+    // LISTA = [11,12,13]
+    // MENOR PRO MAIOR 11,12,13 = 13,12,11
+    // else if(lista[1] > lista[0]){
+    //    ValorExtra = lista[2] // = 13 OU [X,X, lista[2] ]
+    //    lista [2] = lista [0]
+    //    lista[0] =
+
+    // alorExtra
+    //     console.log(lista)
+    //     }
+  </script>
 </html>
