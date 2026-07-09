@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="MeninosBAO.css">
+</head>
+
+<body>
+    <button onclick="semble()">trocar os trem</button>
+</body>
+<script>
+    lista = [14, 82, 35, 91, 7, 53, 68, 29]
+    // lista = [
+    // possição 0 =  2
+    // possição 1 =  45
+    // possição 2=  68
+    // ]
+    function semble() {
+        tamanhoDalista = lista.length;
+       for (j = 0; j < tamanhoDalista-1; j++) {
+        for (i = 0; i < tamanhoDalista-1; i++) {
+            if (lista[i] < lista[i + 1]) {
+                ValorExtra = lista[i];
+                
+                lista[i] = lista[i +1];
+                lista[i + 1] = ValorExtra;
+                
+            }
+        }
+        console.log(lista)
+    }
+}
+
+
+    // function AplicarNoFinal() {
+    //       aplica = parseFloat(insirir.value);
+
+    //       lista.push(aplica);
+
+    //       sualista.innerHTML = "lista: " + lista;
+    //     }
+
+    //     function RetirarNoFinal() {
+    //       lista.pop();
+    //       sualista.innerHTML = "lista: " + lista;
+    //     }
+</script>
+
+</html>

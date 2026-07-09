@@ -53,10 +53,10 @@
     }
 
     function trocaDeelementos() {
-      // LISTA = [7,3,0]
+      lista = [7,3,0,3,5,7,4,1,9,8,57,7,1,1]
       tamanhoDalista = lista.length;
-      for (j = 0; j < tamanhoDalista; j++) {
-        for (i = 0; i < tamanhoDalista; i++) {
+      for (j = 0; j < tamanhoDalista-1; j++) {
+        for (i = 0; i < tamanhoDalista-j+1; i++) {
           if (lista[i] > lista[i + 1]) {
             ValorEx = lista[i];
 
