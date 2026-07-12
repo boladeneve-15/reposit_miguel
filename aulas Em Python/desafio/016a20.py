@@ -1,9 +1,13 @@
 import math
 import random
 import pygame
+print("""BEM VINDO AOS TESTES DE MIGUEL LUCAS EM PYTHON, esse e o começo de uma nova linguagem de progamação
+    onde meu foco no final de tudo e saber
+    ciencias de dados, eng de dados, automoção em python, e criação de IAs""")
+
 
 print("====desafios====")
-Desafio = int(input("qual o desafio? (de 16 a 21) (21 e o mais pika) "))
+Desafio = int(input("qual o desafio? (de 16 a 20)"))
 
 def deseseis():
     valor = float(input("digite um numero que contena ponto(EX:9.595 ) "))
@@ -44,10 +48,8 @@ def vinte():
     print("a ordem de alunos e")
     print(lista)
 
-def  vinteum():
-    pygame.init()
-    pygame.mixer.music.load('aulas Em Python/desafio/ventaniahippie-ventania-cogumelo-azul.mp3')
 
+   
 if Desafio == 16:
     deseseis()
 
@@ -62,6 +64,3 @@ elif Desafio == 19:
 
 elif Desafio == 20:
     vinte()
-
-elif Desafio == 21:
-    vinteum()
