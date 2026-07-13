@@ -14,12 +14,6 @@ def vinteoito():
     pc = randint(0, 10)
     resposta = int(input("Qual Numero eu pensei?? "))
     print("pensando...")
-    for i in range(5):
-        print("preparando arquivo ({}Mb/4Mb)".format(i))
-        for j in range(55):
-            print("carregando arquivos ({}Kb/54Kb) arquivos preparados ({}Mb/4Mb)".format(j,i))
-            for k in range(260):
-                    print("carregando dados ({}B/260B) carregado arquivos ({}/54Kb) terminando arquivos ({}Mb/4Mb)".format(k,j,i))
     if resposta == pc:
         print("voce ganhou")
     else: 
