@@ -11,13 +11,23 @@ def zeroadez():
     print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
     print("vou pensar em um numero de 0 a 10... ")
     print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
-    pc = randint(0, 10)
-    resposta = int(input("Qual Numero eu pensei?? "))
     print("pensando...")
-    if resposta == pc:
-        print("voce ganhou ")
-    else: 
-        print("voce perdeu feio, eu tinha pensado em {}".format(pc))
+    sleep(3)
+    pc = randint(0, 10)
+    acertou = False
+    tentativa = 0
+    while not acertou:
+        resposta = int(input("Qual Numero eu pensei?? "))
+        tentativa += 1
+        if resposta == pc:
+            acertou = True
+            print("acertou voce levou {} tentativas".format(tentativa))
+        else: 
+            if resposta < pc:
+                print("um numero maior")
+            elif resposta > pc:
+                print("um numero menor")
+
 
 
 def jokenpo():
