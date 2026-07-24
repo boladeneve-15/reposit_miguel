@@ -5,7 +5,8 @@ print("jogos")
 print("-=" *30 )
 print(''' escolher o jogo 
             [1] contra a maquina 0 a 10
-            [2]JO-KEN-PO''')
+            [2]JO-KEN-PO
+            [3] IMPAR/PAR''')
 qualjogo = int(input("QUAL JOGO   "))
 def zeroadez():
     print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
@@ -87,8 +88,44 @@ def jokenpo():
     print("-=" *20)
     print("FIM DE JOGO")
 
+def IMPARouPAR():
+    vitoria = 0
+    print("~"*50)
+    print("Vamos jogar impar ou par")
+    print("~"*50)
+    while True:
+        
+        jogador = int(input("DIGITE UM VALOR: "))
+        tipo = str(input("IMPAR ou PAR [P/I] ")).strip().upper()[0]
+        computador = randint(0,10)
+        while 'P' not in tipo or 'I' not in tipo:
+            total = jogador+computador
+            if tipo == 'P':
+                if total % 2 == 0:
+                    print("JOGADOR VENCE")
+                    vitoria +=1 
+                    break
+
+                else:
+                    print("JOGADOR PERDE")
+                    break 
+            elif tipo == 'I':
+                if total % 2 == 1:
+                    print("JOGADOR VENCE")
+                    vitoria +=1 
+                    break
+
+                else:
+                    print("JOGADOR PERDE")
+                    break 
+    print("JOGAR NOVAMENTE...")
+    print(f"GAME OVER [voce venceu {vitoria} vezes]")
+
+        
 if qualjogo == 1:
     zeroadez()
 
 elif qualjogo ==2:
     jokenpo()
+elif qualjogo ==3:
+        IMPARouPAR()
