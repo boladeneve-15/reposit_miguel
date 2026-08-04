@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS fudido de bom.css" />
+</head>
+
+<body>
+    <h1 id="resultado"></h1>
+    <button onclick="sort()">insertionsort</button>
+</body>
+<script>
+    lista = [9, 8, 7, 5, 6, 2, 4, 1, 0, -5, 7, 9, 999, -999];
+    lenlista = lista.length - 1;
+    extra = 0;
+    function sort() {
+        for (i = 0; i < lenlista; i++) {
+            minimo = i;
+            for (j = i + 1; j <= lenlista; j++) {
+                if (lista[j] < lista[minimo]) {
+                    minimo = j;
+                }
+            }
+            if (i != minimo) {
+                extra = lista[i];
+                lista[i] = lista[minimo];
+                lista[minimo] = extra;
+            }
+        }
+        console.log(lista);
+    }
+</script>
+
+</html>
