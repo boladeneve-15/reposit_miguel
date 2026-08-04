@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CÓSMICO ULTRA PRO MAX ++ TI SUPER XTX ARCH AI 4D</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: radial-gradient(circle, #0a001a, #000);
+        font-family: 'Segoe UI', Arial, sans-serif;
+        overflow: hidden;
+      }
+
+      /* RGB DO UNIVERSO INTEGRADO */
+      body::before {
+        content: "";
+        position: fixed;
+        width: 300%;
+        height: 300%;
+        background: linear-gradient(45deg, rgba(255,0,0,0.4), rgba(0,255,255,0.4), rgba(255,0,255,0.4), rgba(0,255,0,0.4));
+        background-size: 400%;
+        animation: rgbUniverso 6s linear infinite;
+        z-index: -2;
+        mix-blend-mode: screen;
+      }
+
+      @keyframes rgbUniverso {
+        0% { transform: rotate(0deg) scale(1); }
+        50% { transform: rotate(180deg) scale(1.2); }
+        100% { transform: rotate(360deg) scale(1); }
+      }
+
+      #pai {
+        width: 380px;
+        padding: 25px;
+        background: linear-gradient(135deg, rgba(30, 0, 50, 0.95), rgba(0, 150, 255, 0.4));
+        border: 4px solid #00ffff;
+        border-radius: 35px;
+        box-shadow: 0 0 40px #00ffff, 0 0 100px #ff00ff, inset 0 0 20px #00ffff;
+        animation: flutuar 3s ease-in-out infinite;
+        backdrop-filter: blur(10px);
+      }
+
+      @keyframes flutuar {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-12px) rotate(0.5deg); }
+      }
+
+      h1 {
+        color: #fff;
+        text-align: center;
+        font-size: 18px;
+        text-shadow: 0 0 15px #00ffff, 0 0 25px #ff00ff;
+        margin-top: 0;
+      }
+
+      #tela {
+        height: 75px;
+        background: #000000cc;
+        color: #00ffcc;
+        font-size: 26px;
+        padding: 12px;
+        border: 2px solid #00ffff;
+        border-radius: 18px;
+        box-shadow: inset 0 0 15px #00ffff, 0 0 25px #00ffcc;
+        overflow-x: auto;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+
+      /* RGB INTEGRADO NA TELA */
+      #tela {
+        animation: rgbTela 4s linear infinite;
+      }
+      @keyframes rgbTela {
+        0% { border-color: #00ffff; box-shadow: inset 0 0 15px #00ffff, 0 0 20px #00ffff; }
+        33% { border-color: #ff00ff; box-shadow: inset 0 0 15px #ff00ff, 0 0 20px #ff00ff; }
+        66% { border-color: #00ff99; box-shadow: inset 0 0 15px #00ff99, 0 0 20px #00ff99; }
+        100% { border-color: #00ffff; box-shadow: inset 0 0 15px #00ffff, 0 0 20px #00ffff; }
+      }
+
+      .status {
+        color: #fff;
+        text-align: center;
+        font-size: 11px;
+        margin: 12px 0;
+        text-shadow: 0 0 10px #00ffff;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+
+      .botoes-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+      }
+
+      button {
+        height: 50px;
+        background: #080808;
+        color: #fff;
+        border: 2px solid #00ffff;
+        border-radius: 14px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.15s ease;
+      }
+
+      button:hover {
+        transform: scale(1.1);
+        background: #00ffff;
+        color: #000;
+        box-shadow: 0 0 25px #00ffff, 0 0 40px #ff00ff;
+      }
+
+      button:active {
+        transform: scale(0.92);
+      }
+
+      .operador {
+        border-color: #ff00ff;
+        color: #ff00ff;
+      }
+      .operador:hover {
+        background: #ff00ff;
+        color: #fff;
+        box-shadow: 0 0 25px #ff00ff;
+      }
+
+      #igual {
+        grid-column: span 2;
+        background: linear-gradient(135deg, #00ff99, #00e5ff);
+        color: #000;
+        border-color: #fff;
+      }
+
+      #apagarTudo {
+        grid-column: span 2;
+        background: linear-gradient(135deg, #ff007f, #7f00ff);
+        border-color: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="pai">
+      <h1>🌌 CÓSMICO ULTRA PRO MAX ++</h1>
+      <div id="tela">0</div>
+      <div class="status" id="status">IA QUÂNTICA ONLINE 🧠</div>
+
+      <div class="botoes-grid">
+        <button onclick="adicionar('7')">7</button>
+        <button onclick="adicionar('8')">8</button>
+        <button onclick="adicionar('9')">9</button>
+        <button class="operador" onclick="adicionar('/')">/</button>
+
+        <button onclick="adicionar('4')">4</button>
+        <button onclick="adicionar('5')">5</button>
+        <button onclick="adicionar('6')">6</button>
+        <button class="operador" onclick="adicionar('*')">×</button>
+
+        <button onclick="adicionar('1')">1</button>
+        <button onclick="adicionar('2')">2</button>
+        <button onclick="adicionar('3')">3</button>
+        <button class="operador" onclick="adicionar('-')">-</button>
+
+        <button onclick="adicionar('0')">0</button>
+        <button onclick="adicionar('.')">.</button>
+        <button onclick="apagar()">DEL</button>
+        <button class="operador" onclick="adicionar('+')">+</button>
+
+        <button id="igual" onclick="igual()">= 4D</button>
+        <button id="apagarTudo" onclick="apagarTudo()">RESET 4K</button>
+      </div>
+    </div>
+
+    <script>
+      const tela = document.getElementById("tela");
+      const statusDiv = document.getElementById("status");
+      let expressao = "";
+
+      // 4. IA quântica que resolve e prevê antes de você digitar
+      function preverIA(expr) {
+        if (!expr) return "PRONTO PARA O INFINITO";
+        try {
+          let prev = Function('"use strict";return (' + expr + ')')();
+          return `IA PREVIU O FUTURO: ${prev} [Ray Tracing 120FPS]`;
+        } catch {
+          return "PROCESSANDO MATRIZ QUÂNTICA...";
+        }
+      }
+
+      function adicionar(valor) {
+        // 2. Digitações infinitas e cósmicas
+        expressao += valor;
+        tela.innerHTML = expressao;
+        statusDiv.innerHTML = preverIA(expressao);
+      }
+
+      function igual() {
+        try {
+          // 3. Divisão por zero desbloqueada com física cósmica
+          if (expressao.includes("/0")) {
+            tela.innerHTML = "∞ UNIVERSO DIVIDIDO";
+            statusDiv.innerHTML = "⚠️ COLAPSO DIMENSIONAL ATINGIDO!";
+            expressao = "";
+            return;
+          }
+
+          // 1. Sinal de = em 4 dimensões (Simulação de processamento dimensional)
+          statusDiv.innerHTML = "🚀 APLICANDO RLS 5.0 + FSR 4.0 + XeSS 3.0...";
+          
+          setTimeout(() => {
+            let resultado = Function('"use strict";return (' + expressao + ')')();
+            tela.innerHTML = resultado + " [4D]";
+            statusDiv.innerHTML = "⚡ RODA RAY TRACING EM 4K 120FPS ATIVO!";
+            expressao = String(resultado);
+          }, 400);
+
+        } catch (erro) {
+          tela.innerHTML = "ERRO MULTIVERSAL";
+          statusDiv.innerHTML = "PARADOXO TEMPORAL DETECTADO";
+          expressao = "";
+        }
+      }
+
+      function apagar() {
+        expressao = expressao.slice(0, -1);
+        tela.innerHTML = expressao || "0";
+        statusDiv.innerHTML = "DELEÇÃO QUÂNTICA EXECUTADA";
+      }
+
+      function apagarTudo() {
+        expressao = "";
+        tela.innerHTML = "0";
+        statusDiv.innerHTML = "🌀 RESET UNIVERSAL CONCLUÍDO COM SUCESSO";
+      }
+    </script>
+  </body>
+</html>

@@ -120,6 +120,7 @@
         <h4>vantagens:</h4> 
         <h4>1. poder usar o =</h4>
         <h4>2. pode digitar mais de 10 vezes</h4>
+        <h4>3. leve melhoria na calculadora</h4>
         <h4>preço: 29,99R$</h4>
     </div>
 
@@ -131,6 +132,7 @@
         <h4>3. libera a divisão</h4>
         <h4>4. upgrade na calculadora</h4>
         <h4>5. pode digitar mais de 20 vezes</h4>
+        <h4>6. mais o botão de apagar (limite de ate 3 usos)</h4>
         <h4>preço: 69.99R$</h4>
     </div>
 
@@ -143,8 +145,10 @@
         <h4>4. upgrade na calculadora</h4>
         <h4>5. pode digitar mais de 40 vezes</h4>
         <h4>6. upgrade ++calculadora</h4>
-        <h4>7. interface mais bonita</h4>
-        <h4>preço: 167.99R$</h4>
+        <h4>7. mais o botão de apagar( limite de ate 10 usos)</h4>
+        <h4>8. mais botão de apagar tudo (1 uso)</h4>
+        <h4>9. interface mais bonita</h4>
+        <h4>preço: 199.99R$</h4>
     </div>
 
     <div class="card-plano" id="planocosmico" onclick="planocosmo()">
@@ -155,16 +159,74 @@
         <h4>3. divisão por zero desbloqueada</h4>
         <h4>4. IA quântica que resolve antes de você digitar</h4>
         <h4>5. RGB integrado na tela e no código</h4>
-        <h4>6. roda Arch Linux na sua calculadora</h4>
+        <h4>6. RODA RAY TRACING EM 4K 120FPS MAIS RLS 5.0 FSR 4.0 E XeSS 3.0</h4>
         <h4>7. manipulação do espaço-tempo matemático</h4>
-        <h4>preço: 67.676,767R$</h4>
+        <h4>preço: 1.599.99bR$</h4>
     </div>
 
 </body>
-<script> 
-function planooum() { console.log('Plano Normal clicado'); }
-function planoodois() { console.log('Plano VIP clicado'); }
-function planootres() { console.log('Plano Premium VIP clicado'); }
-function planocosmo() { console.log('Plano Cósmico Ultra Pro Max ativado!'); }
+<script>
+    function planooum() { 
+        escolha = prompt(" esse e o plano normal ele custa 29.99 deseja continuar o pagamento? S/N").toUpperCase()
+    if(escolha == "S"){
+       forma = prompt("escolha a forma de pagamento: [1] Debido, [2] Credito, [3] boleto").toLowerCase()
+        if(forma == "1" || forma ==  "2" || forma == "3"){
+            comfirma = prompt("comfirmar pagamento? S/N").toUpperCase()
+            if(comfirma == "S"){
+                alert("pagamento feito com sucesso")
+                window.location.href = "calculadoraplanonormal.html"
+               
+            }
+        }
+    }
+}
+
+function planoodois(){
+    escolha = prompt(" esse e o plano normal ele custa 69.99 deseja continuar o pagamento? S/N").toUpperCase()
+    if(escolha == "S"){
+        forma = prompt("escolha a forma de pagamento: [1] Debido, [2] Credito, [3] boleto").toLowerCase()
+        if(forma == "1" || forma ==  "2" || forma == "3"){
+            comfirma = prompt("comfirmar pagamento? S/N").toUpperCase()
+            if(comfirma == "S"){
+                alert("pagamento feito com sucesso")
+                window.location.href = "calculadoraplanovip.html"
+               
+            }
+        }
+    }
+}
+
+function planootres()  {
+     escolha = prompt(" esse e o plano normal ele custa 199.99 deseja continuar o pagamento? S/N").toUpperCase()
+    if(escolha == "S"){
+        forma = prompt("escolha a forma de pagamento: [1] Debido, [2] Credito, [3] boleto").toLowerCase()
+        if(forma == "1" || forma ==  "2" || forma == "3"){
+            comfirma = prompt("comfirmar pagamento? S/N").toUpperCase()
+            if(comfirma == "S"){
+                alert("pagamento feito com sucesso")
+                window.location.href = "calculadoraplanoCOSMICOULTRAPROMAX++TISUPERXTXARCHIA.html"
+               
+            }
+        }
+    }
+}
+
+
+function planocosmo() { 
+   escolha = prompt(" esse e o plano normal ele custa 1.599.99 deseja continuar o pagamento? S/N").toUpperCase()
+    if(escolha == "S"){
+        forma = prompt("escolha a forma de pagamento: [1] Debido, [2] Credito, [3] boleto").toLowerCase()
+        if(forma == "1" || forma ==  "2" || forma == "3"){
+            comfirma = prompt("comfirmar pagamento? S/N").toUpperCase()
+            if(comfirma == "S"){
+                alert("pagamento feito com sucesso")
+                window.location.href = "calculadoraplanovippremiun.html"
+               
+            }
+        }
+    }
+}
+
+ 
 </script>
 </html>

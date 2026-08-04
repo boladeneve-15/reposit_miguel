@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Plano VIP</title>
+
+    <style>
+      body {
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+      }
+
+      #pai {
+        display: flex;
+        gap: 10px;
+
+        border: 1px solid #64b5f6;
+
+        justify-content: center;
+        align-items: center;
+
+        flex-direction: column;
+
+        padding: 20px;
+
+        border-left: 8px solid #1976d2;
+
+        box-shadow: 5px 0 15px rgba(25, 118, 210, 0.2);
+      }
+
+      .resultado {
+        border: 1px solid #1976d2;
+
+        width: 175px;
+        height: 30px;
+
+        background: white;
+
+        color: #0d47a1;
+
+        font-size: 15px;
+      }
+
+      input {
+        width: 45px;
+        height: 35px;
+      }
+
+      #apagar {
+        width: 100px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>CALCULADORA PLANO VIP</h1>
+
+    <div id="pai">
+      <h1 id="tela" class="resultado"></h1>
+
+      <div>
+        <input type="button" value="1" onclick="maisum()" />
+        <input type="button" value="2" onclick="maisdois()" />
+        <input type="button" value="3" onclick="maistres()" />
+      </div>
+
+      <div>
+        <input type="button" value="4" onclick="maisquatro()" />
+        <input type="button" value="5" onclick="maiscinco()" />
+        <input type="button" value="6" onclick="maisseis()" />
+      </div>
+
+      <div>
+        <input type="button" value="7" onclick="maissete()" />
+        <input type="button" value="8" onclick="maisoito()" />
+        <input type="button" value="9" onclick="maisnove()" />
+      </div>
+
+      <div>
+        <input type="button" value="+" onclick="mais()" />
+        <input type="button" value="-" onclick="menos()" />
+        <input type="button" value="x" onclick="vezes()" />
+        <input type="button" value="/" onclick="dividir()" />
+      </div>
+
+      <div>
+        <input type="button" value="=" onclick="igual()" />
+
+        <input id="apagar" type="button" value="APAGAR" onclick="apagar()" />
+      </div>
+    </div>
+
+    <script>
+      let contador = 0;
+
+      let maximoDeCalculos = 0;
+
+      let apagarUsado = 0;
+
+      function limite() {
+        contador++;
+
+        if (contador > 20) {
+          alert("VOCÊ ATINGIU O LIMITE DO PLANO VIP");
+
+          window.location.href = "planos.html";
+        }
+      }
+
+      function maisum() {
+        limite();
+
+        tela.innerHTML += 1;
+      }
+
+      function maisdois() {
+        limite();
+
+        tela.innerHTML += 2;
+      }
+
+      function maistres() {
+        limite();
+
+        tela.innerHTML += 3;
+      }
+
+      function maisquatro() {
+        limite();
+
+        tela.innerHTML += 4;
+      }
+
+      function maiscinco() {
+        limite();
+
+        tela.innerHTML += 5;
+      }
+
+      function maisseis() {
+        limite();
+
+        tela.innerHTML += 6;
+      }
+
+      function maissete() {
+        limite();
+
+        tela.innerHTML += 7;
+      }
+
+      function maisoito() {
+        limite();
+
+        tela.innerHTML += 8;
+      }
+
+      function maisnove() {
+        limite();
+
+        tela.innerHTML += 9;
+      }
+
+      function mais() {
+        limite();
+
+        tela.innerHTML += "+";
+      }
+
+      function menos() {
+        limite();
+
+        tela.innerHTML += "-";
+      }
+
+      function vezes() {
+        limite();
+
+        tela.innerHTML += "*";
+      }
+
+      function dividir() {
+        limite();
+
+        tela.innerHTML += "/";
+      }
+
+      function igual() {
+        tela.innerHTML = eval(tela.innerHTML);
+
+        maximoDeCalculos++;
+
+        if (maximoDeCalculos >= 10) {
+          alert("LIMITE DE CALCULOS VIP ATINGIDO");
+
+          window.location.href = "planos.html";
+        }
+      }
+
+      function apagar() {
+        if (apagarUsado >= 3) {
+          alert("VOCÊ USOU O LIMITE DE APAGAR DO PLANO VIP");
+
+          return;
+        }
+
+        let texto = tela.innerHTML;
+
+        tela.innerHTML = texto.substring(0, texto.length - 1);
+
+        apagarUsado++;
+      }
+    </script>
+  </body>
+</html>

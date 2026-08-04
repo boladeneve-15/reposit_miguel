@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      #pai {
+        display: flex;
+        gap: 10px;
+        border: 1px rgb(0, 0, 0) solid;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+      }
+      .resultado{
+        border: 1px, rebeccapurple, solid;
+        width: 175px;
+        height: 20px;
+        margin: 2px;
+        font-size: 10px;
+        flex-direction: row;
+        display: flex;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>calculadora plano base</h1>
+    <div id="pai" class="">
+      <h1 id="tela" class="resultado"></h1>
+      <div class="colunas">
+      <input type="button" value="1" id="um" onclick="maisum()" />
+      <input type="button" value="2" id="numero" onclick="maisdois()" />
+      <input type="button" value="3" id="numero" onclick="maistres()" />
+        </div>
+         <div class="colunas">
+      <input type="button" value="4" id="numero" onclick="maisquatro()" />
+      <input type="button" value="5" id="numero" onclick="maiscinco()" />
+      <input type="button" value="6" id="numero" onclick="maisseis()" />
+        </div>
+      <div class="colunas">
+        <input type="button" value="7" id="numero" onclick="maissete()" />
+        <input type="button" value="8" id="numero" onclick="maisoito()" />
+        <input type="button" value="9" id="numero" onclick="maisnove()" />
+        <input type="button" value="=" id="numero" onclick="igual()" />
+        <input type="button" value="+" id="numero" onclick="mais()" />
+        <input type="button" value="-" id="numero" onclick="menos()" />
+        <input type="button" value="x" id="numero" onclick="vezes()" />
+      </div>
+    </div>
+  </body>
+  <script>
+    contador = 0;
+    maximoDeCalculos = 0
+    function maisum() {
+      tela.innerHTML += 1;
+      contador++;
+      if (contador >= 10) {
+        alert(
+          "MAXIMO DE CARACTERS ATINGIDO 10, LEVANTO PARA SELETORES DE PLANOS",
+        );
+        window.location.href = "planos.html";
+      }
+    }
+    function maisdois() {
+      tela.innerHTML += 2;
+      contador++;
+      if (contador >= 10) {
+        alert(
+          "MAXIMO DE CARACTERS ATINGIDO 10, LEVANTO PARA SELETORES DE PLANOS",
+        );
+        window.location.href = "planos.html";
+      }
+    }
+    function maistres() {
+      tela.innerHTML += 3;
+      contador++;
+      if (contador >= 10) {
+        alert(
+          "MAXIMO DE CARACTERS ATINGIDO 10, LEVANTO PARA SELETORES DE PLANOS",
+        );
+        window.location.href = "planos.html";
+      }
+    }
+    function maisquatro() {
+      tela.innerHTML += 4;
+      contador++;
+      if (contador >= 10) {
+        alert(
+          "MAXIMO DE CARACTERS ATINGIDO 10, LEVANTO PARA SELETORES DE PLANOS",
+        );
+        window.location.href = "planos.html";
+      }
+    }
+    function maiscinco() {
+      contador++;
+      if (contador >= 10) {
+        alert(
+          "MAXIMO DE CARACTERS ATINGIDO 10, LEVANTO PARA SELETORES DE PLANOS",
+        );
+        window.location.href = "planos.html";
+      }
+
+      tela.innerHTML += 5;
+    }
+    function maisseis() {
+      contador++;
+      if (contador >= 10) {
+        alert(
+          "MAXIMO DE CARACTERS ATINGIDO 10, LEVANTO PARA SELETORES DE PLANOS",
+        );
+        window.location.href = "planos.html";
+      }
+
+      tela.innerHTML += 6;
+    }
+    function maissete() {
+      contador++;
+      if (contador >= 10) {
+        alert(
+          "MAXIMO DE CARACTERS ATINGIDO 10, LEVANTO PARA SELETORES DE PLANOS",
+        );
+        window.location.href = "planos.html";
+      }
+
+      tela.innerHTML += 7;
+    }
+    function maisoito() {
+      contador++;
+      if (contador >= 10) {
+        alert(
+          "MAXIMO DE CARACTERS ATINGIDO 10, LEVANTO PARA SELETORES DE PLANOS",
+        );
+        window.location.href = "planos.html";
+      }
+
+      tela.innerHTML += 8;
+    }
+    function maisnove() {
+      contador++;
+      if (contador >= 10) {
+        alert(
+          "MAXIMO DE CARACTERS ATINGIDO 10, LEVANTO PARA SELETORES DE PLANOS",
+        );
+        window.location.href = "planos.html";
+      }
+
+      tela.innerHTML += 9;
+    }
+    function igual() {
+      tela.innerHTML = eval(tela.innerHTML)
+      maximoDeCalculos++
+      if(maximoDeCalculos == 5){
+        alert("VOCE ATINGIU O MAXIMO DE CALCULOS FEITOS PORFAVOR MELHORE O PLANO PARA CONTINUAR")
+         window.location.href = "planos.html";
+      }
+    }
+    function mais() {
+      contador++;
+      if (contador >= 10) {
+        alert(
+          "MAXIMO DE CARACTERS ATINGIDO 10, LEVANTO PARA SELETORES DE PLANOS",
+        );
+        window.location.href = "planos.html";
+      }
+
+      tela.innerHTML += "+";
+    }
+    function menos() {
+      contador++;
+      if (contador >= 10) {
+        alert(
+          "MAXIMO DE CARACTERS ATINGIDO 10, LEVANTO PARA SELETORES DE PLANOS",
+        );
+        window.location.href = "planos.html";
+      }
+
+      tela.innerHTML += "-";
+    }
+    function vezes() {
+      alert("SEU PLANO NÃO TEM A FUNÇÃO DE MULTIPLICAR APRIMORE ELE");
+      window.location.href = "planos.html";
+    }
+  </script>
+</html>

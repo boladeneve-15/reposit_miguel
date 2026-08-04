@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Calculadora Premium VIP EA</title>
+
+    <style>
+      body {
+        height: 100vh;
+        margin: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        flex-direction: column;
+
+        background: linear-gradient(135deg, #fff8e1, #ffe082);
+
+        font-family: Arial;
+      }
+
+      #pai {
+        display: flex;
+
+        gap: 10px;
+
+        padding: 20px;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        background: linear-gradient(135deg, #fff8e1, #ffe082);
+
+        border: 1px solid #ffd54f;
+
+        color: #5d4037;
+
+        border-left: 8px solid #ffa000;
+
+        box-shadow: 5px 0 15px rgba(255, 160, 0, 0.3);
+
+        transition: 0.3s;
+      }
+
+      #pai:hover {
+        background: rgba(255, 160, 0, 0.2);
+
+        border-left: 8px solid #ff8f00;
+
+        box-shadow: 5px 0 20px rgba(255, 143, 0, 0.4);
+
+        transform: scale(1.03);
+      }
+
+      .resultado {
+        width: 180px;
+
+        height: 35px;
+
+        background: white;
+
+        border: 1px solid #ffa000;
+
+        color: #5d4037;
+
+        font-size: 20px;
+      }
+
+      input {
+        width: 45px;
+
+        height: 35px;
+
+        cursor: pointer;
+
+        border: 1px solid #ffd54f;
+
+        background: white;
+      }
+
+      input:hover {
+        background: #ffe082;
+      }
+
+      input:active {
+        transform: scale(0.9);
+
+        background: #ffca28;
+      }
+
+      #apagar,
+      #apagarTudo {
+        width: 120px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>CALCULADORA PREMIUM VIP</h1>
+
+    <div id="pai">
+      <h1 id="tela" class="resultado"></h1>
+
+      <div>
+        <input type="button" value="1" onclick="maisum()" />
+
+        <input type="button" value="2" onclick="maisdois()" />
+
+        <input type="button" value="3" onclick="maistres()" />
+      </div>
+
+      <div>
+        <input type="button" value="4" onclick="maisquatro()" />
+
+        <input type="button" value="5" onclick="maiscinco()" />
+
+        <input type="button" value="6" onclick="maisseis()" />
+      </div>
+
+      <div>
+        <input type="button" value="7" onclick="maissete()" />
+
+        <input type="button" value="8" onclick="maisoito()" />
+
+        <input type="button" value="9" onclick="maisnove()" />
+      </div>
+
+      <div>
+        <input type="button" value="+" onclick="mais()" />
+
+        <input type="button" value="-" onclick="menos()" />
+
+        <input type="button" value="x" onclick="vezes()" />
+
+        <input type="button" value="/" onclick="dividir()" />
+      </div>
+
+      <div>
+        <input type="button" value="=" onclick="igual()" />
+      </div>
+
+      <div>
+        <input id="apagar" type="button" value="APAGAR" onclick="apagar()" />
+
+        <input
+          id="apagarTudo"
+          type="button"
+          value="APAGAR TUDO"
+          onclick="apagarTudo()"
+        />
+      </div>
+    </div>
+
+    <script>
+      let contador = 0;
+
+      let maximoDeCalculos = 0;
+
+      let apagarUsado = 0;
+
+      let apagarTudoUsado = 0;
+
+      function limite() {
+        contador++;
+
+        if (contador > 40) {
+          alert("VOCÊ ATINGIU O LIMITE DE 40 CARACTERES DO PREMIUM VIP");
+
+          window.location.href = "planos.html";
+        }
+      }
+
+      function maisum() {
+        limite();
+
+        tela.innerHTML += 1;
+      }
+
+      function maisdois() {
+        limite();
+
+        tela.innerHTML += 2;
+      }
+
+      function maistres() {
+        limite();
+
+        tela.innerHTML += 3;
+      }
+
+      function maisquatro() {
+        limite();
+
+        tela.innerHTML += 4;
+      }
+
+      function maiscinco() {
+        limite();
+
+        tela.innerHTML += 5;
+      }
+
+      function maisseis() {
+        limite();
+
+        tela.innerHTML += 6;
+      }
+
+      function maissete() {
+        limite();
+
+        tela.innerHTML += 7;
+      }
+
+      function maisoito() {
+        limite();
+
+        tela.innerHTML += 8;
+      }
+
+      function maisnove() {
+        limite();
+
+        tela.innerHTML += 9;
+      }
+
+      function mais() {
+        limite();
+
+        tela.innerHTML += "+";
+      }
+
+      function menos() {
+        limite();
+
+        tela.innerHTML += "-";
+      }
+
+      function vezes() {
+        limite();
+
+        tela.innerHTML += "*";
+      }
+
+      function dividir() {
+        limite();
+
+        tela.innerHTML += "/";
+      }
+
+      function igual() {
+        tela.innerHTML = eval(tela.innerHTML);
+
+        maximoDeCalculos++;
+
+        if (maximoDeCalculos >= 20) {
+          alert("VOCÊ ATINGIU O LIMITE DE CÁLCULOS DO PREMIUM VIP");
+
+          window.location.href = "planos.html";
+        }
+      }
+
+      function apagar() {
+        if (apagarUsado >= 10) {
+          alert("VOCÊ USOU TODOS OS 10 APAGAMENTOS");
+
+          return;
+        }
+
+        let texto = tela.innerHTML;
+
+        tela.innerHTML = texto.substring(0, texto.length - 1);
+
+        apagarUsado++;
+      }
+
+      function apagarTudo() {
+        if (apagarTudoUsado >= 1) {
+          alert("O APAGAR TUDO SÓ PODE SER USADO UMA VEZ");
+
+          return;
+        }
+
+        tela.innerHTML = "";
+
+        contador = 0;
+
+        apagarTudoUsado++;
+      }
+    </script>
+  </body>
+</html>
