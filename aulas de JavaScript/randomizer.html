@@ -5,17 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="CSS fudido de bom.css">
+    <style>
+          body{
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        justify-content:start;
+        gap: 55px;
+        margin: 25px;
+        }
+        div{  display: flex;
+        flex-direction: row;
+        align-items:center;
+        justify-content:end;}
+    </style>
 </head>
 <body>
     <h1 id="resultado"> </h1>
     <button onclick="randomizar()">numeros aleatorios kkk risos gulosos</button>
+   <div>
+    <details>
+        <summary>
+            predict
+        </summary>
+        <button onclick="numeroaleatorioum()">numero aleatorio 1</button> <h4 id="numero1"></h4>
+        <button onclick="numeroaleatoriodois()"> numero aleatorio 2</button> <h4 id="numero2"></h4>
+        <button onclick="juntar()">juntar os 2</button>
+        <h2 id="soma"></h2>
+    </details>
+</div>
 </body>
 <script>
+    // function randomizar(){
+    
+    //     aleatorios = Math.random().toString()
+    //     corte = aleatorios.slice(2,4)
+    //     if(  corte > 0  && corte < 20){
+    //     resultado.innerHTML =  corte
+    //     }
+    //     else{
+    //         resultado.innerHTML = ""
+    //     }
+    // }
     function randomizar(){
     
-        aleatorios = Math.random()
-        corte = aleatorios.slice(0,1)
-        resultado.innerHTML =  corte
+        aleatorios1 = parseInt(Math.random() *10 + 1)
+        aleatorios2 = parseInt(Math.random() *10 + 1)
+        aleatorios3 = parseInt(Math.random() *10 + 1)
+        aleatorios4 = parseInt(Math.random() *10 + 1)
+        aleatorios5 = parseInt(Math.random() *10 + 1)
+        aleatorios6 = parseInt(Math.random() *10 + 1)
+        aleatorios7 = parseInt(Math.random() *10 + 1)
+        aleatorios8 = parseInt(Math.random() *10 + 1)
+        aleatorios9 = parseInt(Math.random() *10 + 1)
+        aleatorios10 = parseInt(Math.random() *10 + 1)
+        resultado.innerHTML =  aleatorios1 +","+ aleatorios2 +","+aleatorios3 +","+ aleatorios4 +","+ aleatorios5 +"," + aleatorios6 + "," + aleatorios7 +","+ aleatorios8 +","+ aleatorios9 +","+  aleatorios10 +""
+        
     }
+  
+    // function randomizar(){
+    
+    //     aleatorios = parseInt(Math.random() *11 +10 )
+    //     resultado.innerHTML =  aleatorios *-1
+        
+    // }
+
+
+
+
+
+
+
+
+
+    valorum = 0
+    valordois = 0
+    function numeroaleatorioum(){
+
+        valorum =  parseInt(Math.random() *11 +10)
+        numero1.innerHTML = valorum
+    }
+
+    function numeroaleatoriodois(){
+
+        valordois =  parseInt(Math.random() *11 +10)
+        numero2.innerHTML = valordois
+    }
+    function juntar(){
+        juntos = valorum + valordois
+        if(juntos > 20 && juntos < 30){
+            soma.innerHTML = juntos + " danilo e viado"
+
+        }
+        else if(juntos == 30){
+            soma.innerHTML = juntos + " miguel almeida e viado"
+        }
+        else{
+            soma.innerHTML = juntos + "  dinilo && miguel almeida e viado"
+        }
+    }
+
 </script>
 </html>
