@@ -22,6 +22,8 @@
 </head>
 <body>
     <h1 id="resultado"> </h1>
+    <input type="number" id="comeco" placeholder="onde começar"><input type="number" id="intervalo" placeholder="intervalo de numeros"> <input type="number" id="quantos" placeholder="quantos numeros">
+
     <button onclick="randomizar()">numeros aleatorios kkk risos gulosos</button>
    <div>
     <details>
@@ -48,20 +50,35 @@
     //     }
     // }
     function randomizar(){
-    
-        aleatorios1 = parseInt(Math.random() *10 + 1)
-        aleatorios2 = parseInt(Math.random() *10 + 1)
-        aleatorios3 = parseInt(Math.random() *10 + 1)
-        aleatorios4 = parseInt(Math.random() *10 + 1)
-        aleatorios5 = parseInt(Math.random() *10 + 1)
-        aleatorios6 = parseInt(Math.random() *10 + 1)
-        aleatorios7 = parseInt(Math.random() *10 + 1)
-        aleatorios8 = parseInt(Math.random() *10 + 1)
-        aleatorios9 = parseInt(Math.random() *10 + 1)
-        aleatorios10 = parseInt(Math.random() *10 + 1)
-        resultado.innerHTML =  aleatorios1 +","+ aleatorios2 +","+aleatorios3 +","+ aleatorios4 +","+ aleatorios5 +"," + aleatorios6 + "," + aleatorios7 +","+ aleatorios8 +","+ aleatorios9 +","+  aleatorios10 +""
-        
+        resultado.innerHTML =  ""
+        lista = []
+        inicio =  parseInt(comeco.value)
+        inter =   parseInt(intervalo.value)
+        maximo =  parseInt(quantos.value)
+
+        for(i= 1; i<maximo; i++){
+        aleatorios = parseInt(Math.random() *(inter - inicio) + inicio)
+        lista.push(aleatorios)
+        resultado.innerHTML =  lista
+
     }
+    
+    }
+    // function randomizar(){
+    
+    //     aleatorios1 = parseInt(Math.random() *10 + 1)
+    //     aleatorios2 = parseInt(Math.random() *10 + 1)
+    //     aleatorios3 = parseInt(Math.random() *10 + 1)
+    //     aleatorios4 = parseInt(Math.random() *10 + 1)
+    //     aleatorios5 = parseInt(Math.random() *10 + 1)
+    //     aleatorios6 = parseInt(Math.random() *10 + 1)
+    //     aleatorios7 = parseInt(Math.random() *10 + 1)
+    //     aleatorios8 = parseInt(Math.random() *10 + 1)
+    //     aleatorios9 = parseInt(Math.random() *10 + 1)
+    //     aleatorios10 = parseInt(Math.random() *10 + 1)
+    //     resultado.innerHTML =  aleatorios1 +","+ aleatorios2 +","+aleatorios3 +","+ aleatorios4 +","+ aleatorios5 +"," + aleatorios6 + "," + aleatorios7 +","+ aleatorios8 +","+ aleatorios9 +","+  aleatorios10 +""
+        
+    // }
   
     // function randomizar(){
     

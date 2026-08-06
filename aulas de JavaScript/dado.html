@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="dado()">rodar dado</button>
+    <h2 id="mostrar"></h2>
+</body>
+<script>
+function dado(){
+    num = parseInt(Math.random()* (7-1) + 1)
+    mostrar.innerHTML = num
+
+    if(num == 1){
+       mostrar.innerHTML =  ` <img class="foto" src=${"images1.png"}>`
+    }
+    else if(num == 2){
+       mostrar.innerHTML =  ` <img class="foto" src=${"white-face-cube-dot-of-game-dice-png.webp"}>`
+    }
+    else if(num == 3){
+       mostrar.innerHTML =  ` <img class="foto" src=${"43723.png"}>`
+    }
+    else if(num == 4){
+       mostrar.innerHTML =  ` <img class="foto" src=${"images.jpg"}>`
+    }
+    else if(num == 5){
+       mostrar.innerHTML =  ` <img class="foto" src=${"dado5.png"}>`
+    }
+    else if(num == 6){
+       mostrar.innerHTML =  ` <img class="foto" src=${"images6.jpg"}>`
+    }
+   
+}
+</script>
+</html>
