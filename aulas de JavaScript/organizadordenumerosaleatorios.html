@@ -29,9 +29,25 @@
         }
       }
 
-      resultado.innerHTML = lista.join("-")
-    }
- 
+     
     
+    lenlista = lista.length - 1;
+    extra = 0;
+   
+        for (k = 0; k < lenlista; k++) {
+            minimo = k;
+            for (j = k + 1; j <= lenlista; j++) {
+                if (lista[j] < lista[minimo]) {
+                    minimo = j;
+                }
+            }
+            if (k != minimo) {
+                extra = lista[k];
+                lista[k] = lista[minimo];
+                lista[minimo] = extra;
+            }
+        }
+         resultado.innerHTML = lista.join("-")
+    }
   </script>
 </html>
