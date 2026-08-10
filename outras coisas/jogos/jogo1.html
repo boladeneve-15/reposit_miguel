@@ -1,162 +1,324 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>VS Code Clicker</title>
-    <style>
-        body {
-            background-color: #1e1e1e;
-            color: #d4d4d4;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            background-color: #252526;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            border: 1px solid #3c3c3c;
-        }
-        h1 { color: #4ec9b0; font-size: 28px; }
-        .Placar { font-size: 22px; margin: 20px 0; color: #ce9178; }
-        
-        /* Botão Principal Estilo VS Code */
-        #botao-clique {
-            background-color: #0e639c;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.2s;
-            width: 100%;
-        }
-        #botao-clique:hover { background-color: #1177bb; }
-        #botao-clique:active { transform: scale(0.98); }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VS Code Developer Clicker</title>
+<style>
+  :root{
+    --bg:#1e1e1e; --panel:#252526; --panel2:#2d2d30; --border:#3c3c3c;
+    --accent:#4ec9b0; --accent2:#0e639c; --accent2h:#1177bb;
+    --gold:#ce9178; --green:#6a9955; --text:#d4d4d4;
+  }
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+    text-align:center; padding:20px; margin:0;
+  }
+  .container{
+    max-width:560px; margin:0 auto; background:var(--panel);
+    padding:30px; border-radius:10px;
+    box-shadow:0 4px 20px rgba(0,0,0,.5); border:1px solid var(--border);
+  }
+  h1{color:var(--accent); font-size:26px; margin-bottom:4px;}
+  .subtitle{color:#888; font-size:13px; margin-bottom:20px;}
 
-        .loja {
-            margin-top: 30px;
-            text-align: left;
-            border-top: 1px solid #3c3c3c;
-            padding-top: 20px;
-        }
-        .item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #2d2d30;
-            padding: 10px 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
-        .btn-comprar {
-            background-color: #333333;
-            color: #ccc;
-            border: 1px solid #555;
-            padding: 5px 15px;
-            cursor: pointer;
-            border-radius: 3px;
-        }
-        .btn-comprar:hover { background-color: #444; color: #fff; }
-    </style>
+  .placar{font-size:22px; margin:20px 0; color:var(--gold);}
+  .placar small{display:block; font-size:14px; color:var(--green); margin-top:4px;}
+  .stats-row{display:flex; justify-content:center; gap:16px; font-size:12px; color:#888; margin-top:6px;}
+
+  #botao-clique{
+    background:var(--accent2); color:#fff; border:none;
+    padding:18px 30px; font-size:19px; font-weight:bold;
+    border-radius:8px; cursor:pointer; transition:.15s; width:100%;
+    user-select:none;
+  }
+  #botao-clique:hover{background:var(--accent2h);}
+  #botao-clique:active{transform:scale(0.97);}
+
+  .tabs{display:flex; gap:6px; margin-top:26px; border-bottom:1px solid var(--border);}
+  .tab-btn{
+    flex:1; background:none; border:none; color:#888; padding:10px;
+    cursor:pointer; font-size:13px; border-bottom:2px solid transparent;
+  }
+  .tab-btn.active{color:var(--accent); border-bottom:2px solid var(--accent);}
+  .tab-content{display:none; text-align:left; padding-top:16px;}
+  .tab-content.active{display:block;}
+
+  .item{
+    display:flex; justify-content:space-between; align-items:center;
+    background:var(--panel2); padding:10px 15px; margin:8px 0;
+    border-radius:6px; border:1px solid transparent; transition:.15s;
+  }
+  .item.owned-hint{border-color:#3c3c3c;}
+  .item small{color:#999;}
+  .item .count{color:var(--accent); font-weight:bold; margin-left:6px;}
+
+  .btn-comprar{
+    background:#333; color:#ccc; border:1px solid #555;
+    padding:7px 14px; cursor:pointer; border-radius:4px; font-size:13px;
+    white-space:nowrap;
+  }
+  .btn-comprar:hover:not(:disabled){background:#444; color:#fff;}
+  .btn-comprar:disabled{opacity:.4; cursor:not-allowed;}
+
+  .achievement{
+    display:flex; align-items:center; gap:10px; background:var(--panel2);
+    padding:8px 12px; margin:6px 0; border-radius:6px; opacity:.35;
+  }
+  .achievement.unlocked{opacity:1; border-left:3px solid var(--accent);}
+  .achievement .icon{font-size:20px;}
+  .achievement .name{font-weight:bold; font-size:13px;}
+  .achievement .desc{font-size:11px; color:#999;}
+
+  .toast{
+    position:fixed; top:16px; left:50%; transform:translateX(-50%);
+    background:var(--accent2); color:#fff; padding:10px 18px; border-radius:6px;
+    font-size:13px; opacity:0; transition:opacity .3s, top .3s; pointer-events:none;
+    z-index:99;
+  }
+  .toast.show{opacity:1; top:30px;}
+
+  .float{
+    position:absolute; color:var(--gold); font-weight:bold; font-size:14px;
+    pointer-events:none; animation:rise 0.8s ease-out forwards;
+  }
+  @keyframes rise{
+    from{opacity:1; transform:translateY(0);}
+    to{opacity:0; transform:translateY(-40px);}
+  }
+
+  .footer-actions{margin-top:20px; display:flex; gap:10px; justify-content:center;}
+  .footer-actions button{
+    background:none; border:1px solid var(--border); color:#888;
+    padding:6px 12px; border-radius:4px; cursor:pointer; font-size:12px;
+  }
+  .footer-actions button:hover{color:#fff; border-color:#666;}
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>💻 VS Code Developer Clicker</h1>
-        <p>Clique no botão para produzir linhas de código!</p>
-        
-        <div class="Placar">
-            <span id="linhas">0</span> Linhas de Código
-            <br>
-            <small style="font-size: 14px; color: #6a9955;" id="auto-txt">0 linhas por segundo</small>
-        </div>
+<div class="container" id="app-container">
+  <h1>💻 VS Code Developer Clicker</h1>
+  <p class="subtitle">Clique para produzir linhas de código e vire o dev mais produtivo do mundo!</p>
 
-        <button id="botao-clique">💻 Escrever Linha de Código (+1)</button>
+  <div class="placar">
+    <span id="linhas">0</span> Linhas de Código
+    <small id="auto-txt">0 linhas por segundo</small>
+    <div class="stats-row">
+      <span>Total gerado: <b id="total-gerado">0</b></span>
+      <span>Cliques: <b id="total-cliques">0</b></span>
+    </div>
+  </div>
 
-        <div class="loja">
-            <h3>🛒 Loja de Upgrades</h3>
-            
-            <div class="item">
-                <div>
-                    <strong>☕ Café Forte</strong><br>
-                    <small>Seus cliques valem +1 linha</small>
-                </div>
-                <button class="btn-comprar" id="buy-cafe">Comprar (Preço: 15)</button>
-            </div>
+  <button id="botao-clique">💻 Escrever Linha de Código (+<span id="valor-clique">1</span>)</button>
 
-            <div class="item">
-                <div>
-                    <strong>🤖 Estagiário Robô</strong><br>
-                    <small>Gera 1 linha de código sozinha por segundo</small>
-                </div>
-                <button class="btn-comprar" id="buy-robo">Contratar (Preço: 50)</button>
-            </div>
-        </div>
-        <script>
-        let linhas = 0;
-        let linhasPorClique = 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
-        let linhasPorSegundo = 50000;
-        
-        let precoCafe = 0;
-        let precoRobo = 0;
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="loja">🛒 Loja</button>
+    <button class="tab-btn" data-tab="conquistas">🏆 Conquistas</button>
+  </div>
 
-        // Elementos da tela
-        const txtLinhas = document.getElementById('linhas');
-        const txtAuto = document.getElementById('auto-txt');
-        const btnClique = document.getElementById('botao-clique');
-        const btnCafe = document.getElementById('buy-cafe');
-        const btnRobo = document.getElementById('buy-robo');
+  <div class="tab-content active" id="tab-loja"></div>
+  <div class="tab-content" id="tab-conquistas"></div>
 
-        // Mecânica de Clique
-        btnClique.addEventListener('click', () => {
-            linhas += linhasPorClique;
-            atualizarTela();
-        });
+  <div class="footer-actions">
+    <button id="btn-reset">🔄 Reiniciar jogo</button>
+  </div>
+</div>
 
-        // Comprar Café
-        btnCafe.addEventListener('click', () => {
-            if (linhas >= precoCafe) {
-                linhas -= precoCafe;
-                linhasPorClique += 1;
-                precoCafe = Math.floor(precoCafe * 1.5);
-                btnCafe.innerText = `Comprar (Preço: ${precoCafe})`;
-                atualizarTela();
-            } else {
-                alert("Linhas de código insuficientes!");
-            }
-        });
+<div class="toast" id="toast"></div>
 
-        // Comprar Robô
-        btnRobo.addEventListener('click', () => {
-            if (linhas >= precoRobo) {
-                linhas -= precoRobo;
-                linhasPorSegundo += 1;
-                precoRobo = Math.floor(precoRobo * 1.7);
-                btnRobo.innerText = `Contratar (Preço: ${precoRobo})`;
-                atualizarTela();
-            } else {
-                alert("Linhas de código insuficientes!");
-            }
-        });
+<script>
+// ---------- Estado ----------
+let linhas = 0;
+let totalGerado = 0;
+let totalCliques = 0;
+let linhasPorClique = 1;
+let linhasPorSegundo = 0;
 
-        // Loop de Automação (Gera pontos por segundo)
-        setInterval(() => {
-            if (linhasPorSegundo > 0) {
-                linhas += linhasPorSegundo;
-                atualizarTela();
-            }
-        }, 1000);
+const upgrades = [
+  { id:'cafe', nome:'☕ Café Forte', desc:'Seus cliques valem +1 linha', preco:15, base:15, fator:1.15, qtd:0,
+    tipo:'clique', efeito:1 },
+  { id:'robo', nome:'🤖 Estagiário Robô', desc:'Gera 1 linha/segundo', preco:50, base:50, fator:1.15, qtd:0,
+    tipo:'auto', efeito:1 },
+  { id:'ide', nome:'⚡ Atalhos de Teclado', desc:'Cliques valem +5 linhas', preco:200, base:200, fator:1.15, qtd:0,
+    tipo:'clique', efeito:5 },
+  { id:'ci', nome:'🔧 Pipeline de CI/CD', desc:'Gera 8 linhas/segundo', preco:400, base:400, fator:1.15, qtd:0,
+    tipo:'auto', efeito:8 },
+  { id:'ia', nome:'🧠 Assistente de IA', desc:'Gera 25 linhas/segundo', preco:1500, base:1500, fator:1.15, qtd:0,
+    tipo:'auto', efeito:25 },
+  { id:'time', nome:'👥 Contratar Equipe', desc:'Gera 100 linhas/segundo', preco:8000, base:8000, fator:1.15, qtd:0,
+    tipo:'auto', efeito:100 },
+];
 
-        function atualizarTela() {
-            txtLinhas.innerText = linhas;
-            txtAuto.innerText = `${linhasPorSegundo} linhas por segundo`;
-        }
-    </script>
+const achievementsDef = [
+  { id:'a1', icon:'🎯', nome:'Primeiro Commit', desc:'Escreva sua primeira linha', check:s=>s.totalGerado>=1 },
+  { id:'a2', icon:'💯', nome:'Cem Linhas', desc:'Alcance 100 linhas totais', check:s=>s.totalGerado>=100 },
+  { id:'a3', icon:'🔥', nome:'Mil Linhas', desc:'Alcance 1.000 linhas totais', check:s=>s.totalGerado>=1000 },
+  { id:'a4', icon:'🚀', nome:'10 Mil Linhas', desc:'Alcance 10.000 linhas totais', check:s=>s.totalGerado>=10000 },
+  { id:'a5', icon:'☕', nome:'Cafeinado', desc:'Compre seu primeiro Café Forte', check:s=>upgradeQtd('cafe')>=1 },
+  { id:'a6', icon:'🤖', nome:'Chefe de Robôs', desc:'Tenha 5 Estagiários Robôs', check:s=>upgradeQtd('robo')>=5 },
+  { id:'a7', icon:'🧠', nome:'Era da IA', desc:'Compre um Assistente de IA', check:s=>upgradeQtd('ia')>=1 },
+  { id:'a8', icon:'🖱️', nome:'Dedo Cansado', desc:'Clique 200 vezes', check:s=>s.totalCliques>=200 },
+  { id:'a9', icon:'⚙️', nome:'Automação Total', desc:'Alcance 100 linhas/segundo', check:s=>linhasPorSegundo>=100 },
+];
+const unlocked = new Set();
+
+function upgradeQtd(id){ return upgrades.find(u=>u.id===id).qtd; }
+
+// ---------- Elementos ----------
+const txtLinhas = document.getElementById('linhas');
+const txtAuto = document.getElementById('auto-txt');
+const txtValorClique = document.getElementById('valor-clique');
+const txtTotalGerado = document.getElementById('total-gerado');
+const txtTotalCliques = document.getElementById('total-cliques');
+const btnClique = document.getElementById('botao-clique');
+const tabLoja = document.getElementById('tab-loja');
+const tabConquistas = document.getElementById('tab-conquistas');
+const toast = document.getElementById('toast');
+
+// ---------- Loja ----------
+function renderLoja(){
+  tabLoja.innerHTML = '';
+  upgrades.forEach(u=>{
+    const div = document.createElement('div');
+    div.className = 'item';
+    div.innerHTML = `
+      <div>
+        <strong>${u.nome}</strong><span class="count">${u.qtd>0?`x${u.qtd}`:''}</span><br>
+        <small>${u.desc}</small>
+      </div>
+      <button class="btn-comprar" data-id="${u.id}" ${linhas < u.preco ? 'disabled' : ''}>
+        Comprar (${formatar(u.preco)})
+      </button>`;
+    tabLoja.appendChild(div);
+  });
+  tabLoja.querySelectorAll('.btn-comprar').forEach(btn=>{
+    btn.addEventListener('click', ()=> comprar(btn.dataset.id));
+  });
+}
+
+function comprar(id){
+  const u = upgrades.find(x=>x.id===id);
+  if (linhas < u.preco) { mostrarToast('Linhas de código insuficientes!'); return; }
+  linhas -= u.preco;
+  u.qtd += 1;
+  u.preco = Math.ceil(u.base * Math.pow(u.fator, u.qtd));
+  if (u.tipo === 'clique') linhasPorClique += u.efeito;
+  else linhasPorSegundo += u.efeito;
+  mostrarToast(`${u.nome} adquirido!`);
+  atualizarTudo();
+}
+
+// ---------- Conquistas ----------
+function renderConquistas(){
+  tabConquistas.innerHTML = '';
+  achievementsDef.forEach(a=>{
+    const div = document.createElement('div');
+    div.className = 'achievement' + (unlocked.has(a.id) ? ' unlocked' : '');
+    div.innerHTML = `
+      <span class="icon">${unlocked.has(a.id) ? a.icon : '🔒'}</span>
+      <div>
+        <div class="name">${a.nome}</div>
+        <div class="desc">${a.desc}</div>
+      </div>`;
+    tabConquistas.appendChild(div);
+  });
+}
+
+function verificarConquistas(){
+  const state = { totalGerado, totalCliques };
+  let novo = false;
+  achievementsDef.forEach(a=>{
+    if (!unlocked.has(a.id) && a.check(state)){
+      unlocked.add(a.id);
+      mostrarToast(`🏆 Conquista desbloqueada: ${a.nome}`);
+      novo = true;
+    }
+  });
+  if (novo) renderConquistas();
+}
+
+// ---------- Utilitários ----------
+function formatar(n){
+  if (n >= 1e9) return (n/1e9).toFixed(2) + 'B';
+  if (n >= 1e6) return (n/1e6).toFixed(2) + 'M';
+  if (n >= 1e3) return (n/1e3).toFixed(1) + 'K';
+  return Math.floor(n).toString();
+}
+
+let toastTimeout;
+function mostrarToast(msg){
+  clearTimeout(toastTimeout);
+  toast.textContent = msg;
+  toast.classList.add('show');
+  toastTimeout = setTimeout(()=> toast.classList.remove('show'), 1800);
+}
+
+function floatingNumber(valor, evt){
+  const f = document.createElement('div');
+  f.className = 'float';
+  f.textContent = '+' + formatar(valor);
+  const rect = btnClique.getBoundingClientRect();
+  const x = (evt?.clientX ?? rect.left + rect.width/2) + window.scrollX;
+  const y = (evt?.clientY ?? rect.top) + window.scrollY;
+  f.style.left = x + 'px';
+  f.style.top = y + 'px';
+  f.style.position = 'absolute';
+  document.body.appendChild(f);
+  setTimeout(()=> f.remove(), 800);
+}
+
+function atualizarTudo(){
+  txtLinhas.textContent = formatar(linhas);
+  txtAuto.textContent = `${formatar(linhasPorSegundo)} linhas por segundo`;
+  txtValorClique.textContent = formatar(linhasPorClique);
+  txtTotalGerado.textContent = formatar(totalGerado);
+  txtTotalCliques.textContent = formatar(totalCliques);
+  renderLoja();
+  verificarConquistas();
+}
+
+// ---------- Eventos ----------
+btnClique.addEventListener('click', (e)=>{
+  linhas += linhasPorClique;
+  totalGerado += linhasPorClique;
+  totalCliques += 1;
+  floatingNumber(linhasPorClique, e);
+  atualizarTudo();
+});
+
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+document.getElementById('btn-reset').addEventListener('click', ()=>{
+  if (!confirm('Tem certeza que deseja reiniciar todo o progresso?')) return;
+  linhas = 0; totalGerado = 0; totalCliques = 0;
+  linhasPorClique = 1; linhasPorSegundo = 0;
+  upgrades.forEach(u=>{ u.qtd = 0; u.preco = u.base; });
+  unlocked.clear();
+  renderConquistas();
+  atualizarTudo();
+});
+
+setInterval(()=>{
+  if (linhasPorSegundo > 0){
+    linhas += linhasPorSegundo;
+    totalGerado += linhasPorSegundo;
+    atualizarTudo();
+  }
+}, 1000);
+
+// ---------- Inicialização ----------
+renderConquistas();
+atualizarTudo();
+</script>
 </body>
 </html>

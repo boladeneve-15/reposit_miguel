@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dungeon Tears — Roguelite 2D</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#08090d;color:#eee;font-family:Arial,Helvetica,sans-serif}
+body{display:grid;place-items:center}
+#game{width:min(96vw,1100px);height:auto;aspect-ratio:16/10;border:2px solid #303442;background:#11131b;image-rendering:pixelated;box-shadow:0 20px 70px #000}
+#wrap{position:relative;width:min(96vw,1100px)}
+#hint{position:absolute;bottom:9px;left:12px;font-size:12px;color:#9da3b5;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="wrap">
+<canvas id="game" width="1100" height="688"></canvas>
+<div id="hint">WASD / setas: mover • mouse: mirar • clique: atirar • R: reiniciar</div>
+</div>
+
+<script>
+(() => {
+const canvas=document.getElementById("game"), ctx=canvas.getContext("2d");
+const W=canvas.width,H=canvas.height;
+const keys={}, mouse={x:W/2,y:H/2,down:false};
+
+addEventListener("keydown",e=>{keys[e.key.toLowerCase()]=true;if(e.key.toLowerCase()==="r")reset()});
+addEventListener("keyup",e=>keys[e.key.toLowerCase()]=false);
+canvas.addEventListener("mousemove",e=>{
+  const r=canvas.getBoundingClientRect();
+  mouse.x=(e.clientX-r.left)*W/r.width;
+  mouse.y=(e.clientY-r.top)*H/r.height;
+});
+canvas.addEventListener("mousedown",()=>mouse.down=true);
+addEventListener("mouseup",()=>mouse.down=false);
+
+let player,enemies,shots,enemyShots,particles,coins,room,level,score,gameOver,won,fireTimer,shake,doorOpen;
+
+const rooms=[
+ {x:105,y:92,w:890,h:535},
+ {x:60,y:70,w:980,h:580},
+ {x:145,y:48,w:810,h:615},
+ {x:90,y:125,w:920,h:470}
+];
+
+function reset(){
+ level=1;score=0;gameOver=false;won=false;shake=0;
+ setupRoom(0);
+}
+
+function setupRoom(index){
+ room=rooms[index%rooms.length];
+ player={x:W/2,y:H/2,r:17,hp:6,maxHp:6,speed:3.6,damage:1,fireRate:10,inv:0};
+ enemies=[];shots=[];enemyShots=[];particles=[];coins=[];fireTimer=0;doorOpen=false;
+
+ const count=3+level+Math.floor(Math.random()*3);
+ for(let i=0;i<count;i++)spawnEnemy();
+}
+
+function spawnEnemy(){
+ let x,y;
+ do{
+  x=room.x+35+Math.random()*(room.w-70);
+  y=room.y+35+Math.random()*(room.h-70);
+ }while(Math.hypot(x-player.x,y-player.y)<170);
+
+ const boss=level%3===0 && enemies.length===0;
+ const hp=boss?13+level*3:2+Math.floor(level/2);
+ enemies.push({
+  x,y,r:boss?30:18,hp,maxHp:hp,
+  speed:boss?0.85:1.15+Math.random()*.55,
+  cooldown:30+Math.random()*80,
+  shootRate:boss?48:95+Math.random()*75,
+  boss
+ });
+}
+
+function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+function d(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}
+
+function keepInRoom(o){
+ o.x=clamp(o.x,room.x+o.r,room.x+room.w-o.r);
+ o.y=clamp(o.y,room.y+o.r,room.y+room.h-o.r);
+}
+
+function burst(x,y,color,n=8){
+ for(let i=0;i<n;i++){
+  const a=Math.random()*Math.PI*2,s=1+Math.random()*3.5;
+  particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:20+Math.random()*30,color});
+ }
+}
+
+function shootPlayer(){
+ const a=Math.atan2(mouse.y-player.y,mouse.x-player.x);
+ shots.push({
+  x:player.x+Math.cos(a)*22,y:player.y+Math.sin(a)*22,
+  vx:Math.cos(a)*8.5,vy:Math.sin(a)*8.5,r:5,life:85,damage:player.damage
+ });
+}
+
+function shootEnemy(e){
+ const a=Math.atan2(player.y-e.y,player.x-e.x);
+ enemyShots.push({
+  x:e.x,y:e.y,vx:Math.cos(a)*3.4,vy:Math.sin(a)*3.4,r:5,life:190,damage:1
+ });
+}
+
+function update(){
+ if(gameOver||won)return;
+
+ if(player.inv>0)player.inv--;
+ fireTimer--;
+ if(shake>0)shake*=.82;
+
+ let dx=(keys.d||keys.arrowright?1:0)-(keys.a||keys.arrowleft?1:0);
+ let dy=(keys.s||keys.arrowdown?1:0)-(keys.w||keys.arrowup?1:0);
+ const len=Math.hypot(dx,dy)||1;
+ player.x+=dx/len*player.speed;
+ player.y+=dy/len*player.speed;
+ keepInRoom(player);
+
+ if(mouse.down&&fireTimer<=0){
+  shootPlayer();
+  fireTimer=player.fireRate;
+ }
+
+ for(const b of shots){
+  b.x+=b.vx;b.y+=b.vy;b.life--;
+  for(const e of enemies){
+   if(e.hp<=0)continue;
+   if(Math.hypot(b.x-e.x,b.y-e.y)<b.r+e.r){
+    e.hp-=b.damage;b.life=0;burst(b.x,b.y,"#f1dfa1",5);
+    if(e.hp<=0){score+=e.boss?500:100;burst(e.x,e.y,e.boss?"#d85c75":"#9d6b8e",18)}
+    break;
+   }
+  }
+ }
+ shots=shots.filter(b=>b.life>0&&b.x>room.x-20&&b.x<room.x+room.w+20&&b.y>room.y-20&&b.y<room.y+room.h+20);
+
+ for(const e of enemies){
+  if(e.hp<=0)continue;
+  const angle=Math.atan2(player.y-e.y,player.x-e.x),dist=d(e,player);
+
+  if(dist>65){
+   e.x+=Math.cos(angle)*e.speed;
+   e.y+=Math.sin(angle)*e.speed;
+  }
+  keepInRoom(e);
+
+  e.cooldown--;
+  if(e.cooldown<=0&&dist<500){
+   shootEnemy(e);
+   e.cooldown=e.shootRate*(.7+Math.random()*.6);
+  }
+
+  if(dist<player.r+e.r&&player.inv<=0){
+   player.hp--;player.inv=45;shake=9;
+   burst(player.x,player.y,"#ef6474",12);
+  }
+ }
+
+ for(const b of enemyShots){
+  b.x+=b.vx;b.y+=b.vy;b.life--;
+  if(Math.hypot(b.x-player.x,b.y-player.y)<b.r+player.r&&player.inv<=0){
+   player.hp-=b.damage;player.inv=45;shake=8;b.life=0;
+   burst(player.x,player.y,"#ef6474",12);
+  }
+ }
+ enemyShots=enemyShots.filter(b=>b.life>0&&b.x>room.x-30&&b.x<room.x+room.w+30&&b.y>room.y-30&&b.y<room.y+room.h+30);
+
+ for(const p of particles){
+  p.x+=p.vx;p.y+=p.vy;p.vx*=.94;p.vy*=.94;p.life--;
+ }
+ particles=particles.filter(p=>p.life>0);
+
+ if(!doorOpen && enemies.every(e=>e.hp<=0)){
+  doorOpen=true;
+  coins=[{x:W/2,y:H/2,r:11}];
+  burst(W/2,H/2,"#e8ca68",25);
+ }
+
+ if(doorOpen&&coins.length&&d(player,coins[0])<32){
+  level++;
+  if(level>9){won=true;return}
+  setupRoom(level-1);
+ }
+
+ if(player.hp<=0)gameOver=true;
+}
+
+function circle(x,y,r,fill){
+ ctx.fillStyle=fill;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();
+}
+
+function draw(){
+ ctx.save();
+ const sx=(Math.random()-.5)*shake,sy=(Math.random()-.5)*shake;
+ ctx.translate(sx,sy);
+
+ ctx.fillStyle="#08090d";ctx.fillRect(0,0,W,H);
+
+ // chão
+ ctx.fillStyle="#171923";ctx.fillRect(room.x,room.y,room.w,room.h);
+ ctx.strokeStyle="#343744";ctx.lineWidth=9;ctx.strokeRect(room.x,room.y,room.w,room.h);
+
+ ctx.strokeStyle="#222530";ctx.lineWidth=1;
+ for(let x=room.x+20;x<room.x+room.w;x+=40){
+  ctx.beginPath();ctx.moveTo(x,room.y);ctx.lineTo(x,room.y+room.h);ctx.stroke();
+ }
+ for(let y=room.y+20;y<room.y+room.h;y+=40){
+  ctx.beginPath();ctx.moveTo(room.x,y);ctx.lineTo(room.x+room.w,y);ctx.stroke();
+ }
+
+ // pequenas manchas decorativas
+ for(let i=0;i<28;i++){
+  const x=room.x+20+(i*97)%Math.max(50,room.w-40);
+  const y=room.y+25+(i*53)%Math.max(50,room.h-50);
+  ctx.fillStyle="#12141c";ctx.fillRect(x,y,8,5);
+ }
+
+ // portas
+ if(doorOpen){
+  ctx.fillStyle="#d8bb68";
+  ctx.fillRect(W/2-38,room.y-8,76,16);
+  ctx.fillRect(W/2-38,room.y+room.h-8,76,16);
+  ctx.fillRect(room.x-8,H/2-38,16,76);
+  ctx.fillRect(room.x+room.w-8,H/2-38,16,76);
+ }
+
+ // moeda/saída
+ for(const co of coins){
+  circle(co.x,co.y,co.r+Math.sin(Date.now()/160)*2,"#e9ca60");
+  circle(co.x,co.y,5,"#fff0a1");
+ }
+
+ // inimigos
+ for(const e of enemies){
+  if(e.hp<=0)continue;
+  circle(e.x,e.y,e.r,e.boss?"#7c304d":"#68465a");
+  circle(e.x-6,e.y-4,4,"#e5a0ac");
+  circle(e.x+6,e.y-4,4,"#e5a0ac");
+  ctx.fillStyle="#090a0e";ctx.fillRect(e.x-e.r,e.y-e.r-10,e.r*2,5);
+  ctx.fillStyle="#d86470";ctx.fillRect(e.x-e.r,e.y-e.r-10,e.r*2*(e.hp/e.maxHp),5);
+  if(e.boss){
+   ctx.strokeStyle="#e0a0ad";ctx.lineWidth=2;ctx.strokeRect(e.x-e.r-4,e.y-e.r-4,e.r*2+8,e.r*2+8);
+  }
+ }
+
+ // projéteis
+ for(const b of shots)circle(b.x,b.y,b.r,"#f3dfa0");
+ for(const b of enemyShots)circle(b.x,b.y,b.r,"#d86691");
+
+ // jogador
+ if(player.inv%6<3){
+  circle(player.x,player.y,player.r,"#d8dbe2");
+  circle(player.x,player.y+7,9,"#8d95a9");
+  const a=Math.atan2(mouse.y-player.y,mouse.x-player.x);
+  ctx.strokeStyle="#f5f5f5";ctx.lineWidth=5;
+  ctx.beginPath();ctx.moveTo(player.x,player.y);ctx.lineTo(player.x+Math.cos(a)*28,player.y+Math.sin(a)*28);ctx.stroke();
+ }
+
+ for(const p of particles){
+  ctx.globalAlpha=Math.max(0,p.life/45);
+  ctx.fillStyle=p.color;ctx.fillRect(p.x,p.y,4,4);
+  ctx.globalAlpha=1;
+ }
+
+ // HUD
+ ctx.fillStyle="#090a0ed9";ctx.fillRect(0,0,W,65);
+ ctx.font="bold 20px Arial";
+ ctx.fillStyle="#f0e8d1";
+ ctx.fillText("DUNGEON TEARS",18,25);
+
+ ctx.font="16px Arial";
+ ctx.fillStyle="#f28b91";
+ ctx.fillText("♥".repeat(Math.max(0,player.hp)),18,49);
+ ctx.fillStyle="#555866";
+ ctx.fillText("♥".repeat(Math.max(0,player.maxHp-player.hp)),18+player.maxHp*15,49);
+
+ ctx.fillStyle="#bfc3cf";
+ ctx.fillText("Sala "+level+"/9",190,27);
+ ctx.fillText("Pontos "+score,190,50);
+
+ ctx.textAlign="right";
+ ctx.fillStyle=doorOpen?"#e8cc70":"#a6aab7";
+ ctx.fillText(doorOpen?"Pegue a moeda!":"Derrote todos os inimigos",W-18,28);
+ ctx.font="12px Arial";ctx.fillStyle="#7f8492";
+ ctx.fillText("R reinicia",W-18,49);
+ ctx.textAlign="left";
+
+ ctx.restore();
+
+ if(gameOver||won){
+  ctx.fillStyle="#05060bdc";ctx.fillRect(0,0,W,H);
+  ctx.textAlign="center";
+  ctx.font="bold 54px Arial";
+  ctx.fillStyle=won?"#e5cb70":"#e46b79";
+  ctx.fillText(won?"VOCÊ VENCEU!":"VOCÊ MORREU",W/2,H/2-30);
+  ctx.font="20px Arial";ctx.fillStyle="#d1d3da";
+  ctx.fillText("Pressione R para jogar novamente",W/2,H/2+18);
+  ctx.textAlign="left";
+ }
+}
+
+function loop(){
+ update();draw();requestAnimationFrame(loop);
+}
+reset();loop();
+})();
+</script>
+</body>
+</html>

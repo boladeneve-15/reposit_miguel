@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="calculos()"> </button>
+    <button onclick="quadrado()">qua</button>
+    <button onclick="A()"></button>
+    <button onclick="B()"></button>
+</body>
+<script>
+        function A(nome, idade, telefone){
+        console.log(`ola ${nome} sua idade e ${idade} e seus telefones são [${telefone}]`)
+        return nome
+        }
+
+    function B( ){
+    A("miguel", 18, 40028922)
+      
+    }
+    function multiplicar(x,y, operacao){
+        calcular = (x * y)
+        return calcular
+    }
+    function dividir(x,y, operacao){
+        calcular = (x / y)
+        return calcular
+    }
+    function quadrado(){
+        operacao = prompt("digite uma operação [1] para multiplicar [2] para dividir")
+        if (operacao == "1"){ 
+            ValordeX = parseInt(prompt("digite um numero"))
+            ValordeY = parseInt(prompt("digite um numero"))
+            ideias = multiplicar(ValordeX, ValordeY)
+            console.log(ideias)
+
+        }
+        else if (operacao == "2"){ 
+            ValordeX = parseInt(prompt("digite um numero"))
+            ValordeY = parseInt(prompt("digite um numero"))
+            ideias = dividir(ValordeX, ValordeY)
+            console.log(ideias)
+
+        }
+    }
+</script>
+</html>
