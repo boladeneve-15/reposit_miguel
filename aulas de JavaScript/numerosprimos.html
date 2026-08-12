@@ -4,121 +4,138 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="CSS fudido de bom.css">
+    <link rel="stylesheet" href="CSS fudido de bom.css" />
     <style>
-     body{
+      body {
         display: flex;
         flex-direction: column;
-        align-items:center;
-        justify-content:center;
+        align-items: center;
+        justify-content: center;
         margin: 15px;
-        }
-        details{
-            margin: 25px;
-        }
-        </style>
+      }
+      details {
+        margin: 25px;
+      }
+    </style>
   </head>
   <body>
-<details>
-    <summary>
-        verificador de numero primo
-    </summary>
-    <input type="number" id="numero" />
-    <button onclick="primos()"> ver se e primo ou não</button>
-    <h2 id="resultado"></h2>
-</details>
-<details>
-    <summary>
+    <details>
+      <summary>verificador de numero primo</summary>
+      <input type="number" id="numero" />
+      <button onclick="primos()">ver se e primo ou não</button>
+      <h2 id="resultado"></h2>
+    </details>
+    <details>
+      <summary>
         ver se o numero e primo e mostrar os divisores se não for primo
-    </summary>
-      <input type="number" id="segundonumero"/>
-      <button onclick=" naoprimos()"> ver se e primo ou não</button>
-        <h2 id="resultado2"></h2>
-</details>
+      </summary>
+      <input type="number" id="segundonumero" />
+      <button onclick="naoprimos()">ver se e primo ou não</button>
+      <h2 id="resultado2"></h2>
+    </details>
 
-<details>
-    <summary>
-        mostrar os não primos que tem no intervalo
-    </summary>
-    <input type="number" id="terceironumero"/>
-      <button onclick=" mostrarprimos()"> ver se e primo ou não</button>
-        <h2 id="resultado3"></h2>
-</details>
+    <details>
+      <summary>lista de numeros primos</summary>
+      <h2 id="sualista"></h2>
 
+      <input type="number" id="insirir" placeholder="criar sua lista" />
+      <button onclick="AplicarNoFinal()">aplicar lista</button>
+      <button onclick="RetirarNoFinal()" id="retirar">retirar lista</button>
+      <button onclick="listadeprimos()">ver se e primo ou não</button>
+      <h2 id="resultado3"></h2>
+    </details>
+    <details>
+      <summary>
+        mostrar todos os primos do intervalo
+      </summary>
+      <input type="number" id="quatonumero" placeholder="numero primo" />
+      <button onclick="vertodosprimos()">ver se e primo ou não</button>
+      <h2 id="resultado4"></h2>
+    </details>
   </body>
   <script>
-    function primos() {
-        resultado.innerHTML = ""
+    lista = [];
+    function AplicarNoFinal() {
+      aplica = parseFloat(insirir.value);
+
+      lista.push(aplica);
+
+      sualista.innerHTML = "lista: " + lista;
+    }
+
+    function RetirarNoFinal() {
+      lista.pop();
+      sualista.innerHTML = "lista: " + lista;
+    }
+
+    function primos(x) {
       contador = 0;
-      x = parseInt(numero.value);
-      valores = [];
-      for (i = 2; i < x/2+1; i++) {
+      for (let i = 2; i < x / 2 + 1; i++) {
         // console.log(i)
         resto = x % i;
         if (resto == 0) {
           contador++;
+          break;
         }
       }
       if (contador == 0) {
-       resultado.innerHTML = "numero primo"
+        return true;
       } else {
-        resultado.innerHTML = "numero não primo"
+        return false;
       }
-     
     }
-    function naoprimos(){
-        
-          resultado2.innerHTML = ""
+
+    function naoprimos() {
+      resultado2.innerHTML = "";
       contador = 0;
       x = parseInt(segundonumero.value);
       divisores = [];
-      for (i = 2; i < x/2+1; i++) {
+      for (i = 2; i < x / 2 + 1; i++) {
         // console.log(i)
         resto = x % i;
         if (resto == 0) {
           contador++;
-          divisores.push(i)
+          divisores.push(i);
         }
       }
       if (contador == 0) {
-       resultado2.innerHTML = "numero primo"
-      } 
-      else if (contador != 0){
-        resultado2.innerHTML = `numero não primo e seus divisores são ${divisores}`
+        resultado2.innerHTML = "numero primo";
+      } else if (contador != 0) {
+        resultado2.innerHTML = `numero não primo e seus divisores são ${divisores}`;
       }
     }
-    function mostrarprimos(){
-        numerosprimos = []
-    resultado3.innerHTML = ""
-      contador = 0;
-      x = parseInt(terceironumero.value);
-      valores = [];
-      for (i = 2; i < x/2+1; i++) {
+
+    function listadeprimos() {
+      resultado3.innerHTML = "";
+      osprimos = []
+      osnaoprimos = [] 
+      for (let i = 0; i < lista.length ; i++) {
         // console.log(i)
-        resto = x % i;
-        if (resto == 0) {
-          contador++;
-        }
-      }
-      if (contador == 0) {
-        resultado3.innerHTML = ""
-        contador = 0;
-        x = parseInt(terceironumero.value);
-        valores = [];
-        for (i = 2; i < x/2+1; i++) {
-            // console.log(i)
-            resto = x % i;
-            if (resto == 0) {
-            contador++;
-            }
-        }
+        elemento = lista[i]
 
+        if(primos(elemento)){
+        osprimos.push(elemento)
       }
-        else if (contador != 0){
-        resultado3.innerHTML = `numero não primo e seus divisores são ${divisores}`
+      else{
+        osnaoprimos.push(elemento)
       }
+      
     }
-    
+    console.log(osnaoprimos, "não são primos")
+    console.log(osprimos, "são primos")
+    }
 
+   function vertodosprimos(){
+    resultado4.innerHTML = ""
+    x = parseInt(quatonumero.value)
+    for( j = 2; j <= x; j++){
+      ehPrimo = primos(j)
+      
+        if(ehPrimo){
+          console.log(j)
+        }
+    }
+
+   }
   </script>
 </html>

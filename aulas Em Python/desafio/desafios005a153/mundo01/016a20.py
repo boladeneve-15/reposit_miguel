@@ -1,6 +1,6 @@
 import math
 import random
-import pygame
+
 print("""BEM VINDO AOS TESTES DE MIGUEL LUCAS EM PYTHON, esse e o começo de uma nova linguagem de progamação
     onde meu foco no final de tudo e saber
     ciencias de dados, eng de dados, automoção em python, e criação de IAs""")

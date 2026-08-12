@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS fudido de bom.css">
+    <style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 15px;
+      }
+      details {
+        margin: 25px;
+      }
+      </style>
+</head>
+<body>
+    <details>
+        <summary>
+            informaçoes
+        </summary>
+    <input type="text" id="seunome" placeholder="digite seu nome">
+    <button onclick="nome()">adicionar nome</button>
+    <input type="text" id="suaidade" placeholder="digite sua idade">
+    <button onclick="idade()">adicionar idade</button>
+    <input type="text" id="seuemprego" placeholder="digite seu emprego">
+    <button onclick="emprego()">adicionar emprego</button>
+</details>
+<details>
+    <summary>
+        dinheiros
+    </summary>
+    <button onclick="ganhar()"> ganhar dinheiro</button>
+    <button onclick="perder()"> comprar  coisas</button>
+</details>
+<button onclick="status()">ver status</button>
+<h1 id="estadus"></h1>
+</body>
+<script>
+    jogador = {
+        nome: "",
+        idade: "",
+        emprego: "",
+        dinheiro: 0,
+
+    }
+function nome(){
+     let x = seunome.value
+     jogador.nome = x
+}
+function idade(){
+    let y = suaidade.value
+    jogador.idade = y
+}
+function emprego(){
+    let c = seuemprego.value
+    jogador.emprego = c
+}
+function ganhar(){
+    jogador.dinheiro += +100
+}
+function perder(){
+    jogador.dinheiro += -100
+}
+
+function status(){
+   estadus.innerHTML = `nome: ${jogador.nome}` + `<br>` + `idade ${jogador.idade}` + `<br>` + `emprego: ${jogador.emprego}` + `<br>` + `ver dinheiro ${jogador.dinheiro}` + `<br>`
+
+    
+}
+</script>
+</html>
