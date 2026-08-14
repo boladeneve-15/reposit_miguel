@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="valor()">a</button>
+</body>
+<script>
+    //somatoria decrescente
+    function fat(x, y){
+        if( x == y){
+            return x
+        }
+        calculo = x + fat (x-1, y)
+        return calculo
+    }
+
+    //somatoria crescente
+    function fat2(x, y){
+        if( x == y){
+            return x
+        }
+        calculo = x + fat2 (x+1, y)
+        return calculo
+    }
+
+    function valor(){
+       a = parseInt( prompt("inicio"))
+       b = parseInt( prompt("fim"))
+        c = fat(b, a)
+     console.log(c)
+     
+    }
+</script>
+</html>
