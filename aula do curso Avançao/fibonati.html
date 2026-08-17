@@ -6,36 +6,72 @@
     <title>Document</title>
 </head>
 <body>
-    <button onclick="valor()">
-
+    <button onclick="valorum()">
+função
     </button>
+<button onclick="a()">
+for
+</button>
 </body>
 <script>
-// function fibonati(f){
-//  if (f <= 2) {
-//         return 1
-//     }
-// else{
-//     calculo = fibonati(f -1) + fibonati(f -2)
-//     return calculo
-// }
-// }
-// function valor(){
-//     num = parseInt(prompt("digite um numero "))
-//    rseultado =  fibonati(num)
-//     console.log(resultado)
-// }
 
-function valor(){
-    num = parseInt(prompt("digite um numero "))
-    if (num <= 2) {
-        console.log("1")
+function fibonati(f){
+ if (f <= 2) {
+        return 1
     }
+else{
+    calculo = fibonati(f -1) + fibonati(f -2)
+    return calculo
+}
+}
+function valorum(){
+    num = parseInt(prompt("digite um numero "))
+    rseultado =  fibonati(num)
+    console.log(rseultado)
+}
+
+function valordois(num){
+    anterior = 1
+    atual = 1
+    if (num <= 2) {
+        return 1
+     
+        }
     else{
-       calculo = num -1 + numf -2
-       console.log(calculo)
+        for(i = 3;i<=num;i++){
+            proximo = anterior + atual
+            anterior = atual
+            atual = proximo
+        }
+
+        return atual
+        
     }
 }
 
+function a(){
+    n = parseInt(prompt("digite um numero "))
+    ret = valordois(n)
+
+    console.log(ret)
+
+}
+
+function soma (x, y){
+    return x + y
+}
+
+function retornaFunction(){
+    return soma
+}
+
+function chama(){
+
+    f =  retornaFunction()
+
+    ret = f(5,8)
+
+    console.log(ret)
+}
 </script>
 </html>
