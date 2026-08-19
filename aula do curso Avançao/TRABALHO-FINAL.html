@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <details>
+        <summary>CREATE</summary>
+        <input type="text" placeholder="NOME"   id="Nome"/>
+        <input type="text" placeholder="MARCA"  id="Marca"/>
+        <input type="text" placeholder="TIPO"   id="Tipo"/>
+        <input type="text" placeholder="MODELO" id="Modelo"/>
+        <button onclick="CREATE()"> CRIAR</button>
+    </details>
+    <details>
+        <summary>
+            READ (ID)
+        </summary>
+        <input type="text" placeholder="VER PELO ID">
+        <button>VER PELO ID</button>
+    </details>
+    <details>
+        <summary>
+            READ (ALL)
+        </summary>
+        <button>VER TODOS CADASTRADOS</button>
+    </details>
+    <details>
+        <summary>
+            UPDATE
+        </summary>
+        <input type="text" placeholder="INSIRIR ID PARA ATUALIZAR">
+        <button>APLICAR</button>
+    </details>
+    <details>
+        <summary>
+            DELETE
+        </summary>
+        <input type="text" placeholder="INSIRIR ID PARA DELETAR">
+        <button> DELETAR</button>
+    </details>
+
+</body>
+<script>
+    let acumulador = 1
+    let base = {
+                    id: 1,
+                    nome: "",
+                    marca: "",
+                    tipo: "",
+                    modelo: "",
+
+                }
+               
+
+    let informacoes = [
+          
+    ]
+function CREATE(){
+ let nome =   "a" //Nome.value 
+ let marca =  "a" //Marca.value
+ let tipo =   "a" //Tipo.value
+ let modelo = "a" //Modelo.value
+ for(i = acumulador ;i <= i+1 ;i++){
+informacoes.push({
+        id: informacoes.length = i,
+        nome: nome,
+        marca: marca,
+        tipo: tipo,
+        modelo: modelo
+    });
+ 
+ console.log(informacoes)
+ acumulador++
+break
+}
+}
+
+</script>
+</html>
