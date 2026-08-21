@@ -27,18 +27,25 @@
     function triangulo(){
         tri.innerHTML = ""
         Quantidade = parseInt (vezes.value)
-        LinhaDoPascal = 1
+        
         // criador de colunas
           for(i=1; i<= Quantidade; i++){
-                const i = 1
-             tri.innerHTML += i  + "<br>" 
-               
-                // controlador de colunas
-            
-                
-                
+            linha = `<div id='linha${i}'>`
+            for(j=0; j < i; j++){
+                c = `<span id='e${i}${j}'>`
+                if (j == 0 || j == i-1){
+                    c += "1"
+                }
+                else{
+                    e1 = parseInt(document.getElementById(`e${i-1}${j-1}`).innerHTML)
+                    e2 = parseInt(document.getElementById(`e${i-1}${j}`).innerHTML)
+                    c += e1 + e2
+                }
+                linha = linha + " " + c + "</span>"
             }
-
+            linha += "</div>" 
+            tri.innerHTML += linha + "<br>" 
+        }
 }
 </script>
 </html>

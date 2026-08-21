@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuleiro</title>
+</head>
+
+<body>
+    <input type="number" placeholder="numeros" id="Num">
+    <button onclick="tab()">TABULEIRO</button>
+    <div id="TABU"></div>
+
+    <script>
+        // EU
+        function tabuleiroDeX(X){
+             listaX = []
+             quantidade = Num.value
+
+            for( i = 0; i < quantidade; i++){
+                 verificar = i % 2
+
+                if(verificar == 0){
+                    listaX.push("X")
+                }
+                else{
+                    listaX.push("O")
+                }
+            }
+
+            return listaX
+        }
+
+        function tabuleiroDeO(X){
+             listaO = []
+             quantidade = Num.value
+
+            for( i = 0; i < quantidade; i++){
+                 verificar = i % 2
+
+                if(verificar == 0){
+                    listaO.push("O")
+                }
+                else{
+                    listaO.push("X")
+                }
+            }
+
+            return listaO
+        }
+
+        function juntar(){
+             quantidade = parseInt(Num.value)
+             tabuleiro = []
+
+            
+             
+            for(let i = 0; i < quantidade; i++){
+
+                if(i % 2 == 0){
+                    tabuleiro.push(tabuleiroDeX(quantidade))
+                }
+                else{
+                    tabuleiro.push(tabuleiroDeO(quantidade))
+                }
+            }
+
+            TABU.innerHTML = 
+            tabuleiro.join("<br>")
+        }
+// DANILO
+        function tab() {
+            TABU.innerHTML = ""
+
+            quantidade = parseInt(Num.value)
+
+            casa = true
+
+            for(i = 0; i < quantidade; i++){
+                linha = ""
+
+                for (j = 0; j < quantidade; j++){
+                    linha += casa ? "X" : "O"
+
+                    casa = !casa
+                }
+                TABU.innerHTML += linha + "<br>"
+
+                if (quantidade % 2 == 0){
+                    casa = !casa
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>
