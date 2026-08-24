@@ -20,14 +20,14 @@
         <summary>
             READ (ID)
         </summary>
-        <input type="text" placeholder="VER PELO ID">
-        <button>VER PELO ID</button>
+        <input type="number" placeholder="VER PELO ID" id="VERID">
+        <button onclick="READ_ID()">VER PELO ID</button>
     </details>
     <details>
         <summary>
             READ (ALL)
         </summary>
-        <button>VER TODOS CADASTRADOS</button>
+        <button onclick="READ_ALL()">VER TODOS CADASTRADOS</button>
     </details>
     <details>
         <summary>
@@ -43,7 +43,7 @@
         <input type="text" placeholder="INSIRIR ID PARA DELETAR">
         <button> DELETAR</button>
     </details>
-    a
+    
 
 </body>
 <script>
@@ -63,13 +63,13 @@
           
     ]
 function CREATE(){
- let nome =   "a" //Nome.value 
- let marca =  "a" //Marca.value
- let tipo =   "a" //Tipo.value
- let modelo = "a" //Modelo.value
+ let nome =    Nome.value 
+ let marca =   Marca.value
+ let tipo =    Tipo.value
+ let modelo =  Modelo.value
  for(i = acumulador ;i <= i+1 ;i++){
 informacoes.push({
-        id: informacoes.length = i,
+        id: acumulador,
         nome: nome,
         marca: marca,
         tipo: tipo,
@@ -80,6 +80,15 @@ informacoes.push({
  acumulador++
 break
 }
+}
+function READ_ALL() {
+    console.log(informacoes)
+    
+}
+function READ_ID() {
+    valor = VERID.value
+    console.log(informacoes[valor-1])
+    
 }
 
 </script>
