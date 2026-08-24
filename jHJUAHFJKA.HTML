@@ -1,43 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <input type="" id="i">
-    <button onclick="calcular()">
-        teste
-    </button>
-    <h1 id="res">
 
-    </h1>
-</body>
-<script>
+    <style>
 
-    /**
-    calcula algo
-    
-    */
-    function calcular(){
-        x = parseInt(prompt())
-        i = 0
-  while(i<10){
-    i++
+    </style>
+  </head>
 
-    console.log("arroz")
-  }
-    switch(x){
-        case 1:
-            console.log("dois")
-            break
-        case 2:
-            console.log("batada")
+  <body>
+    <div id="pai">
+      <button onclick="CANCEL()">CANCELAR</button>
+      <div id="filho">
+        <summary>UPDATE</summary>
+
+        <input type="text" placeholder="NOME" id="Nome" />
+        <input type="text" placeholder="MARCA" id="Marca" />
+        <input type="text" placeholder="TIPO" id="Tipo" />
+        <input type="text" placeholder="MODELO" id="Modelo" />
+      </div>
+    </div>
+
+    <button onclick="CREATE()" id="meio">ATUALIZAR</button>
+  </body>
+  <script>
+    function CREATE() {
+      pai.style.display = "inline";
     }
-  
-
-
+    function CANCEL() {
+      pai.style.display = "none";
     }
-</script>
+  </script>
 </html>

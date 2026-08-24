@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="TRABALHO-FINAL.css">
 </head>
 
 <body>
@@ -29,13 +30,26 @@
         </summary>
         <button onclick="READ_ALL()">VER TODOS CADASTRADOS</button>
     </details>
+
     <details>
         <summary>
-            UPDATE
+             UPDATE
         </summary>
-        <input type="text" placeholder="INSIRIR ID PARA ATUALIZAR">
-        <button>APLICAR</button>
-    </details>
+        <input type="number" placeholder="INSIRIR ID PARA ATUALIZAR"  id="REID">
+        <button onclick="JANELA()">APLICAR</button>
+        <div id="pai">
+            <button onclick="CANCEL()">CANCELAR</button>
+            <div id="filho">
+            <p id="selecionado"></p>
+            <input type="text" placeholder="NOME" id="RENome" />
+            <input type="text" placeholder="MARCA" id="REMarca" />
+            <input type="text" placeholder="TIPO" id="RETipo" />
+            <input type="text" placeholder="MODELO" id="REModelo" />
+        </div>
+    </div>
+    <button onclick="UPDATE()" id="meio">ATUALIZAR</button>
+ </details>
+
     <details>
         <summary>
             DELETE
@@ -48,6 +62,8 @@
 </body>
 <script>
     //  objetivos: CREATE, READ(1 com ID outros mostrando tudo), UPDADE( ID: rescreve tudo porem não  muda o ID), DELETE (auto explicativo), REGRAS( tem 6 objetos 1. 2. 3. 4. 5. 6. se o cara deletar o 3 tem que ficar 1. 2. 4. 5. 6. e se o cara fizer um novo 1. 2. 4. 5. 6. 7. e apagar o novo logo em sequida 1. 2. 4. 5. 6. e criar um novo a ordem tem que ficar 1. 2. 4. 5. 6. 8.)
+    
+   
     let acumulador = 1
     let base = {
                     id: 1,
@@ -60,13 +76,33 @@
                
 
     let informacoes = [
-          
+
     ]
+function busca(X) {
+     Eigual = false
+    acumuladorDEID = 0
+    for(let i=0;i<informacoes.length;i++){
+
+        if(informacoes[i].id == X ){
+            Eigual = Eigual = true
+            acumuladorDEID++
+        }
+       
+}
+          
+          return Eigual
+        
+      console.log(Eigual)
+}
+    
+
+
+
 function CREATE(){
- let nome =    Nome.value 
- let marca =   Marca.value
- let tipo =    Tipo.value
- let modelo =  Modelo.value
+ let nome =   "a" //Nome.value 
+ let marca =  "a" //Marca.value
+ let tipo =   "a" //Tipo.value
+ let modelo = "a" //Modelo.value
  for(i = acumulador ;i <= i+1 ;i++){
 informacoes.push({
         id: acumulador,
@@ -86,10 +122,53 @@ function READ_ALL() {
     
 }
 function READ_ID() {
-    valor = VERID.value
-    console.log(informacoes[valor-1])
+    valor = parseInt(VERID.value)
+    
+    if(busca(valor)){
+        console.log(informacoes[valor-1])
+    }
     
 }
+function UPDATE() {
+     valor = parseInt(REID.value)
+    let novonome = RENome.value
+    let novamarca = REMarca.value
+    let novotipo = RETipo.value
+    let novomodelo = REModelo.value
+  if(busca(valor)){
+   informacoes[valor-1] =
+        {
+        id:  valor,
+        nome: novonome,
+        marca: novamarca,
+        tipo: novotipo,
+        modelo: novomodelo
+        }
+    
+  }
+console.log(informacoes)
+   
+
+    }
+function CANCEL() {
+pai.style.display = "none";
+meio.style.display = "none";
+
+}
+function JANELA(){
+     valor = parseInt(REID.value)
+      if(!busca(valor)){
+         console.log("ERRO ESSE ID NÃO EXISTE")
+     }
+    if(busca(valor)){
+        selecionado.innerHTML = `Selecionado ID ${valor}`
+        pai.style.display = "inline";
+        meio.style.display = "inline";
+}
+
+}
+
+
 
 </script>
 </html>
