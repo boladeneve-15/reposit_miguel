@@ -1,3 +1,7 @@
+      body{
+        background-color: #0D1117;
+        font-family: "Segoe UI", sans-serif
+      }
       #pai {
         border: 2px solid black;
         width: 250px;
@@ -30,3 +34,144 @@
         transform: translateX(-50%);
         display: none;
       }
+      .CREATES{
+        color: green;
+        background-color: rgb(22, 27, 34);
+      }
+      summary {
+    list-style: none;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+summary{
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+summary::after {
+    content: "▼";
+    transition: transform 0.5s;
+    
+}
+
+details[open] summary::after {
+    transform: rotate(180deg);
+    
+}
+.CREATEIN{
+  border-radius: 5px;
+  border: 1px,rgba(22, 27, 34, 0.459), solid;
+  background-color: rgb(24, 24, 24);
+    color: #e6edf3;
+  width: 125px;
+  gap: 15px;
+  height: 25px;
+  transition: 0.4s;
+  box-shadow: #5eff58;
+   font-family: "Consolas", "Courier New", monospace;
+}
+.linha{
+  border-top: 0.5px rgb(45, 54, 68) solid;
+}
+
+
+@keyframes abrir {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+details[open] {
+    animation: abrir 0.7s ease;
+    height: 100px;
+}
+.CREATEBU{
+  color: white;
+  background-color: rgb(30, 145, 1);
+  border-radius: 5px;
+  height: 25px;
+  width: 100px;
+  border: 1px, rgb(65, 65, 65), solid;
+ transition: 0.5s;
+}
+
+.CREATEBU:hover{
+  border: 1px, rgb(65, 65, 65), solid;   border: 1px,rgba(58, 87, 128, 0.459), solid;
+  background-color:  rgb(22, 107, 1);
+  color: #080808; 
+    outline: none;
+  border-color: #011f00; 
+  box-shadow: 0 0 0 3px rgba(76, 250, 90, 0.15); 
+
+}
+.CREATEBU:active{
+  transform: scale(0.95);
+}
+
+.CREATEIN:hover{
+  border-color: rgba(88, 166, 255, 0.5);
+   border: 1px,rgba(58, 87, 128, 0.459), solid;
+}
+.CREATEIN:focus {
+  outline: none;
+  border-color: #5eff58; 
+  box-shadow: 0 0 0 3px rgba(76, 250, 90, 0.15); 
+  background-color: rgb(30, 30, 30);
+}
+
+.READ{
+  color: rgb(38, 55, 209);
+   background-color: rgb(22, 27, 34);
+}
+.READIN{
+    border-radius: 5px;
+  border: 1px,rgba(22, 27, 34, 0.459), solid;
+  background-color: rgb(24, 24, 24);
+    color: #e6edf3;
+  width: 125px;
+  gap: 15px;
+  height: 25px;
+  transition: 0.4s;
+  box-shadow: #5863ff;
+   font-family: "Consolas", "Courier New", monospace;
+}
+.READIN:hover{
+   border-color: rgba(88, 166, 255, 0.5);
+   border: 1px,rgba(58, 87, 128, 0.459), solid;
+}
+.READIN:focus{
+   outline: none;
+  border-color: #5885ff; 
+  box-shadow: 0 0 0 3px rgba(76, 250, 90, 0.15); 
+  background-color: rgb(30, 30, 30);
+}
+.READBU{
+  font-size: 7px;
+   color: white;
+  background-color: rgb(1, 11, 145);
+  border-radius: 5px;
+  height: 25px;
+  width: 125px;
+  border: 1px, rgb(65, 65, 65), solid;
+ transition: 0.5s;
+}
+.READBU:hover{
+   border: 1px, rgb(65, 65, 65), solid;   border: 1px,rgba(58, 87, 128, 0.459), solid;
+  background-color:  rgb(1, 8, 107);
+  color: #080808; 
+    outline: none;
+  border-color: #00021f; 
+  box-shadow: 0 0 0 3px rgba(76, 88, 250, 0.15); 
+
+}
+.READBU:active{
+   transform: scale(0.95);
+}
