@@ -64,6 +64,9 @@ MOSTRAR_TABELA();
 function READ_ID() {
  aviso.innerHTML = ""
 
+    planilha.style.display = "none"
+
+
 
     let valor = parseInt(VERID.value)
 

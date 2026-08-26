@@ -13,6 +13,67 @@
     <h1>TRABALHO-FINAL</h1>
     <h1>TEMA: HARDWARE</h1>
     <h1 style="color: red;" id="aviso"></h1>
+    <div id="explicacao">
+
+    <h2>COMO FUNCIONA?</h2>
+
+    <p>
+        Este sistema é um CRUD desenvolvido em JavaScript para
+        cadastrar e gerenciar informações sobre hardware.
+    </p>
+
+    <div class="explicacao-item">
+        <h3>CREATE</h3>
+
+        <p>
+            Permite cadastrar um novo hardware informando:
+            nome, marca, tipo e modelo.
+            Cada cadastro recebe automaticamente um ID.
+        </p>
+    </div>
+
+    <div class="explicacao-item">
+        <h3>READ</h3>
+
+        <p>
+            Permite consultar os dados cadastrados.
+            O READ (ID) procura um hardware específico pelo seu ID,
+            enquanto o READ (ALL) mostra todos os hardwares cadastrados.
+        </p>
+    </div>
+
+    <div class="explicacao-item">
+        <h3>UPDATE</h3>
+
+        <p>
+            Permite alterar as informações de um hardware existente.
+            O ID permanece o mesmo e somente nome, marca, tipo e modelo
+            podem ser modificados.
+        </p>
+    </div>
+
+    <div class="explicacao-item">
+        <h3>DELETE</h3>
+
+        <p>
+            Remove um hardware da lista através do seu ID.
+            O ID excluído não é reutilizado em novos cadastros.
+        </p>
+    </div>
+
+    <div class="explicacao-regra">
+
+        <h3>REGRA DOS IDs</h3>
+
+        <p>
+            Os IDs são sequenciais e nunca são reutilizados.
+            Por exemplo: se existirem os IDs 1, 2, 3, 4 e o ID 3
+            for excluído, o próximo cadastro receberá o ID 5.
+        </p>
+
+    </div>
+
+</div>
   <div id="tabela-container">
 
         <table id="planilha">

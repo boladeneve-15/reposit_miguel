@@ -1,4 +1,3 @@
-
 body{
    background-color: #0D1117;
         font-family: "Segoe UI", sans-serif
@@ -521,66 +520,199 @@ details[open] {
 /* =========================
    CELULAR
 ========================= */
+/* =========================
+   CELULAR
+========================= */
 
 @media (max-width: 700px) {
+
+    * {
+        box-sizing: border-box;
+    }
 
     body {
         margin: 0;
         padding: 10px;
+        width: 100%;
+        overflow-x: hidden;
     }
 
-    /* INPUTS */
+    /* =========================
+       TÍTULOS
+    ========================= */
+
+    h1 {
+        font-size: 24px;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    /* =========================
+       DETAILS
+    ========================= */
+
+    details {
+        display: block;
+
+        width: 100%;
+
+        margin: 0 0 12px 0;
+
+        padding: 0;
+
+        box-sizing: border-box;
+
+        border-radius: 6px;
+
+        overflow: visible;
+    }
+
+    details[open] {
+        height: auto;
+        min-height: 0;
+    }
+
+    summary {
+        width: 100%;
+
+        min-height: 45px;
+
+        padding: 12px;
+
+        font-size: 18px;
+
+        box-sizing: border-box;
+    }
+
+    /* =========================
+       LINHA
+    ========================= */
+
+    .linha {
+        width: 100%;
+        margin: 5px 0 10px 0;
+    }
+
+    /* =========================
+       INPUTS
+    ========================= */
 
     .CREATEIN,
     .READIN,
     .UPDATEIN,
     .DELETEIN {
+
+        display: block;
+
         width: 100%;
+
+        height: 42px;
+
+        margin: 8px 0;
+
+        padding: 8px 12px;
+
         box-sizing: border-box;
-        height: 40px;
-        margin: 5px 0;
+
+        font-size: 16px;
     }
 
-    /* BOTÕES */
+    /* =========================
+       BOTÕES
+    ========================= */
 
     .CREATEBU,
     .READBU,
     .UPDATEBU,
     .DELETEBU {
-        width: 100%;
-        height: 40px;
-        margin-top: 5px;
-    }
 
-    /* DETAILS */
+        display: block;
 
-    details {
         width: 100%;
+
+        height: 42px;
+
+        margin: 8px 0;
+
         box-sizing: border-box;
-        margin-bottom: 10px;
+
+        font-size: 14px;
     }
 
-    summary {
-        font-size: 18px;
-        padding: 10px;
-    }
-
-    /* CARD DO UPDATE */
+    /* =========================
+       UPDATE
+    ========================= */
 
     #pai {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 10px;
-    }
 
-    #meio {
         width: 100%;
-        height: 40px;
+
+        margin-top: 12px;
+
+        padding: 12px;
+
+        box-sizing: border-box;
+
+        position: relative;
+
+        overflow: visible;
     }
 
     #pai > button {
+
+        display: block;
+
         width: 100%;
-        height: 40px;
+
+        height: 42px;
+
+        margin-bottom: 10px;
+    }
+
+    #filho {
+
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    #selecionado {
+
+        font-size: 17px;
+
+        text-align: center;
+
+        margin: 5px 0 10px 0;
+    }
+
+    #filho input {
+
+        width: 100%;
+
+        height: 42px;
+
+        margin: 6px 0;
+
+        box-sizing: border-box;
+
+        font-size: 16px;
+    }
+
+    #meio {
+
+        display: none;
+
+        width: 100%;
+
+        height: 42px;
+
+        margin: 10px 0 15px 0;
+
+        box-sizing: border-box;
     }
 
     /* =========================
@@ -588,26 +720,77 @@ details[open] {
     ========================= */
 
     #tabela-container {
+
         width: 100%;
+
         overflow-x: auto;
-        margin-bottom: 20px;
+
+        margin: 15px 0;
+
+        -webkit-overflow-scrolling: touch;
     }
 
     #planilha {
+
         width: 700px;
+
         min-width: 700px;
-        position: fixed;
+
+        margin: 0;
+
+        position: relative;
+
+        font-size: 14px;
     }
 
     #planilha th,
     #planilha td {
+
         padding: 10px;
+
         white-space: nowrap;
     }
 
     #sair {
+
         width: 100px;
-        height: 35px;
+
+        height: 38px;
+    }
+
+    /* =========================
+       EXPLICAÇÃO
+    ========================= */
+
+    #explicacao {
+
+        width: 100%;
+
+        margin: 15px 0;
+
+        padding: 15px;
+
+        box-sizing: border-box;
+    }
+
+    #explicacao h2 {
+
+        font-size: 21px;
+    }
+
+    #explicacao p {
+
+        font-size: 15px;
+
+        line-height: 1.5;
+    }
+
+    .explicacao-item,
+    .explicacao-regra {
+
+        padding: 10px;
+
+        margin-top: 10px;
     }
 
 }
@@ -616,4 +799,84 @@ h1{
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+/* =========================
+   BLOCO EXPLICAÇÃO
+========================= */
+
+#explicacao {
+
+    width: 90%;
+    max-width: 900px;
+
+    margin: 25px auto;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    background-color: #161b22;
+
+    color: #e6edf3;
+
+    border: 1px solid #30363d;
+
+    border-radius: 8px;
+
+}
+
+#explicacao h2 {
+
+    margin-top: 0;
+
+    text-align: center;
+
+    color: #d29922;
+
+}
+
+#explicacao p {
+
+    line-height: 1.5;
+
+}
+
+.explicacao-item {
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    background-color: #0d1117;
+
+    border-left: 3px solid #30363d;
+
+    border-radius: 5px;
+
+}
+
+.explicacao-item h3 {
+
+    margin-top: 0;
+
+}
+
+.explicacao-regra {
+
+    margin-top: 20px;
+
+    padding: 12px;
+
+    background-color: #0d1117;
+
+    border-left: 3px solid #d29922;
+
+    border-radius: 5px;
+
+}
+
+.explicacao-regra h3 {
+
+    color: #d29922;
+
 }

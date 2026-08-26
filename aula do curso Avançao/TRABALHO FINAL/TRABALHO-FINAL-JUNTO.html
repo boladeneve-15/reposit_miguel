@@ -1,0 +1,1235 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+
+body{
+   background-color: #0D1117;
+        font-family: "Segoe UI", sans-serif
+}
+#pai {
+
+    width: 100%;
+
+    margin-top: 15px;
+    padding: 15px;
+
+    background-color: #0d1117;
+
+    border: 1px solid #d29900;
+
+    border-radius: 8px;
+
+    display: none;
+
+}
+
+
+
+
+#pai > button {
+
+    background-color: #161b22;
+
+    color: #8b949e;
+
+    border: 1px solid #30363d;
+
+    width: 130px;
+
+    height: 32px;
+
+    cursor: pointer;
+
+}
+
+
+#pai > button:hover {
+
+    border-color: #8b949e;
+
+    color: #ffffff;
+
+}
+
+
+
+#filho {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+
+
+#selecionado {
+
+    color: #d29922;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    margin: 0 0 15px 0;
+
+}
+
+
+
+#filho input {
+
+    box-sizing: border-box;
+
+    width: 100%;
+
+    height: 40px;
+
+    margin: 5px 0;
+
+    padding: 8px 12px;
+
+    background-color: #161b22;
+
+    color: #e6edf3;
+
+    border: 1px solid #30363d;
+
+    border-radius: 5px;
+
+    font-family: "Consolas", "Courier New", monospace;
+
+}
+
+
+#filho input:focus {
+
+    outline: none;
+
+    border-color: #d29922;
+
+    box-shadow:
+        0 0 0 3px rgba(210, 153, 34, 0.12);
+
+}
+
+
+
+
+#meio {
+
+    display: none;
+
+    margin: 15px auto 0 auto;
+
+    width: 170px;
+
+    height: 40px;
+
+    background-color: #e6a900;
+
+    color: #0d1117;
+
+    border: none;
+
+    border-radius: 5px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+#meio:hover {
+
+    background-color: #f2b90b;
+
+}
+
+
+#meio:active {
+
+    transform: scale(0.96);
+
+}
+      .CREATES{
+        color: green;
+        background-color: rgb(22, 27, 34);
+      }
+      summary {
+    list-style: none;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+summary{
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+summary::after {
+    content: "▼";
+    transition: transform 0.5s;
+    
+}
+
+details[open] summary::after {
+    transform: rotate(180deg);
+    
+}
+.CREATEIN{
+  border-radius: 5px;
+  border: 1px,rgba(22, 27, 34, 0.459), solid;
+  background-color: rgb(24, 24, 24);
+    color: #e6edf3;
+  width: 125px;
+  gap: 15px;
+  height: 25px;
+  transition: 0.4s;
+  box-shadow: #5eff58;
+   font-family: "Consolas", "Courier New", monospace;
+}
+.linha{
+  border-top: 0.5px rgb(45, 54, 68) solid;
+}
+
+
+@keyframes abrir {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+details[open] {
+    animation: abrir 0.7s ease;
+    height: 100px;
+}
+.CREATEBU{
+  color: white;
+  background-color: rgb(30, 145, 1);
+  border-radius: 5px;
+  height: 25px;
+  width: 100px;
+  border: 1px, rgb(65, 65, 65), solid;
+ transition: 0.5s;
+}
+
+.CREATEBU:hover{
+  border: 1px, rgb(65, 65, 65), solid;   border: 1px,rgba(58, 87, 128, 0.459), solid;
+  background-color:  rgb(22, 107, 1);
+  color: #080808; 
+    outline: none;
+  border-color: #011f00; 
+  box-shadow: 0 0 0 3px rgba(76, 250, 90, 0.15); 
+
+}
+.CREATEBU:active{
+  transform: scale(0.95);
+}
+
+.CREATEIN:hover{
+  border-color: rgba(88, 166, 255, 0.5);
+   border: 1px,rgba(58, 87, 128, 0.459), solid;
+}
+.CREATEIN:focus {
+  outline: none;
+  border-color: #5eff58; 
+  box-shadow: 0 0 0 3px rgba(76, 250, 90, 0.15); 
+  background-color: rgb(30, 30, 30);
+}
+
+.READ{
+  color: rgb(38, 55, 209);
+   background-color: rgb(22, 27, 34);
+}
+.READIN{
+    border-radius: 5px;
+  border: 1px,rgba(22, 27, 34, 0.459), solid;
+  background-color: rgb(24, 24, 24);
+    color: #e6edf3;
+  width: 125px;
+  gap: 15px;
+  height: 25px;
+  transition: 0.4s;
+  box-shadow: #5863ff;
+   font-family: "Consolas", "Courier New", monospace;
+}
+.READIN:hover{
+   border-color: rgba(88, 166, 255, 0.5);
+   border: 1px,rgba(58, 87, 128, 0.459), solid;
+}
+.READIN:focus{
+   outline: none;
+  border-color: #5885ff; 
+  box-shadow: 0 0 0 3px rgba(76, 99, 250, 0.15); 
+  background-color: rgb(30, 30, 30);
+}
+.READBU{
+  font-size: 7px;
+   color: white;
+  background-color: rgb(1, 11, 145);
+  border-radius: 5px;
+  height: 25px;
+  width: 125px;
+  border: 1px, rgb(65, 65, 65), solid;
+ transition: 0.5s;
+}
+.READBU:hover{
+   border: 1px, rgb(65, 65, 65), solid;   border: 1px,rgba(58, 87, 128, 0.459), solid;
+  background-color:  rgb(1, 8, 107);
+  color: #080808; 
+    outline: none;
+  border-color: #00021f; 
+  box-shadow: 0 0 0 3px rgba(76, 88, 250, 0.15); 
+
+}
+.READBU:active{
+   transform: scale(0.95);
+}
+
+.UPDATE{
+  color: rgb(195, 209, 38);
+   background-color: rgb(22, 27, 34);
+}
+.UPDATEIN{
+      border-radius: 5px;
+  border: 1px,rgba(31, 34, 22, 0.459), solid;
+  background-color: rgb(24, 24, 24);
+    color: #e6edf3;
+  width: 125px;
+  gap: 15px;
+  height: 25px;
+  transition: 0.4s;
+  box-shadow: #f7ff58;
+   font-family: "Consolas", "Courier New", monospace;
+}
+.UPDATEIN:hover{
+   border-color: rgba(247, 255, 88, 0.5);
+   border: 1px,rgba(118, 128, 58, 0.459), solid;
+}
+.UPDATEIN:focus{
+  outline: none;
+  border-color: #d5ff58; 
+  box-shadow: 0 0 0 3px rgba(238, 250, 76, 0.15); 
+  background-color: rgb(30, 30, 30);
+}
+.UPDATEBU{
+   color: white;
+  background-color: rgb(140, 145, 1);
+  border-radius: 5px;
+  height: 25px;
+  width: 125px;
+  border: 1px, rgb(65, 65, 65), solid;
+ transition: 0.5s;
+}
+.UPDATEBU:hover{
+   border: 1px, rgb(65, 65, 65), solid;   border: 1px,rgba(58, 87, 128, 0.459), solid;
+  background-color:  rgb(102, 107, 1);
+  color: #080808; 
+    outline: none;
+  border-color: #00021f; 
+  box-shadow: 0 0 0 3px rgba(215, 250, 76, 0.15); 
+}
+.UPDATEBU:active{
+     transform: scale(0.95);
+
+
+}
+
+.DELETE{
+  color: rgb(248, 81, 73);
+   background-color: #161b22;
+}
+.DELETEIN{
+      border-radius: 5px;
+  border: 1px,rgba(34, 22, 22, 0.459), solid;
+  background-color: rgb(24, 24, 24);
+    color: #e6edf3;
+  width: 125px;
+  gap: 15px;
+  height: 25px;
+  transition: 0.4s;
+  box-shadow: #ff5858;
+   font-family: "Consolas", "Courier New", monospace;
+}
+.DELETEIN:hover{
+   border-color: rgba(255, 88, 88, 0.5);
+   border: 1px,rgba(128, 58, 58, 0.459), solid;
+}
+.DELETEIN:focus{
+  outline: none;
+  border-color: #f85149; 
+  box-shadow: 0 0 0 3px rgba(248, 81, 73, 0.15); 
+  background-color: rgb(30, 30, 30);
+}
+.DELETEBU{
+   color: white;
+  background-color: rgb(145, 30, 30);
+  border-radius: 5px;
+  height: 25px;
+  width: 125px;
+  border: 1px, rgb(65, 65, 65), solid;
+ transition: 0.5s;
+}
+.DELETEBU:hover{
+   border: 1px, rgb(65, 65, 65), solid;   border: 1px,rgba(128, 58, 58, 0.459), solid;
+  background-color:  rgb(107, 1, 1);
+  color: #080808; 
+    outline: none;
+  border-color: #1f0000; 
+  box-shadow: 0 0 0 3px rgba(250, 76, 76, 0.15); 
+}
+.DELETEBU:active{
+     transform: scale(0.95);
+}
+
+@media (max-width: 700px) {
+    .CREATEIN,
+    .READIN,
+    .UPDATEIN,
+    .DELETEIN {
+        width: 100%;
+    }
+
+    .CREATEBU,
+    .READBU,
+    .UPDATEBU,
+    .DELETEBU {
+        width: 100%;
+    }
+}
+ 
+ #planilha {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+
+    background-color: #0d1117;
+    color: white;
+
+    border: 1px solid #444;
+    border-collapse: collapse;
+
+    display: none;
+
+    position: relative;
+    z-index: 9999;
+}
+
+#planilha th,
+#planilha td {
+    padding: 12px;
+    border: 1px solid #30363d;
+}
+
+#cabecario th {
+    background-color: #161b22;
+}
+
+
+#colunas {
+     display: flex;
+    flex-direction: row;
+    background-color: #1f2937;
+    padding: 12px;
+    border-bottom: 1px solid #444;
+    box-sizing: border-box;
+}
+
+ #numeros {
+    width: 180px;
+    border-right: 1px solid #333333;
+
+
+}
+
+#IDs {
+    width: 180px;
+    border-right: 1px solid #333333;
+
+}
+
+#nome {
+    width: 180px;
+    border-right: 1px solid #333333;
+
+}
+
+#marca {
+    width: 180px;
+    border-right: 1px solid #333333;
+
+}
+
+#tipo {
+    width: 180px;
+    border-right: 1px solid #333333;
+
+}
+
+#modelo {
+    width: 180px;
+
+
+}
+
+#colunas h1,
+#colunas h2 {
+    margin: 0;
+    font-size: 16px;
+}
+#cabecario th{
+      border-bottom: 1px solid #444;
+
+}
+#sair{
+    color: white;
+  background-color: #333333;
+  border-radius: 5px;
+  height: 25px;
+  width: 125px;
+  border: 1px, rgb(65, 65, 65), solid;
+ transition: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  box-shadow: 1px rgba(245, 246, 250, 0.15); 
+
+}
+#sair:hover{
+   border: 1px, rgb(65, 65, 65), solid;   border: 1px,rgba(58, 87, 128, 0.459), solid;
+  background-color:  #2b2b2b;
+  color: #080808; 
+    outline: none;
+  border-color: #292929; 
+  box-shadow: 0 0 0 3px rgba(8, 8, 8, 0.15); 
+
+}
+#sair:active{
+   transform: scale(0.95);
+}
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 700px) {
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 10px;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* =========================
+       TÍTULOS
+    ========================= */
+
+    h1 {
+        font-size: 24px;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    /* =========================
+       DETAILS
+    ========================= */
+
+    details {
+        display: block;
+
+        width: 100%;
+
+        margin: 0 0 12px 0;
+
+        padding: 0;
+
+        box-sizing: border-box;
+
+        border-radius: 6px;
+
+        overflow: visible;
+    }
+
+    details[open] {
+        height: auto;
+        min-height: 0;
+    }
+
+    summary {
+        width: 100%;
+
+        min-height: 45px;
+
+        padding: 12px;
+
+        font-size: 18px;
+
+        box-sizing: border-box;
+    }
+
+    /* =========================
+       LINHA
+    ========================= */
+
+    .linha {
+        width: 100%;
+        margin: 5px 0 10px 0;
+    }
+
+    /* =========================
+       INPUTS
+    ========================= */
+
+    .CREATEIN,
+    .READIN,
+    .UPDATEIN,
+    .DELETEIN {
+
+        display: block;
+
+        width: 100%;
+
+        height: 42px;
+
+        margin: 8px 0;
+
+        padding: 8px 12px;
+
+        box-sizing: border-box;
+
+        font-size: 16px;
+    }
+
+    /* =========================
+       BOTÕES
+    ========================= */
+
+    .CREATEBU,
+    .READBU,
+    .UPDATEBU,
+    .DELETEBU {
+
+        display: block;
+
+        width: 100%;
+
+        height: 42px;
+
+        margin: 8px 0;
+
+        box-sizing: border-box;
+
+        font-size: 14px;
+    }
+
+    /* =========================
+       UPDATE
+    ========================= */
+
+    #pai {
+
+        width: 100%;
+
+        margin-top: 12px;
+
+        padding: 12px;
+
+        box-sizing: border-box;
+
+        position: relative;
+
+        overflow: visible;
+    }
+
+    #pai > button {
+
+        display: block;
+
+        width: 100%;
+
+        height: 42px;
+
+        margin-bottom: 10px;
+    }
+
+    #filho {
+
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    #selecionado {
+
+        font-size: 17px;
+
+        text-align: center;
+
+        margin: 5px 0 10px 0;
+    }
+
+    #filho input {
+
+        width: 100%;
+
+        height: 42px;
+
+        margin: 6px 0;
+
+        box-sizing: border-box;
+
+        font-size: 16px;
+    }
+
+    #meio {
+
+        display: none;
+
+        width: 100%;
+
+        height: 42px;
+
+        margin: 10px 0 15px 0;
+
+        box-sizing: border-box;
+    }
+
+    /* =========================
+       TABELA
+    ========================= */
+
+    #tabela-container {
+
+        width: 100%;
+
+        overflow-x: auto;
+
+        margin: 15px 0;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #planilha {
+
+        width: 700px;
+
+        min-width: 700px;
+
+        margin: 0;
+
+        position: relative;
+
+        font-size: 14px;
+    }
+
+    #planilha th,
+    #planilha td {
+
+        padding: 10px;
+
+        white-space: nowrap;
+    }
+
+    #sair {
+
+        width: 100px;
+
+        height: 38px;
+    }
+
+    /* =========================
+       EXPLICAÇÃO
+    ========================= */
+
+    #explicacao {
+
+        width: 100%;
+
+        margin: 15px 0;
+
+        padding: 15px;
+
+        box-sizing: border-box;
+    }
+
+    #explicacao h2 {
+
+        font-size: 21px;
+    }
+
+    #explicacao p {
+
+        font-size: 15px;
+
+        line-height: 1.5;
+    }
+
+    .explicacao-item,
+    .explicacao-regra {
+
+        padding: 10px;
+
+        margin-top: 10px;
+    }
+
+}
+h1{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+/* =========================
+   BLOCO EXPLICAÇÃO
+========================= */
+
+#explicacao {
+
+    width: 90%;
+    max-width: 900px;
+
+    margin: 25px auto;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    background-color: #161b22;
+
+    color: #e6edf3;
+
+    border: 1px solid #30363d;
+
+    border-radius: 8px;
+
+}
+
+#explicacao h2 {
+
+    margin-top: 0;
+
+    text-align: center;
+
+    color: #d29922;
+
+}
+
+#explicacao p {
+
+    line-height: 1.5;
+
+}
+
+.explicacao-item {
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    background-color: #0d1117;
+
+    border-left: 3px solid #30363d;
+
+    border-radius: 5px;
+
+}
+
+.explicacao-item h3 {
+
+    margin-top: 0;
+
+}
+
+.explicacao-regra {
+
+    margin-top: 20px;
+
+    padding: 12px;
+
+    background-color: #0d1117;
+
+    border-left: 3px solid #d29922;
+
+    border-radius: 5px;
+
+}
+
+.explicacao-regra h3 {
+
+    color: #d29922;
+
+}
+    </style>
+</head>
+
+<body>
+    <h1>TRABALHO-FINAL</h1>
+    <h1>TEMA: HARDWARE</h1>
+    <h1 style="color: red;" id="aviso"></h1>
+    <div id="explicacao">
+
+    <h2>COMO FUNCIONA?</h2>
+
+    <p>
+        Este sistema é um CRUD desenvolvido em JavaScript para
+        cadastrar e gerenciar informações sobre hardware.
+    </p>
+
+    <div class="explicacao-item">
+        <h3>CREATE</h3>
+
+        <p>
+            Permite cadastrar um novo hardware informando:
+            nome, marca, tipo e modelo.
+            Cada cadastro recebe automaticamente um ID.
+        </p>
+    </div>
+
+    <div class="explicacao-item">
+        <h3>READ</h3>
+
+        <p>
+            Permite consultar os dados cadastrados.
+            O READ (ID) procura um hardware específico pelo seu ID,
+            enquanto o READ (ALL) mostra todos os hardwares cadastrados.
+        </p>
+    </div>
+
+    <div class="explicacao-item">
+        <h3>UPDATE</h3>
+
+        <p>
+            Permite alterar as informações de um hardware existente.
+            O ID permanece o mesmo e somente nome, marca, tipo e modelo
+            podem ser modificados.
+        </p>
+    </div>
+
+    <div class="explicacao-item">
+        <h3>DELETE</h3>
+
+        <p>
+            Remove um hardware da lista através do seu ID.
+            O ID excluído não é reutilizado em novos cadastros.
+        </p>
+    </div>
+
+    <div class="explicacao-regra">
+
+        <h3>REGRA DOS IDs</h3>
+
+        <p>
+            Os IDs são sequenciais e nunca são reutilizados.
+            Por exemplo: se existirem os IDs 1, 2, 3, 4 e o ID 3
+            for excluído, o próximo cadastro receberá o ID 5.
+        </p>
+
+    </div>
+
+</div>
+  <div id="tabela-container">
+
+        <table id="planilha">
+
+            <thead id="cabecario">
+
+                <tr>
+                    <th colspan="5">
+                        <button id="sair" onclick="SAIR()">SAIR</button>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th id="IDs">ID</th>
+                    <th id="nome">Nome</th>
+                    <th id="marca">Marca</th>
+                    <th id="tipo">Tipo</th>
+                    <th id="modelo">Modelo</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="tabela">
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <details class="CREATES">
+        <summary >  CREATE</summary>
+        <div class="linha"></div>
+        <input class="CREATEIN"  type="text" placeholder="NOME"   id="Nome"/>
+        <input class="CREATEIN"  type="text" placeholder="MARCA"  id="Marca"/>
+        <input class="CREATEIN"  type="text" placeholder="TIPO"   id="Tipo"/>
+        <input class="CREATEIN"  type="text" placeholder="MODELO" id="Modelo"/>
+        <button onclick="CREATE()" class="CREATEBU"> CRIAR</button>
+    </details>
+    <details class="READ" >
+        <summary>
+            READ (ID)
+        </summary>
+        <div class="linha"></div>
+        <input  class="READIN"type="number" placeholder="VER PELO ID" id="VERID">
+        <button  class="READBU"onclick="READ_ID()">VER PELO ID</button>
+    </details>
+    <details class="READ">
+        <summary>
+            READ (ALL)
+        </summary>
+        <div class="linha"></div>
+        <button  class="READBU"onclick="READ_ALL()">VER TODOS CADASTRADOS</button>
+    </details>
+
+    <details class="UPDATE">
+        <summary>
+             UPDATE
+        </summary>
+        <div class="linha"></div>
+        <input class="UPDATEIN" type="number" placeholder="INSIRIR ID PARA ATUALIZAR"  id="REID">
+        <button class="UPDATEBU" onclick="JANELA()">APLICAR</button>
+        </details><div id="pai">
+            <button onclick="CANCEL()">CANCELAR</button>
+            <div id="filho">
+            <p id="selecionado"></p>
+            <input type="text" placeholder="NOME" id="RENome" />
+            <input type="text" placeholder="MARCA" id="REMarca" />
+            <input type="text" placeholder="TIPO" id="RETipo" />
+            <input type="text" placeholder="MODELO" id="REModelo" />
+        </div>
+    </div>
+    <button onclick="UPDATE()" id="meio">ATUALIZAR</button>
+ 
+
+   <details class="DELETE">
+    <summary>
+        DELETE
+    </summary>
+
+    <div class="linha"></div>
+
+    <input class="DELETEIN" type="number" placeholder="INSIRIR ID PARA DELETAR" id="IDEL">
+
+    <button class="DELETEBU" onclick="DELETA()">DELETAR</button>
+</details>
+    
+
+</body>
+<script>
+    //  objetivos: CREATE, READ(1 com ID outros mostrando tudo), UPDADE( ID: rescreve tudo porem não  muda o ID), DELETE (auto explicativo), REGRAS( tem 6 objetos 1. 2. 3. 4. 5. 6. se o cara deletar o 3 tem que ficar 1. 2. 4. 5. 6. e se o cara fizer um novo 1. 2. 4. 5. 6. 7. e apagar o novo logo em sequida 1. 2. 4. 5. 6. e criar um novo a ordem tem que ficar 1. 2. 4. 5. 6. 8.)
+    
+   
+    let acumulador = 1
+    let base = {
+                    id: 1,
+                    nome: "",
+                    marca: "",
+                    tipo: "",
+                    modelo: "",
+
+                }
+               
+
+    let informacoes = [
+
+    ]
+function busca(X) {
+   let  posicao = -1
+    for(let i=0;i<informacoes.length;i++){
+
+        if(informacoes[i].id == X ){
+            return i
+        }
+       
+}
+          
+          return posicao
+
+}
+    
+
+
+
+function CREATE(){
+aviso.innerHTML = ""
+
+ let nome =   Nome.value 
+ let marca =  Marca.value
+ let tipo =   Tipo.value
+ let modelo = Modelo.value
+ for(i = acumulador ;i <= i+1 ;i++){
+informacoes.push({
+        id: acumulador,
+        nome: nome,
+        marca: marca,
+        tipo: tipo,
+        modelo: modelo
+    });
+ 
+    MOSTRAR_TABELA()
+ acumulador++
+break
+}
+}
+function READ_ALL() {
+     aviso.innerHTML = ""
+
+MOSTRAR_TABELA();
+   planilha.style.display = "table";
+
+    
+}
+function READ_ID() {
+ aviso.innerHTML = ""
+
+    planilha.style.display = "none"
+
+
+
+    let valor = parseInt(VERID.value)
+
+    let posicao = busca(valor)
+
+    if (posicao == -1) {
+
+        aviso.innerHTML = "ERRO ID NÃO EXISTE"
+        return
+
+    }
+    if(posicao != -1){
+    let informacao = informacoes[posicao]
+
+    tabela.innerHTML = `
+        <tr>
+            <td>${informacao.id}</td>
+            <td>${informacao.nome}</td>
+            <td>${informacao.marca}</td>
+            <td>${informacao.tipo}</td>
+            <td>${informacao.modelo}</td>
+        </tr>
+    `
+
+    planilha.style.display = "table"
+
+}
+}    
+
+function UPDATE() {
+    let  valor = 1
+    let novonome = RENome.value
+    let novamarca = REMarca.value
+    let novotipo = RETipo.value
+    let novomodelo = REModelo.value
+
+    posicao = busca(valor)
+    
+    if (posicao != -1){
+        informacoes[posicao] = {
+            id:  valor,
+            nome: novonome,
+            marca: novamarca,
+            tipo: novotipo,
+            modelo: novomodelo
+            
+        }
+
+    }
+
+
+}
+function CANCEL() {
+pai.style.display = "none";
+meio.style.display = "none";
+
+}
+function JANELA(){
+ aviso.innerHTML = ""
+  pai.style.display = "none"
+          meio.style.display = "none"
+
+    let valor = parseInt(REID.value)
+if(busca(valor) == -1){
+        
+    aviso.innerHTML = "ERRO ID NÃO EXISTE"
+    
+
+        return
+
+    }
+
+    if(busca(valor) != -1){
+
+        selecionado.innerHTML = `Selecionado ID ${valor}`
+
+        pai.style.display = "block"
+
+        meio.style.display = "block"
+
+    }
+
+}
+
+function DELETA(){
+     aviso.innerHTML = ""
+
+ let valor = parseInt(IDEL.value)
+ if(busca(valor) == -1){
+   aviso.innerHTML = "ERRO ID NÃO EXISTE"
+
+ }
+ if (busca(valor) != -1) {
+    informacoes.splice(busca(valor), 1)
+    
+ }
+console.log(informacoes)
+}
+function SAIR(){
+    planilha.style.display = "none";
+}
+function MOSTRAR_TABELA() {
+
+    tabela.innerHTML = "";
+
+    for (let i = 0; i < informacoes.length; i++) {
+
+        tabela.innerHTML += `
+            <tr>
+                <td>${informacoes[i].id}</td>
+                <td>${informacoes[i].nome}</td>
+                <td>${informacoes[i].marca}</td>
+                <td>${informacoes[i].tipo}</td>
+                <td>${informacoes[i].modelo}</td>
+            </tr>
+        `;
+
+    }
+
+}
+</script>
+</html>
