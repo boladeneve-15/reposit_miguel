@@ -804,6 +804,7 @@ h1{
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  color: #fdfdfd;
 }
 /* =========================
    BLOCO EXPLICAÇÃO
@@ -892,95 +893,10 @@ h1{
     <h1>TRABALHO-FINAL</h1>
     <h1>TEMA: HARDWARE</h1>
     <h1 style="color: red;" id="aviso"></h1>
-    <div id="explicacao">
-
-    <h2>COMO FUNCIONA?</h2>
-
-    <p>
-        Este sistema é um CRUD desenvolvido em JavaScript para
-        cadastrar e gerenciar informações sobre hardware.
-    </p>
-
-    <div class="explicacao-item">
-        <h3>CREATE</h3>
-
-        <p>
-            Permite cadastrar um novo hardware informando:
-            nome, marca, tipo e modelo.
-            Cada cadastro recebe automaticamente um ID.
-        </p>
-    </div>
-
-    <div class="explicacao-item">
-        <h3>READ</h3>
-
-        <p>
-            Permite consultar os dados cadastrados.
-            O READ (ID) procura um hardware específico pelo seu ID,
-            enquanto o READ (ALL) mostra todos os hardwares cadastrados.
-        </p>
-    </div>
-
-    <div class="explicacao-item">
-        <h3>UPDATE</h3>
-
-        <p>
-            Permite alterar as informações de um hardware existente.
-            O ID permanece o mesmo e somente nome, marca, tipo e modelo
-            podem ser modificados.
-        </p>
-    </div>
-
-    <div class="explicacao-item">
-        <h3>DELETE</h3>
-
-        <p>
-            Remove um hardware da lista através do seu ID.
-            O ID excluído não é reutilizado em novos cadastros.
-        </p>
-    </div>
-
-    <div class="explicacao-regra">
-
-        <h3>REGRA DOS IDs</h3>
-
-        <p>
-            Os IDs são sequenciais e nunca são reutilizados.
-            Por exemplo: se existirem os IDs 1, 2, 3, 4 e o ID 3
-            for excluído, o próximo cadastro receberá o ID 5.
-        </p>
-
-    </div>
+   
 
 </div>
-  <div id="tabela-container">
 
-        <table id="planilha">
-
-            <thead id="cabecario">
-
-                <tr>
-                    <th colspan="5">
-                        <button id="sair" onclick="SAIR()">SAIR</button>
-                    </th>
-                </tr>
-
-                <tr>
-                    <th id="IDs">ID</th>
-                    <th id="nome">Nome</th>
-                    <th id="marca">Marca</th>
-                    <th id="tipo">Tipo</th>
-                    <th id="modelo">Modelo</th>
-                </tr>
-
-            </thead>
-
-            <tbody id="tabela">
-            </tbody>
-
-        </table>
-
-    </div>
 
     <details class="CREATES">
         <summary >  CREATE</summary>
@@ -998,13 +914,6 @@ h1{
         <div class="linha"></div>
         <input  class="READIN"type="number" placeholder="VER PELO ID" id="VERID">
         <button  class="READBU"onclick="READ_ID()">VER PELO ID</button>
-    </details>
-    <details class="READ">
-        <summary>
-            READ (ALL)
-        </summary>
-        <div class="linha"></div>
-        <button  class="READBU"onclick="READ_ALL()">VER TODOS CADASTRADOS</button>
     </details>
 
     <details class="UPDATE">
@@ -1038,14 +947,43 @@ h1{
 
     <button class="DELETEBU" onclick="DELETA()">DELETAR</button>
 </details>
-    
+      <div id="tabela-container">
+
+        <table id="planilha">
+
+            <thead id="cabecario">
+
+                <tr>
+                    <th colspan="5">
+                        <button id="sair" onclick="SAIR()">SAIR</button>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th id="IDs">ID</th>
+                    <th id="nome">Nome</th>
+                    <th id="marca">Marca</th>
+                    <th id="tipo">Tipo</th>
+                    <th id="modelo">Modelo</th>
+                    <th >Deletar</th>
+                     
+                </tr>
+
+            </thead>
+
+            <tbody id="tabela">
+            </tbody>
+
+        </table>
+
+    </div>
 
 </body>
 <script>
     //  objetivos: CREATE, READ(1 com ID outros mostrando tudo), UPDADE( ID: rescreve tudo porem não  muda o ID), DELETE (auto explicativo), REGRAS( tem 6 objetos 1. 2. 3. 4. 5. 6. se o cara deletar o 3 tem que ficar 1. 2. 4. 5. 6. e se o cara fizer um novo 1. 2. 4. 5. 6. 7. e apagar o novo logo em sequida 1. 2. 4. 5. 6. e criar um novo a ordem tem que ficar 1. 2. 4. 5. 6. 8.)
     
    
-    let acumulador = 1
+    let acumulador = 0
     let base = {
                     id: 1,
                     nome: "",
@@ -1056,7 +994,7 @@ h1{
                 }
                
 
-    let informacoes = [
+    const informacoes = [
 
     ]
 function busca(X) {
@@ -1093,9 +1031,11 @@ informacoes.push({
     });
  
     MOSTRAR_TABELA()
- acumulador++
-break
+    break
+    
 }
+acumulador++
+READ_ALL()
 }
 function READ_ALL() {
      aviso.innerHTML = ""
@@ -1141,7 +1081,7 @@ function READ_ID() {
 }    
 
 function UPDATE() {
-    let  valor = 1
+    let  valor = REID.value
     let novonome = RENome.value
     let novamarca = REMarca.value
     let novotipo = RETipo.value
@@ -1161,7 +1101,7 @@ function UPDATE() {
 
     }
 
-
+READ_ALL()
 }
 function CANCEL() {
 pai.style.display = "none";
@@ -1195,28 +1135,27 @@ if(busca(valor) == -1){
 
 }
 
-function DELETA(){
+function DELETA(x){
      aviso.innerHTML = ""
-
- let valor = parseInt(IDEL.value)
- if(busca(valor) == -1){
+ if(busca(x) == -1){
    aviso.innerHTML = "ERRO ID NÃO EXISTE"
 
  }
- if (busca(valor) != -1) {
-    informacoes.splice(busca(valor), 1)
+ if (busca(x) != -1) {
+    informacoes.splice(busca(x), 1)
     
  }
-console.log(informacoes)
+READ_ALL()
 }
 function SAIR(){
     planilha.style.display = "none";
 }
+
 function MOSTRAR_TABELA() {
 
     tabela.innerHTML = "";
 
-    for (let i = 0; i < informacoes.length; i++) {
+    for (let i = 1; i < informacoes.length; i++) {
 
         tabela.innerHTML += `
             <tr>
@@ -1225,6 +1164,9 @@ function MOSTRAR_TABELA() {
                 <td>${informacoes[i].marca}</td>
                 <td>${informacoes[i].tipo}</td>
                 <td>${informacoes[i].modelo}</td>
+                <th colspan="5">
+                     <button class="DELETEBU" onclick="DELETA(${informacoes[i].id})">DELETAR</button>
+                    </th>
             </tr>
         `;
 

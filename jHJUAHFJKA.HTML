@@ -1,36 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-
-    <style>
-
-    </style>
-  </head>
-
-  <body>
-    <div id="pai">
-      <button onclick="CANCEL()">CANCELAR</button>
-      <div id="filho">
-        <summary>UPDATE</summary>
-
-        <input type="text" placeholder="NOME" id="Nome" />
-        <input type="text" placeholder="MARCA" id="Marca" />
-        <input type="text" placeholder="TIPO" id="Tipo" />
-        <input type="text" placeholder="MODELO" id="Modelo" />
-      </div>
-    </div>
-
-    <button onclick="CREATE()" id="meio">ATUALIZAR</button>
-  </body>
-  <script>
-    function CREATE() {
-      pai.style.display = "inline";
-    }
-    function CANCEL() {
-      pai.style.display = "none";
-    }
-  </script>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="number" name="" id="numbero">
+  <button onclick="a()"> a</button>
+</body>
+<script>
+  function calculo(x){
+    let dobro  = x * 2
+    return dobro
+  }
+  function a(){
+    let num = numbero.value
+    resultado = calculo(num)
+    console.log(` o dobro do seu numero (${num}) e ${resultado} `)
+  }
+</script>
 </html>
