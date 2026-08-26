@@ -1,39 +1,159 @@
-      body{
-        background-color: #0D1117;
+
+body{
+   background-color: #0D1117;
         font-family: "Segoe UI", sans-serif
-      }
-      #pai {
-        border: 2px solid black;
-        width: 250px;
-        height: 300px;
+}
+#pai {
 
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+    width: 100%;
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        display: none;
-      }
+    margin-top: 15px;
+    padding: 15px;
 
-      #filho {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 25px;
-      }
+    background-color: #0d1117;
 
-      #meio {
-        position: absolute;
-        top: 280px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: none;
-      }
+    border: 1px solid #d29900;
+
+    border-radius: 8px;
+
+    display: none;
+
+}
+
+
+
+
+#pai > button {
+
+    background-color: #161b22;
+
+    color: #8b949e;
+
+    border: 1px solid #30363d;
+
+    width: 130px;
+
+    height: 32px;
+
+    cursor: pointer;
+
+}
+
+
+#pai > button:hover {
+
+    border-color: #8b949e;
+
+    color: #ffffff;
+
+}
+
+
+
+#filho {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+
+
+#selecionado {
+
+    color: #d29922;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    margin: 0 0 15px 0;
+
+}
+
+
+
+#filho input {
+
+    box-sizing: border-box;
+
+    width: 100%;
+
+    height: 40px;
+
+    margin: 5px 0;
+
+    padding: 8px 12px;
+
+    background-color: #161b22;
+
+    color: #e6edf3;
+
+    border: 1px solid #30363d;
+
+    border-radius: 5px;
+
+    font-family: "Consolas", "Courier New", monospace;
+
+}
+
+
+#filho input:focus {
+
+    outline: none;
+
+    border-color: #d29922;
+
+    box-shadow:
+        0 0 0 3px rgba(210, 153, 34, 0.12);
+
+}
+
+
+
+
+#meio {
+
+    display: none;
+
+    margin: 15px auto 0 auto;
+
+    width: 170px;
+
+    height: 40px;
+
+    background-color: #e6a900;
+
+    color: #0d1117;
+
+    border: none;
+
+    border-radius: 5px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+#meio:hover {
+
+    background-color: #f2b90b;
+
+}
+
+
+#meio:active {
+
+    transform: scale(0.96);
+
+}
       .CREATES{
         color: green;
         background-color: rgb(22, 27, 34);
@@ -150,7 +270,7 @@ details[open] {
 .READIN:focus{
    outline: none;
   border-color: #5885ff; 
-  box-shadow: 0 0 0 3px rgba(76, 250, 90, 0.15); 
+  box-shadow: 0 0 0 3px rgba(76, 99, 250, 0.15); 
   background-color: rgb(30, 30, 30);
 }
 .READBU{
@@ -174,4 +294,326 @@ details[open] {
 }
 .READBU:active{
    transform: scale(0.95);
+}
+
+.UPDATE{
+  color: rgb(195, 209, 38);
+   background-color: rgb(22, 27, 34);
+}
+.UPDATEIN{
+      border-radius: 5px;
+  border: 1px,rgba(31, 34, 22, 0.459), solid;
+  background-color: rgb(24, 24, 24);
+    color: #e6edf3;
+  width: 125px;
+  gap: 15px;
+  height: 25px;
+  transition: 0.4s;
+  box-shadow: #f7ff58;
+   font-family: "Consolas", "Courier New", monospace;
+}
+.UPDATEIN:hover{
+   border-color: rgba(247, 255, 88, 0.5);
+   border: 1px,rgba(118, 128, 58, 0.459), solid;
+}
+.UPDATEIN:focus{
+  outline: none;
+  border-color: #d5ff58; 
+  box-shadow: 0 0 0 3px rgba(238, 250, 76, 0.15); 
+  background-color: rgb(30, 30, 30);
+}
+.UPDATEBU{
+   color: white;
+  background-color: rgb(140, 145, 1);
+  border-radius: 5px;
+  height: 25px;
+  width: 125px;
+  border: 1px, rgb(65, 65, 65), solid;
+ transition: 0.5s;
+}
+.UPDATEBU:hover{
+   border: 1px, rgb(65, 65, 65), solid;   border: 1px,rgba(58, 87, 128, 0.459), solid;
+  background-color:  rgb(102, 107, 1);
+  color: #080808; 
+    outline: none;
+  border-color: #00021f; 
+  box-shadow: 0 0 0 3px rgba(215, 250, 76, 0.15); 
+}
+.UPDATEBU:active{
+     transform: scale(0.95);
+
+
+}
+
+.DELETE{
+  color: rgb(248, 81, 73);
+   background-color: #161b22;
+}
+.DELETEIN{
+      border-radius: 5px;
+  border: 1px,rgba(34, 22, 22, 0.459), solid;
+  background-color: rgb(24, 24, 24);
+    color: #e6edf3;
+  width: 125px;
+  gap: 15px;
+  height: 25px;
+  transition: 0.4s;
+  box-shadow: #ff5858;
+   font-family: "Consolas", "Courier New", monospace;
+}
+.DELETEIN:hover{
+   border-color: rgba(255, 88, 88, 0.5);
+   border: 1px,rgba(128, 58, 58, 0.459), solid;
+}
+.DELETEIN:focus{
+  outline: none;
+  border-color: #f85149; 
+  box-shadow: 0 0 0 3px rgba(248, 81, 73, 0.15); 
+  background-color: rgb(30, 30, 30);
+}
+.DELETEBU{
+   color: white;
+  background-color: rgb(145, 30, 30);
+  border-radius: 5px;
+  height: 25px;
+  width: 125px;
+  border: 1px, rgb(65, 65, 65), solid;
+ transition: 0.5s;
+}
+.DELETEBU:hover{
+   border: 1px, rgb(65, 65, 65), solid;   border: 1px,rgba(128, 58, 58, 0.459), solid;
+  background-color:  rgb(107, 1, 1);
+  color: #080808; 
+    outline: none;
+  border-color: #1f0000; 
+  box-shadow: 0 0 0 3px rgba(250, 76, 76, 0.15); 
+}
+.DELETEBU:active{
+     transform: scale(0.95);
+}
+
+@media (max-width: 700px) {
+    .CREATEIN,
+    .READIN,
+    .UPDATEIN,
+    .DELETEIN {
+        width: 100%;
+    }
+
+    .CREATEBU,
+    .READBU,
+    .UPDATEBU,
+    .DELETEBU {
+        width: 100%;
+    }
+}
+ 
+ #planilha {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+
+    background-color: #0d1117;
+    color: white;
+
+    border: 1px solid #444;
+    border-collapse: collapse;
+
+    display: none;
+
+    position: relative;
+    z-index: 9999;
+}
+
+#planilha th,
+#planilha td {
+    padding: 12px;
+    border: 1px solid #30363d;
+}
+
+#cabecario th {
+    background-color: #161b22;
+}
+
+
+#colunas {
+     display: flex;
+    flex-direction: row;
+    background-color: #1f2937;
+    padding: 12px;
+    border-bottom: 1px solid #444;
+    box-sizing: border-box;
+}
+
+ #numeros {
+    width: 180px;
+    border-right: 1px solid #333333;
+
+
+}
+
+#IDs {
+    width: 180px;
+    border-right: 1px solid #333333;
+
+}
+
+#nome {
+    width: 180px;
+    border-right: 1px solid #333333;
+
+}
+
+#marca {
+    width: 180px;
+    border-right: 1px solid #333333;
+
+}
+
+#tipo {
+    width: 180px;
+    border-right: 1px solid #333333;
+
+}
+
+#modelo {
+    width: 180px;
+
+
+}
+
+#colunas h1,
+#colunas h2 {
+    margin: 0;
+    font-size: 16px;
+}
+#cabecario th{
+      border-bottom: 1px solid #444;
+
+}
+#sair{
+    color: white;
+  background-color: #333333;
+  border-radius: 5px;
+  height: 25px;
+  width: 125px;
+  border: 1px, rgb(65, 65, 65), solid;
+ transition: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  box-shadow: 1px rgba(245, 246, 250, 0.15); 
+
+}
+#sair:hover{
+   border: 1px, rgb(65, 65, 65), solid;   border: 1px,rgba(58, 87, 128, 0.459), solid;
+  background-color:  #2b2b2b;
+  color: #080808; 
+    outline: none;
+  border-color: #292929; 
+  box-shadow: 0 0 0 3px rgba(8, 8, 8, 0.15); 
+
+}
+#sair:active{
+   transform: scale(0.95);
+}
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 700px) {
+
+    body {
+        margin: 0;
+        padding: 10px;
+    }
+
+    /* INPUTS */
+
+    .CREATEIN,
+    .READIN,
+    .UPDATEIN,
+    .DELETEIN {
+        width: 100%;
+        box-sizing: border-box;
+        height: 40px;
+        margin: 5px 0;
+    }
+
+    /* BOTÕES */
+
+    .CREATEBU,
+    .READBU,
+    .UPDATEBU,
+    .DELETEBU {
+        width: 100%;
+        height: 40px;
+        margin-top: 5px;
+    }
+
+    /* DETAILS */
+
+    details {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+
+    summary {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    /* CARD DO UPDATE */
+
+    #pai {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+    #meio {
+        width: 100%;
+        height: 40px;
+    }
+
+    #pai > button {
+        width: 100%;
+        height: 40px;
+    }
+
+    /* =========================
+       TABELA
+    ========================= */
+
+    #tabela-container {
+        width: 100%;
+        overflow-x: auto;
+        margin-bottom: 20px;
+    }
+
+    #planilha {
+        width: 700px;
+        min-width: 700px;
+        position: fixed;
+    }
+
+    #planilha th,
+    #planilha td {
+        padding: 10px;
+        white-space: nowrap;
+    }
+
+    #sair {
+        width: 100px;
+        height: 35px;
+    }
+
+}
+h1{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }

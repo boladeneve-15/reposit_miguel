@@ -5,10 +5,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="TRABALHO-FINAL.js" defer></script>
     <link rel="stylesheet" href="TRABALHO-FINAL.css">
 </head>
 
 <body>
+    <h1>TRABALHO-FINAL</h1>
+    <h1>TEMA: HARDWARE</h1>
+    <h1 style="color: red;" id="aviso"></h1>
+  <div id="tabela-container">
+
+        <table id="planilha">
+
+            <thead id="cabecario">
+
+                <tr>
+                    <th colspan="5">
+                        <button id="sair" onclick="SAIR()">SAIR</button>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th id="IDs">ID</th>
+                    <th id="nome">Nome</th>
+                    <th id="marca">Marca</th>
+                    <th id="tipo">Tipo</th>
+                    <th id="modelo">Modelo</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="tabela">
+            </tbody>
+
+        </table>
+
+    </div>
+
     <details class="CREATES">
         <summary >  CREATE</summary>
         <div class="linha"></div>
@@ -34,13 +67,14 @@
         <button  class="READBU"onclick="READ_ALL()">VER TODOS CADASTRADOS</button>
     </details>
 
-    <details >
+    <details class="UPDATE">
         <summary>
              UPDATE
         </summary>
-        <input type="number" placeholder="INSIRIR ID PARA ATUALIZAR"  id="REID">
-        <button onclick="JANELA()">APLICAR</button>
-        <div id="pai">
+        <div class="linha"></div>
+        <input class="UPDATEIN" type="number" placeholder="INSIRIR ID PARA ATUALIZAR"  id="REID">
+        <button class="UPDATEBU" onclick="JANELA()">APLICAR</button>
+        </details><div id="pai">
             <button onclick="CANCEL()">CANCELAR</button>
             <div id="filho">
             <p id="selecionado"></p>
@@ -51,136 +85,21 @@
         </div>
     </div>
     <button onclick="UPDATE()" id="meio">ATUALIZAR</button>
- </details>
+ 
 
-    <details>
-        <summary>
-            DELETE
-        </summary>
-        <input type="text" placeholder="INSIRIR ID PARA DELETAR" id="IDEL">
-        <button onclick="DELETA()"> DELETAR</button>
-    </details>
+   <details class="DELETE">
+    <summary>
+        DELETE
+    </summary>
+
+    <div class="linha"></div>
+
+    <input class="DELETEIN" type="number" placeholder="INSIRIR ID PARA DELETAR" id="IDEL">
+
+    <button class="DELETEBU" onclick="DELETA()">DELETAR</button>
+</details>
     
 
 </body>
-<script>
-    //  objetivos: CREATE, READ(1 com ID outros mostrando tudo), UPDADE( ID: rescreve tudo porem não  muda o ID), DELETE (auto explicativo), REGRAS( tem 6 objetos 1. 2. 3. 4. 5. 6. se o cara deletar o 3 tem que ficar 1. 2. 4. 5. 6. e se o cara fizer um novo 1. 2. 4. 5. 6. 7. e apagar o novo logo em sequida 1. 2. 4. 5. 6. e criar um novo a ordem tem que ficar 1. 2. 4. 5. 6. 8.)
-    
-   
-    let acumulador = 1
-    let base = {
-                    id: 1,
-                    nome: "",
-                    marca: "",
-                    tipo: "",
-                    modelo: "",
 
-                }
-               
-
-    let informacoes = [
-
-    ]
-function busca(X) {
-   let  posicao = -1
-    for(let i=0;i<informacoes.length;i++){
-
-        if(informacoes[i].id == X ){
-            return i
-        }
-       
-}
-          
-          return posicao
-        
-      console.log(poscao)
-}
-    
-
-
-
-function CREATE(){
- let nome =   Nome.value 
- let marca =  Marca.value
- let tipo =   Tipo.value
- let modelo = Modelo.value
- for(i = acumulador ;i <= i+1 ;i++){
-informacoes.push({
-        id: acumulador,
-        nome: nome,
-        marca: marca,
-        tipo: tipo,
-        modelo: modelo
-    });
- 
- console.log(informacoes)
- acumulador++
-break
-}
-}
-function READ_ALL() {
-    console.log(informacoes)
-    
-}
-function READ_ID() {
-   let valor = parseInt(VERID.value)
-    
-    if(busca(valor) != -1){
-        console.log(informacoes[valor-1])
-    }
-    
-}
-function UPDATE() {
-    let  valor = parseInt(REID.value)
-    let novonome = RENome.value
-    let novamarca = REMarca.value
-    let novotipo = RETipo.value
-    let novomodelo = REModelo.value
-
-    posicao = busca(valor)
-    if (posicao != -1){
-        informacoes[posicao] = {
-            id:  valor,
-            nome: novonome,
-            marca: novamarca,
-            tipo: novotipo,
-            modelo: novomodelo
-            
-        }
-
-    }
-
-console.log(informacoes)
-}
-function CANCEL() {
-pai.style.display = "none";
-meio.style.display = "none";
-
-}
-function JANELA(){
-     let valor = parseInt(REID.value)
-      if(busca(valor) == -1){
-         console.log("ERRO ESSE ID NÃO EXISTE")
-     }
-    if(busca(valor) != -1){
-        selecionado.innerHTML = `Selecionado ID ${valor}`
-        pai.style.display = "inline";
-        meio.style.display = "inline";
-}
-
-}
-
-function DELETA(){
- let valor = parseInt(IDEL.value)
- if(busca(valor) == -1){
-    console.log("ID NÃO EXISTE")
- }
- if (busca(valor) != -1) {
-    informacoes.splice(busca(valor), 1)
-    
- }
-console.log(informacoes)
-}
-
-</script>
 </html>
