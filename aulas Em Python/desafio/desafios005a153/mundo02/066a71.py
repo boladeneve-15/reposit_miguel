@@ -4,7 +4,7 @@ import time
 
 print("""BEM VINDO AOS TESTES DE MIGUEL LUCAS EM PYTHON, esse e o começo de uma nova linguagem de progamação
     onde meu foco no final de tudo e saber
-    ciencias de dados, eng de dados, automoção em python, e criação de IAs""")
+    ciencias de dados""")
 
 print("====desafios====")
 Desafio = int(input("qual o desafio? (de 66 a 71) "))

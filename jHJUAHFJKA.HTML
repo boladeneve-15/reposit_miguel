@@ -10,14 +10,9 @@
   <button onclick="a()"> a</button>
 </body>
 <script>
-  function calculo(x){
-    let dobro  = x * 2
-    return dobro
+  const a = (b) => {
+    b()
   }
-  function a(){
-    let num = numbero.value
-    resultado = calculo(num)
-    console.log(` o dobro do seu numero (${num}) e ${resultado} `)
-  }
+  a(()=> 3)
 </script>
 </html>
