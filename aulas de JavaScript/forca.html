@@ -6,13 +6,73 @@
     <title>Document</title>
 </head>
 <body>
+    <button onclick="novojogo()">NOVO JOGO</button>
+    <input type="text" name="caractere" maxlength="1" size="1" id="letra">
+    <button onclick="procurar()">tentar?</button>
+    <br><br><br>
+    <div id="tabela">
     
-</body>
+    </div>
 
+    <div id="erros">
+        letras errados: 
+    </div>
+</body>
 <script>
 
-    function validador(x){
+    const palavras = [
+           "computador",
+            "javascript",
+            "programacao",
+            "escola",
+            "futebol",
+            "superheroi",
+            "celular",
+            "internet"
+    ]
+    let palavrasecreta = ""
+    let numeroAleatorio = 0 
+    let corretos = [] 
+
+    function procurar(){
+        let tentativa = letra.value
+        let acertou = false 
+
+        for(let i = 0; i < palavrasecreta.length; i++){
         
+            if(palavras[numeroAleatorio][i] == tentativa){
+                corretos[i] = tentativa 
+                acertou = true
+            }
+        }
+
+        if (acertou == false) {
+            erros.innerHTML += `${tentativa} X `
+        }
+
+       
+        tabela.innerHTML = ""
+        for(let i = 0; i < corretos.length; i++){
+            tabela.innerHTML += " " + corretos[i] + " "
+        }
+
+        letra.value = "" 
+    }
+
+    function novojogo(){
+        corretos = []
+        erros.innerHTML = "letras errados: " 
+        
+        numeroAleatorio = Math.floor(Math.random() * palavras.length); 
+        palavrasecreta = palavras[numeroAleatorio]
+        tabela.innerHTML = ""
+
+        console.log(palavrasecreta)
+        for(let i = 0; i < palavrasecreta.length; i++){
+            corretos.push("_") 
+            tabela.innerHTML +=  " _ "
+        }
+        return [palavrasecreta, numeroAleatorio]
     }
 </script>
 </html>
